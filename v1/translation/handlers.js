@@ -14,6 +14,11 @@ require("../../share/handlerUtils");
 fluid.defaults("adaptiveContentService.handlers.translation", {
     gradeNames: "kettle.request.http",
     characterLimit: "500",
+    requestMiddleware: {
+        "versionCheck": {
+            middleware: "{server}.versionCheck"
+        }
+    },
     invokers: {
         handleRequest: {
             func: "{that}.commonTranslationDispatcher",
@@ -41,6 +46,8 @@ fluid.defaults("adaptiveContentService.handlers.translation", {
 // Common dispatcher for all Yandex endpoints
 adaptiveContentService.handlers.translation.commonTranslationDispatcher = function (request, handlerFunc, that) {
     var version = request.req.params.version;
+
+    console.log(request.req);
 
     //setting the required headers for the response
     request.res.set({
