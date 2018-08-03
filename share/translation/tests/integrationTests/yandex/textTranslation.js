@@ -24,12 +24,12 @@ var mockTranslationData = require("../../mockData/yandex/translation");
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.yandex.translateText", {
     gradeNames: "adaptiveContentService.handlers.translation.yandex.translateText",
-    characterLimit: 65
+    characterLimit: 40
 });
 
 adaptiveContentService.tests.translation.yandex.translateText = [{
     name: "POST request for the Text Translation endpoint of Yandex Service",
-    expect: 9,
+    expect: 10,
     config: {
         configName: "translationServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/translation/config/"
@@ -92,6 +92,13 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
             }
         },
         longTextField: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/translation/yandex/translate/" + mockTranslationData.sourceLang.correct + "-" + mockTranslationData.targetLang.correct,
+                method: "post"
+            }
+        },
+        requestError: {
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/translation/yandex/translate/" + mockTranslationData.sourceLang.correct + "-" + mockTranslationData.targetLang.correct,
@@ -179,6 +186,15 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Translation Tests : Text Translation test for request with too long text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestError}.send",
+        args: { text: mockTranslationData.text.requestErrorTrigger }
+    },
+    {
+        event: "{requestError}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Translation Tests : Text Translation test for error with making request", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

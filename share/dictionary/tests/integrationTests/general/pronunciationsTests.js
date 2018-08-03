@@ -21,7 +21,7 @@ kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.general.pronunciations = [{
     name: "GET request for the Pronunciations dictionary endpoint",
-    expect: 5,
+    expect: 6,
     config: {
         configName: "dictionaryServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/dictionary/config/"
@@ -59,6 +59,13 @@ adaptiveContentService.tests.dictionary.general.pronunciations = [{
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/dictionary/" + mockPronunciationsData.lang.correct + "/pronunciations/iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+                method: "get"
+            }
+        },
+        requestErrorTest: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/" + mockPronunciationsData.lang.correct + "/pronunciations/" + mockPronunciationsData.word.requestErrorTrigger,
                 method: "get"
             }
         }
@@ -102,6 +109,14 @@ adaptiveContentService.tests.dictionary.general.pronunciations = [{
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Dictionary Tests : Frequency test for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestErrorTest}.send"
+    },
+    {
+        event: "{requestErrorTest}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : Frequency test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

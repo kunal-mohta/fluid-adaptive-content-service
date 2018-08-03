@@ -65,4 +65,15 @@ nock(urlBase)
     404,
     mockLangDetectionData.responses.limitExceeded
 )
+// error with making request
+.post(
+    "/detect?key=" + mockLangDetectionData.apiKey.correct,
+    {
+        text: mockLangDetectionData.text.requestErrorTrigger
+    }
+)
+.reply(
+    500,
+    mockLangDetectionData.responses.requestError
+)
 .persist();

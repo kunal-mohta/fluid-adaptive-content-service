@@ -28,16 +28,18 @@ adaptiveContentService.tests.utils.logAjvErrors = function (errors) {
     fluid.each(errors, function (error) {
         // property required but not found
         if (error.keyword === "required") {
-            fluid.log("'" + error.params.missingProperty + "' is a REQUIRED property, but was absent");
+            ACS.log("'" + error.params.missingProperty + "' is a REQUIRED property of {response}" + error.dataPath + ", but was absent");
         }
         // property of unexpected type
         else if (error.keyword === "type") {
-            fluid.log("'data" + error.dataPath + "' SHOULD be of the type " + error.params.type.toUpperCase());
+            ACS.log("'{response}" + error.dataPath + "' SHOULD be of the type " + error.params.type.toUpperCase());
         }
         //default
         else {
-            fluid.log("AJV error : \n" + error.message);
+            ACS.log("AJV error : " + error.message);
         }
+
+        ACS.log("Complete error log - " + JSON.stringify(error));
     });
 };
 

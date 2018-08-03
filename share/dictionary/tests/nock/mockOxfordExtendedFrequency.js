@@ -25,4 +25,10 @@ nock(urlBase)
     403,
     mockExtendedFrequencyData.responses.authError
 )
+// error making request
+.get("/stats/frequency/word/" + mockExtendedFrequencyData.lang.correct + "/?lemma=" + mockExtendedFrequencyData.word.requestErrorTrigger + "&lexicalCategory=" + mockExtendedFrequencyData.lexicalCategory)
+.reply(
+    500,
+    mockExtendedFrequencyData.responses.requestError
+)
 .persist();

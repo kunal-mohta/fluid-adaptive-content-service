@@ -10,7 +10,8 @@ module.exports = {
         numerical: "12345",
         limitExceeded: "This test will trigger limit exceeded endpoint",
         authErrorTrigger: "triggerAuthError",
-        blockedKeyErrorTrigger: "blockedKeyErrorTrigger"
+        blockedKeyErrorTrigger: "blockedKeyErrorTrigger",
+        requestErrorTrigger: "triggerRequestError"
     },
     sourceLang: {
         correct: "en",
@@ -21,11 +22,5 @@ module.exports = {
         correct: "de",
         wrong: "abc",
         invalid: "german"
-    },
-    // responses
-    responses: {
-        requestError: {
-            body: undefined
-        }
     }
 };

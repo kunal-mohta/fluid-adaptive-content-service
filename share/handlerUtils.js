@@ -69,3 +69,19 @@ adaptiveContentService.handlerUtils.checkTranslationServiceKeys = function () {
         ACS.log("WARNING! Google 'Api Key' not found. Refer README for instructions to adding it.");
     }
 };
+
+//function to get the endpoint name from the request url
+adaptiveContentService.handlerUtils.getEndpointName = function (url) {
+    var endpointNameRegex = /\/\w+\/\w+\/\w+\/\w+\/(\w+)\.*/g, //to extract name of the endpoint from the url
+        match = endpointNameRegex.exec(url);
+
+    return match[1];
+};
+
+//function to get the service name from the request url TODO: test
+adaptiveContentService.handlerUtils.getServiceName = function (url) {
+    var serviceNameRegex = /\/\w+\/\w+\/(\w+)\.*/g, //to extract name of the service from the url
+        match = serviceNameRegex.exec(url);
+
+    return match[1];
+};

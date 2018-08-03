@@ -18,27 +18,42 @@ kettle.loadTestingSupport();
 
 adaptiveContentService.tests.translation.yandex.listLanguages = [{
     name: "GET request for the List Languages endpoint of Yandex Service",
-    expect: 1,
+    expect: 2,
     config: {
         configName: "translationServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/translation/config/"
     },
     components: {
-        noError: {
+        generalEndpoint: {
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/translation/yandex/languages",
                 method: "get"
             }
+        },
+        translateTextEndpoint: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/translation/yandex/langs/translate",
+                method: "get"
+            }
         }
     },
     sequence: [{
-        func: "{noError}.send"
+        func: "{generalEndpoint}.send"
     },
     {
-        event: "{noError}.events.onComplete",
+        event: "{generalEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Translation Tests : Text Translation test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{translateTextEndpoint}.send"
+    },
+    {
+        event: "{translateTextEndpoint}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Translation Tests : Text Translation test for request with no errors for translate text endpoint", 200, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

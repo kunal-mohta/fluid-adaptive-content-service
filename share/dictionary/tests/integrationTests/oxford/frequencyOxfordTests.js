@@ -21,7 +21,7 @@ kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.oxford.frequency = [{
     name: "GET request for the Frequency dictionary endpoint of Oxford Service",
-    expect: 4,
+    expect: 5,
     config: {
         configName: "dictionaryServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/dictionary/config/"
@@ -52,6 +52,13 @@ adaptiveContentService.tests.dictionary.oxford.frequency = [{
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/dictionary/oxford/" + mockFrequencyData.lang.correct + "/frequency/iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+                method: "get"
+            }
+        },
+        requestErrorTest: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/oxford/" + mockFrequencyData.lang.correct + "/frequency/" + mockFrequencyData.word.requestErrorTrigger,
                 method: "get"
             }
         }
@@ -87,6 +94,14 @@ adaptiveContentService.tests.dictionary.oxford.frequency = [{
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Dictionary Tests : Frequency test for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestErrorTest}.send"
+    },
+    {
+        event: "{requestErrorTest}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : Frequency test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

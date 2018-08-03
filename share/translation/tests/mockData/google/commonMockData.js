@@ -23,6 +23,12 @@ module.exports = {
                     "message": "API key not valid. Please pass a valid API key."
                 }
             }
+        },
+        requestError: {
+            statusCode: 500,
+            body: {
+                message: "Internal Server Error : Error with making request to the external service"
+            }
         }
     }
 };

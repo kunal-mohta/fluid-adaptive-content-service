@@ -42,6 +42,11 @@ adaptiveContentService.test.handlers.dictionary.wiktionary.definition.requiredDa
         jsonMockResponse = mockDefinitionData.responses.wrongWord;
         promise.resolve(jsonMockResponse);
     }
+    // error making request
+    else if (word === mockDefinitionData.word.requestErrorTrigger) {
+        jsonMockResponse = mockDefinitionData.responses.requestError;
+        promise.resolve(jsonMockResponse);
+    }
     // no Error response
     else {
         jsonMockResponse = mockDefinitionData.word.correct;
@@ -53,7 +58,7 @@ adaptiveContentService.test.handlers.dictionary.wiktionary.definition.requiredDa
 
 adaptiveContentService.tests.dictionary.wiktionary.definition = [{
     name: "GET request for the definition dictionary endpoint",
-    expect: 4,
+    expect: 5,
     config: {
         configName: "dictionaryServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/dictionary/config/"
@@ -84,6 +89,13 @@ adaptiveContentService.tests.dictionary.wiktionary.definition = [{
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/dictionary/wiktionary/" + mockDefinitionData.lang.correct + "/definition/iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+                method: "get"
+            }
+        },
+        requestErrorTest: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/wiktionary/" + mockDefinitionData.lang.correct + "/definition/" + mockDefinitionData.word.requestErrorTrigger,
                 method: "get"
             }
         }
@@ -119,6 +131,14 @@ adaptiveContentService.tests.dictionary.wiktionary.definition = [{
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Dictionary Tests : Definition test for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestErrorTest}.send"
+    },
+    {
+        event: "{requestErrorTest}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : Definition test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

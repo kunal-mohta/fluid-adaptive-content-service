@@ -21,7 +21,7 @@ kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.general.synonyms = [{
     name: "GET request for the Synonyms dictionary endpoint",
-    expect: 5,
+    expect: 6,
     config: {
         configName: "dictionaryServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/dictionary/config/"
@@ -30,35 +30,42 @@ adaptiveContentService.tests.dictionary.general.synonyms = [{
         correctWordTest: {
             type: "kettle.test.request.http",
             options: {
-                path: "/v1/dictionary/oxford/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.correct,
+                path: "/v1/dictionary/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.correct,
                 method: "get"
             }
         },
         authErrorTest: {
             type: "kettle.test.request.http",
             options: {
-                path: "/v1/dictionary/oxford/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.authErrorTrigger,
+                path: "/v1/dictionary/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.authErrorTrigger,
                 method: "get"
             }
         },
         wrongWordTest: {
             type: "kettle.test.request.http",
             options: {
-                path: "/v1/dictionary/oxford/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.wrong,
+                path: "/v1/dictionary/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.wrong,
                 method: "get"
             }
         },
         wrongLangTest: {
             type: "kettle.test.request.http",
             options: {
-                path: "/v1/dictionary/oxford/" + mockSynonymsData.lang.wrong + "/synonyms/" + mockSynonymsData.word.correct,
+                path: "/v1/dictionary/" + mockSynonymsData.lang.wrong + "/synonyms/" + mockSynonymsData.word.correct,
                 method: "get"
             }
         },
         longUriTest: {
             type: "kettle.test.request.http",
             options: {
-                path: "/v1/dictionary/oxford/" + mockSynonymsData.lang.correct + "/synonyms/iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+                path: "/v1/dictionary/" + mockSynonymsData.lang.correct + "/synonyms/iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+                method: "get"
+            }
+        },
+        requestErrorTest: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.requestErrorTrigger,
                 method: "get"
             }
         }
@@ -102,6 +109,14 @@ adaptiveContentService.tests.dictionary.general.synonyms = [{
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Dictionary Tests : Synonyms test for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestErrorTest}.send"
+    },
+    {
+        event: "{requestErrorTest}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : Synonyms test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

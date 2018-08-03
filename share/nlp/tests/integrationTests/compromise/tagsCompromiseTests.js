@@ -1,5 +1,10 @@
 "use strict";
 
+/* No mock data/response is used here
+ * because no request is made
+ * response comes directly from the library
+ */
+
 var fluid = require("infusion"),
     kettle = require("kettle");
 require("dotenv").config();
@@ -20,7 +25,7 @@ var testRequestBody = {
     },
     emptySentence: {},
     longSentence: {
-        sentence: "This sentence exceeds the character limit"
+        sentence: "This sentence exceeds the character limit because it is long"
     }
 };
 
@@ -32,7 +37,7 @@ fluid.registerNamespace("adaptiveContentService.test.handlers.nlp.compromise.sen
  */
 fluid.defaults("adaptiveContentService.test.handlers.nlp.compromise.sentenceTagging", {
     gradeNames: "adaptiveContentService.handlers.nlp.compromise.sentenceTagging",
-    characterLimit: 20
+    characterLimit: 40
 });
 
 adaptiveContentService.tests.nlp.compromise.sentenceTagging = [{
@@ -46,21 +51,21 @@ adaptiveContentService.tests.nlp.compromise.sentenceTagging = [{
         correctSentence: {
             type: "kettle.test.request.http",
             options: {
-                path: "/:version/nlp/compromise/tags/",
+                path: "/v1/nlp/compromise/tags/",
                 method: "post"
             }
         },
         emptySentence: {
             type: "kettle.test.request.http",
             options: {
-                path: "/:version/nlp/compromise/tags/",
+                path: "/v1/nlp/compromise/tags/",
                 method: "post"
             }
         },
         longSentence: {
             type: "kettle.test.request.http",
             options: {
-                path: "/:version/nlp/compromise/tags/",
+                path: "/v1/nlp/compromise/tags/",
                 method: "post"
             }
         }

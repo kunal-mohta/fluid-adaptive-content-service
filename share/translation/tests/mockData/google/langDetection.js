@@ -17,6 +17,7 @@ module.exports = {
         cannotDetect: {
             "language": "und"
         },
-        keyInvalid: googleCommonMockData.responses.keyInvalid
+        keyInvalid: googleCommonMockData.responses.keyInvalid,
+        requestError: googleCommonMockData.responses.requestError
     }
 };

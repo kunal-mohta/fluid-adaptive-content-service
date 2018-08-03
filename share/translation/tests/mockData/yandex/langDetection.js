@@ -20,6 +20,7 @@ module.exports = {
         },
         keyInvalid: commonMockYandexData.responses.keyInvalid,
         keyBlocked: commonMockYandexData.responses.keyBlocked,
-        limitExceeded: commonMockYandexData.responses.limitExceeded
+        limitExceeded: commonMockYandexData.responses.limitExceeded,
+        requestError: commonMockYandexData.responses.requestError
     }
 };

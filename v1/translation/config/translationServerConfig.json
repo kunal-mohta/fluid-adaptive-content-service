@@ -8,6 +8,12 @@
                 "options":{
                     "port":8081,
                     "components":{
+                        "versionCheck": {
+                            "type": "adaptiveContentService.middleware.versionCheck"
+                        },
+                        "setResponseHeaders": {
+                            "type": "adaptiveContentService.middleware.setResponseHeaders"
+                        },
                         "translation": {
                             "type": "kettle.app",
                             "options": {
@@ -16,6 +22,11 @@
                                         "type": "adaptiveContentService.test.handlers.translation.general.translateText",
                                         "route": "/:version/translation/translate/:sourceLang-:targetLang",
                                         "method": "post"
+                                    },
+                                    "generalTranslateTextLangsHandler": {
+                                        "type": "adaptiveContentService.handlers.translation.yandex.listLanguages",
+                                        "route": "/:version/translation/langs/translate",
+                                        "method": "get"
                                     },
                                     "generalDetectAndTranslateHandler": {
                                         "type": "adaptiveContentService.test.handlers.translation.general.detectAndTranslate",
@@ -31,6 +42,11 @@
                                         "type": "adaptiveContentService.test.handlers.translation.yandex.translateText",
                                         "route": "/:version/translation/yandex/translate/:sourceLang-:targetLang",
                                         "method": "post"
+                                    },
+                                    "yandexTranslateTextLangsHandler": {
+                                        "type": "adaptiveContentService.handlers.translation.yandex.listLanguages",
+                                        "route": "/:version/translation/yandex/langs/translate",
+                                        "method": "get"
                                     },
                                     "yandexLangDetectionHandler": {
                                         "type": "adaptiveContentService.test.handlers.translation.yandex.langDetection",
@@ -56,6 +72,11 @@
                                         "type": "adaptiveContentService.test.handlers.translation.google.detectAndTranslate",
                                         "route": "/:version/translation/google/translate/:targetLang",
                                         "method": "post"
+                                    },
+                                    "googleDetectAndTranslateLangsHandler": {
+                                        "type": "adaptiveContentService.test.handlers.translation.google.listLanguages",
+                                        "route": "/:version/translation/google/langs/translate",
+                                        "method": "get"
                                     },
                                     "googleLangDetectionHandler": {
                                         "type": "adaptiveContentService.test.handlers.translation.google.langDetection",

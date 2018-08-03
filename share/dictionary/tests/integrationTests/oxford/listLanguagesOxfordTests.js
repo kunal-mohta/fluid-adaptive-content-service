@@ -19,27 +19,102 @@ kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     name: "GET request for the list supported languages endpoint",
-    expect: 1,
+    expect: 6,
     config: {
         configName: "dictionaryServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/dictionary/config/"
     },
     components: {
-        noError: {
+        generalEndpoint: {
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/dictionary/oxford/languages",
                 method: "get"
             }
+        },
+        definitionEndpoint: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/oxford/langs/definition",
+                method: "get"
+            }
+        },
+        synonymsEndpoint: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/oxford/langs/synonyms",
+                method: "get"
+            }
+        },
+        antonymsEndpoint: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/oxford/langs/antonyms",
+                method: "get"
+            }
+        },
+        pronunciationsEndpoint: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/oxford/langs/pronunciations",
+                method: "get"
+            }
+        },
+        frequencyEndpoint: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/oxford/langs/frequency",
+                method: "get"
+            }
         }
     },
     sequence: [{
-        func: "{noError}.send"
+        func: "{generalEndpoint}.send"
     },
     {
-        event: "{noError}.events.onComplete",
+        event: "{generalEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for 'no error' response successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test for no error response successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{definitionEndpoint}.send"
+    },
+    {
+        event: "{definitionEndpoint}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : List languages test for no error response for definition endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{synonymsEndpoint}.send"
+    },
+    {
+        event: "{synonymsEndpoint}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : List languages test for no error response for synonyms endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{antonymsEndpoint}.send"
+    },
+    {
+        event: "{antonymsEndpoint}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : List languages test for no error response for antonyms endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{pronunciationsEndpoint}.send"
+    },
+    {
+        event: "{pronunciationsEndpoint}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : List languages test for no error response for pronunciations endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{frequencyEndpoint}.send"
+    },
+    {
+        event: "{frequencyEndpoint}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : List languages test for no error response for frequency endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

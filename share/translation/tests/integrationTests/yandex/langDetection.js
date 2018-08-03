@@ -24,12 +24,12 @@ var mockLangDetectionData = require("../../mockData/yandex/langDetection");
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.yandex.langDetection", {
     gradeNames: "adaptiveContentService.handlers.translation.yandex.langDetection",
-    characterLimit: 65
+    characterLimit: 40
 });
 
 adaptiveContentService.tests.translation.yandex.langDetection = [{
     name: "POST request for the Language detection endpoint of Yandex Service",
-    expect: 7,
+    expect: 8,
     config: {
         configName: "translationServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/translation/config/"
@@ -78,6 +78,13 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
             }
         },
         longTextField: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/translation/yandex/detect",
+                method: "post"
+            }
+        },
+        requestError: {
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/translation/yandex/detect",
@@ -147,6 +154,15 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Translation Tests : language detection test for request with absent text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestError}.send",
+        args: { text: mockLangDetectionData.text.requestErrorTrigger }
+    },
+    {
+        event: "{requestError}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Translation Tests : language detection test for error with making request", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

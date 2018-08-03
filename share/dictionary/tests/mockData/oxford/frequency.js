@@ -20,5 +20,7 @@ module.exports = {
             }
         },
         wrongLang: "<title>404 Not Found</title><h1>Not Found</h1><p>source_lang is not in zu, ro, ta, sw, de, tn, lv, id, ur, en, nso, ms, gu, pt, hi, es</p>",
-        authError: "Authentication failed"}
+        authError: commonOxfordMockData.responses.authError,
+        requestError: commonOxfordMockData.responses.requestError
+    }
 };

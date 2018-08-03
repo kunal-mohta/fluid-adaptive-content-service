@@ -19,7 +19,7 @@ adaptiveContentService.tests.nlp.compromise.unitTests.checkNlpError = function (
     }
 };
 
-var characterLimit = 30;
+var characterLimit = 40;
 
 var requestSentence = {
     correctSentence: "This is correct sentence",

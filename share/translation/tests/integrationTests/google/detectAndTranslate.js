@@ -23,12 +23,13 @@ var mockTranslationData = require("../../mockData/google/translation");
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.google.detectAndTranslate", {
     gradeNames: "adaptiveContentService.handlers.translation.google.detectAndTranslate",
-    characterLimit: 65,
+    characterLimit: 40,
     invokers: {
         requiredData: "adaptiveContentService.test.handlers.translation.google.detectAndTranslate.requiredData"
     }
 });
 
+// TODO: make a common file for these - repeated across google tests
 // function providing the required mock data (over-riding the actual function)
 adaptiveContentService.test.handlers.translation.google.detectAndTranslate.requiredData = function (targetLang, text) {
     var promise = fluid.promise(),
@@ -50,6 +51,11 @@ adaptiveContentService.test.handlers.translation.google.detectAndTranslate.requi
             body: jsonMockResponse.body
         });
     }
+    // error making request
+    else if (text === mockTranslationData.text.requestErrorTrigger) {
+        jsonMockResponse = mockTranslationData.responses.requestError;
+        promise.resolve(jsonMockResponse);
+    }
     // no Error response
     else {
         jsonMockResponse = mockTranslationData.responses.noError;
@@ -64,7 +70,7 @@ adaptiveContentService.test.handlers.translation.google.detectAndTranslate.requi
 
 adaptiveContentService.tests.translation.google.detectAndTranslate = [{
     name: "POST request for the translation endpoint (with only target language given) of Google Service",
-    expect: 7,
+    expect: 8,
     config: {
         configName: "translationServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/translation/config/"
@@ -113,6 +119,13 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
             }
         },
         longTextField: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/translation/google/translate/" + mockTranslationData.targetLang.correct,
+                method: "post"
+            }
+        },
+        requestError: {
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/translation/google/translate/" + mockTranslationData.targetLang.correct,
@@ -182,6 +195,15 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Translation Tests : language detection test for request with too long text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestError}.send",
+        args: { text: mockTranslationData.text.requestErrorTrigger }
+    },
+    {
+        event: "{requestError}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Translation Tests : language detection test for error with making request", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

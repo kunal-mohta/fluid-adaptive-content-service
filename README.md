@@ -80,9 +80,17 @@ Currently available endpoints -
   - `http://localhost:8081/v1/dictionary/{language_code}/frequency/{word}`\
   **Method**: `GET`\
   **Language Code**: IANA standards
+
   - `http://localhost:8081/v1/dictionary/{language_code}/frequency/{word}/{lexicalCategory}`\
   **Method**: `GET`\
   **Language Code**: IANA standards
+
+  - `http://localhost:8081/v1/dictionary/langs/{endpoint_name}`\
+  **Method**: `GET`
+
+  Example endpoints:
+    - `http://localhost:8081/v1/dictionary/fr/definition/rien`
+    - `http://localhost:8081/v1/dictionary/langs/definition`
 
 - #### Wiktionary Endpoints
 
@@ -91,7 +99,15 @@ Currently available endpoints -
   **Language Code**: English (en), French (fr) and German (de)
 
   - `http://localhost:8081/v1/dictionary/wiktionary/languages`\
-  **Method**: `GET`\
+  **Method**: `GET`
+
+  - `http://localhost:8081/v1/dictionary/wiktionary/langs/{endpoint_name}`\
+  **Method**: `GET`
+
+  Example endpoints:
+    - `http://localhost:8081/v1/dictionary/wiktionary/fr/definition/rien`
+    - `http://localhost:8081/v1/dictionary/wiktionary/languages`
+    - `http://localhost:8081/v1/dictionary/wiktionary/langs/definition`
 
 - #### Oxford Endpoints
 
@@ -114,19 +130,24 @@ Currently available endpoints -
   - `http://localhost:8081/v1/dictionary/oxford/{language_code}/frequency/{word}`\
   **Method**: `GET`\
   **Language Code**: IANA standards
+
   - `http://localhost:8081/v1/dictionary/oxford/{language_code}/frequency/{word}/{lexicalCategory}`\
   **Method**: `GET`\
   **Language Code**: IANA standards
+
   - `http://localhost:8081/v1/dictionary/oxford/languages`\
-  **Method**: `GET`\
+  **Method**: `GET`
+
+  - `http://localhost:8081/v1/dictionary/oxford/langs/{endpoint_name}`\
+  **Method**: `GET`
 
 Example endpoints:
-- `http://localhost:8081/v1/dictionary/en/definition/horse`
-- `http://localhost:8081/v1/dictionary/wiktionary/fr/definition/rien`
 - `http://localhost:8081/v1/dictionary/oxford/en/definition/horse`
+- `http://localhost:8081/v1/dictionary/oxford/languages`
+- `http://localhost:8081/v1/dictionary/oxford/langs/definition`
 
 ### NLP Service
-- Compromise
+- #### Compromise
   - `http://localhost:8082/v1/nlp/compromise/tags`\
   **Method**: `POST`\
   **Request Body Format**: `{ sentence: "{sentence to be tagged}" }`
@@ -136,7 +157,36 @@ Example endpoints:
 **Body** `{ sentence: "Hello world! This is a test sentence" }`
 
 ### Translation Service
-- Yandex
+- #### General
+
+  - `http://localhost:8083/v1/translation/translate/{source_lang}-{target_lang}`\
+  **Method**: `POST`\
+  **Request Body Format**: `{ text: "text to be translated"}`\
+  **Language Code**: ISO 639-1 (2-lettered language codes)
+
+  - `http://localhost:8083/v1/translation/detect`\
+  **Method**: `POST`\
+  **Request Body Format**: `{ text: "text for which language is to be detected"}`\
+  **Language Code**: ISO 639-1 (2-lettered language codes), ISO 639-2 (3-lettered language code)
+
+  - `http://localhost:8083/v1/translation/translate/{target_lang}`\
+  **Method**: `POST`\
+  **Request Body Format**: `{ text: "text to be translated"}`\
+  **Language Code**: ISO 639-1 (2-lettered language codes)
+
+  - `http://localhost:8083/v1/translation/langs/translate`\
+  **Method**: `GET`
+
+  Example endpoints:
+    - `http://localhost:8083/v1/translation/translate/en-de`\
+    **Body** `{ text: "This is the text to be translated" }`
+    - `http://localhost:8083/v1/translation/detect`\
+    **Body** `{ text: "This is the text for which the language is to be detected" }`
+    - `http://localhost:8083/v1/translation/translate/de`\
+    **Body** `{ text: "This is the text to be translated" }`
+    - `http://localhost:8083/v1/translation/languages`\
+
+- #### Yandex
 
   - `http://localhost:8083/v1/translation/yandex/translate/{source_lang}-{target_lang}`\
   **Method**: `POST`\
@@ -154,10 +204,21 @@ Example endpoints:
   **Language Code**: ISO 639-1 (2-lettered language codes)
 
   - `http://localhost:8083/v1/translation/yandex/languages`\
-  **Method**: `GET`\
-  **Language Code**: ISO 639-1 (2-lettered language codes)
+  **Method**: `GET`
 
-- Google
+  - `http://localhost:8083/v1/translation/yandex/langs/translate`\
+  **Method**: `GET`
+
+  Example endpoints:
+    - `http://localhost:8083/v1/translation/yandex/translate/en-de`\
+    **Body** `{ text: "This is the text to be translated" }`
+    - `http://localhost:8083/v1/translation/yandex/detect`\
+    **Body** `{ text: "This is the text for which the language is to be detected" }`
+    - `http://localhost:8083/v1/translation/yandex/translate/de`\
+    **Body** `{ text: "This is the text to be translated" }`
+    - `http://localhost:8083/v1/translation/yandex/languages`\
+
+- #### Google
 
   - `http://localhost:8083/v1/translation/google/translate/{target_lang}`\
   **Method**: `POST`\
@@ -170,27 +231,22 @@ Example endpoints:
   **Language Code**: ISO 639-1 (2-lettered language codes), ISO 639-2 (3-lettered language code)
 
   - `http://localhost:8083/v1/translation/google/languages`\
-  **Method**: `GET`\
-  **Language Code**: ISO 639-1 (2-lettered language codes), ISO 639-2 (3-lettered language code)
+  **Method**: `GET`
 
   - `http://localhost:8083/v1/translation/google/languages/{lang}`\
   **Method**: `GET`\
   **Language Code**: ISO 639-1 (2-lettered language codes), ISO 639-2 (3-lettered language code)
 
-Example endpoints:
-- `http://localhost:8083/v1/translation/yandex/translate/en-de`\
-**Body** `{ text: "This is the text to be translated" }`
-- `http://localhost:8083/v1/translation/yandex/detect`\
-**Body** `{ text: "This is the text for which the language is to be detected" }`
-- `http://localhost:8083/v1/translation/yandex/translate/de`\
-**Body** `{ text: "This is the text to be translated" }`
-- `http://localhost:8083/v1/translation/yandex/languages`\
-- `http://localhost:8083/v1/translation/google/translate/en`\
-**Body** `{ text: "This is the text to be translated" }`
-- `http://localhost:8083/v1/translation/google/detect`\
-**Body** `{ text: "This is the text for which the language is to be detected" }`
-- `http://localhost:8083/v1/translation/google/languages`\
-- `http://localhost:8083/v1/translation/google/languages/fr`\
+  - `http://localhost:8083/v1/translation/google/langs/translate`\
+  **Method**: `GET`
+
+  Example endpoints:
+    - `http://localhost:8083/v1/translation/google/translate/en`\
+    **Body** `{ text: "This is the text to be translated" }`
+    - `http://localhost:8083/v1/translation/google/detect`\
+    **Body** `{ text: "This is the text for which the language is to be detected" }`
+    - `http://localhost:8083/v1/translation/google/languages`\
+    - `http://localhost:8083/v1/translation/google/languages/fr`\
 
 ## Running Tests
 

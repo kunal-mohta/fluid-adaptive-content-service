@@ -2,7 +2,8 @@
 
 var word = {
     correct: "happy",
-    wrong: "wrongWord"
+    wrong: "wrongWord",
+    requestErrorTrigger: "triggerRequestError"
 };
 
 module.exports = {
@@ -25,6 +26,9 @@ module.exports = {
         },
         wrongLang: {
             err: "unsupported language"
+        },
+        requestError: {
+            err: "a request has failed"
         }
     }
 };

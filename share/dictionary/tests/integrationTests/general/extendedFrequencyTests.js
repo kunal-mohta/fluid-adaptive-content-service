@@ -21,7 +21,7 @@ kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.general.extendedFrequency = [{
     name: "GET request for the Frequency (extended) dictionary endpoint",
-    expect: 4,
+    expect: 5,
     config: {
         configName: "dictionaryServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/dictionary/config/"
@@ -52,6 +52,13 @@ adaptiveContentService.tests.dictionary.general.extendedFrequency = [{
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/dictionary/" + mockExtendedFrequencyData.lang.correct + "/frequency/iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii/" + mockExtendedFrequencyData.lexicalCategory,
+                method: "get"
+            }
+        },
+        requestErrorTest: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/" + mockExtendedFrequencyData.lang.correct + "/frequency/" + mockExtendedFrequencyData.word.requestErrorTrigger + "/" + mockExtendedFrequencyData.lexicalCategory,
                 method: "get"
             }
         }
@@ -87,6 +94,14 @@ adaptiveContentService.tests.dictionary.general.extendedFrequency = [{
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Dictionary Tests : Frequency (extended) test for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestErrorTest}.send"
+    },
+    {
+        event: "{requestErrorTest}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : Frequency (extended) test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

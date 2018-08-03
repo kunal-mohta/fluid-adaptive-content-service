@@ -13,6 +13,12 @@ fluid.defaults("adaptiveContentService.nlp.serverConfig", {
             options: {
                 port: 8082,
                 components: {
+                    versionCheck: {
+                        "type": "adaptiveContentService.middleware.versionCheck"
+                    },
+                    setResponseHeaders: {
+                        "type": "adaptiveContentService.middleware.setResponseHeaders"
+                    },
                     app: {
                         type: "kettle.app",
                         options: {
@@ -31,6 +37,7 @@ fluid.defaults("adaptiveContentService.nlp.serverConfig", {
     }
 });
 
+// endpoint handlers
 require("./handlers.js");
 
 adaptiveContentService.nlp.serverConfig();

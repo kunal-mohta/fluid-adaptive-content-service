@@ -23,6 +23,7 @@ module.exports = {
                     "message": "Invalid Value"
                 }
             }
-        }
+        },
+        requestError: googleCommonMockData.responses.requestError
     }
 };

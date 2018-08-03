@@ -1,30 +1,30 @@
 "use strict";
 
-var fluid = require("infusion");
+var fluid = require("infusion"),
+    ACS = fluid.registerNamespace("ACS"),
+    adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 
-var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
+require("dotenv").config(); // npm package to get variables from '.env' file
 
-require("dotenv").config();//npm package to get variables from '.env' file
-require("kettle");
-require("../../share/handlerUtils");
+require("../handlers");
 
 /* Abstract grade for translation service endpoints
  * from which other service grades will inherit
  */
 fluid.defaults("adaptiveContentService.handlers.translation", {
-    gradeNames: "kettle.request.http",
-    characterLimit: "500",
-    requestMiddleware: {
-        "versionCheck": {
-            middleware: "{server}.versionCheck"
-        }
-    },
+    gradeNames: ["adaptiveContentService.handlers.commonMiddleware", "kettle.request.http"],
+    characterLimit: 500,
     invokers: {
         handleRequest: {
             func: "{that}.commonTranslationDispatcher",
             args: ["{arguments}.0", "{that}.translationHandlerImpl", "{that}"]
         },
         commonTranslationDispatcher: "adaptiveContentService.handlers.translation.commonTranslationDispatcher",
+        checkSourceText: "adaptiveContentService.handlers.translation.checkSourceText",
+        checkLanguageCodes: "adaptiveContentService.handlers.translation.checkLanguageCodes",
+        checkServiceKey: "adaptiveContentService.handlers.translation.checkServiceKey",
+        preRequestErrorCheck: "adaptiveContentService.handlers.translation.preRequestErrorCheck",
+        // from handlerUtils
         sendSuccessResponse: {
             funcName: "adaptiveContentService.handlerUtils.sendSuccessResponse",
             args: ["{arguments}.0", "{arguments}.1", "{arguments}.2", "{arguments}.3", "{arguments}.4", "{arguments}.5", "Translation"]
@@ -33,12 +33,8 @@ fluid.defaults("adaptiveContentService.handlers.translation", {
             funcName: "adaptiveContentService.handlerUtils.sendErrorResponse",
             args: ["{arguments}.0", "{arguments}.1", "{arguments}.2", "{arguments}.3", "{arguments}.4", "Translation"]
         },
-        checkSourceText: "adaptiveContentService.handlers.translation.checkSourceText",
-        checkLanguageCodes: "adaptiveContentService.handlers.translation.checkLanguageCodes",
-        checkServiceKey: "adaptiveContentService.handlers.translation.checkServiceKey",
-        preRequestErrorCheck: "adaptiveContentService.handlers.translation.preRequestErrorCheck",
+        // not implemented - should be implemented in child grades
         requiredData: "fluid.notImplemented",
-        // translationConstructResponse: "fluid.notImplemented",
         translationHandlerImpl: "fluid.notImplemented"
     }
 });
@@ -47,35 +43,37 @@ fluid.defaults("adaptiveContentService.handlers.translation", {
 adaptiveContentService.handlers.translation.commonTranslationDispatcher = function (request, handlerFunc, that) {
     var version = request.req.params.version;
 
-    console.log(request.req);
 
-    //setting the required headers for the response
-    request.res.set({
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
-    });
+    try {
+        handlerFunc(request, version, that);
+    }
+    // Error with the API code
+    catch (error) {
+        var errMsg = "Internal Server Error: " + error;
+        ACS.log(errMsg);
 
-    handlerFunc(request, version, that);
+        var serviceName = ACS.capitalize(that.getServiceName(request.req.originalUrl));
+        that.sendErrorResponse(request, version, serviceName, 500, errMsg);
+    }
 };
 
 // check for errors in the text provided in the request body
 adaptiveContentService.handlers.translation.checkSourceText = function (sourceText, characterLimit) {
-    //no text found in request body
+    // no text found in request body
     if (!sourceText) {
         return {
             statusCode: 400,
             errorMessage: "Request body doesn't contain 'text' field"
         };
     }
-    //too long text
+    // too long text
     else if (sourceText.length > characterLimit) {
         return {
             statusCode: 413,
             errorMessage: "Text in the request body should have character count less than or equal to " + characterLimit
         };
     }
-    //No error regarding the request text
+    // No error regarding the request text
     else {
         return false;
     }
@@ -101,12 +99,13 @@ adaptiveContentService.handlers.translation.checkServiceKey = function (serviceK
 // check for errors with the language codes
 adaptiveContentService.handlers.translation.checkLanguageCodes = function (langsObj) {
     if (!langsObj) {
+        // parameter absent or false
         return false;
     }
     else {
-        var errorContent = false; //default return value is 'false'
+        var errorContent = false; // default return value is 'false'
 
-        //if any of the languages have length more than 3
+        // if any of the languages have length more than 3
         for (var lang in langsObj) {
             if (langsObj[lang].value.length > 3) {
                 errorContent = {
@@ -123,31 +122,32 @@ adaptiveContentService.handlers.translation.checkLanguageCodes = function (langs
 
 // check for errors in the input data, before making the request to external service
 adaptiveContentService.handlers.translation.preRequestErrorCheck = function (characterLimit, serviceKey, langsObj, text, that) {
-    //Error with the text in request body
     var sourceTextErrorContent = that.checkSourceText(text, characterLimit);
 
     if (sourceTextErrorContent) {
+        // Error with the text in request body
         return sourceTextErrorContent;
     }
-    //No error with the text in request body
     else {
-        //Error with the service keys in the environment variables
+        // No error with the text in request body
+
         var serviceKeyErrorContent = that.checkServiceKey(serviceKey);
 
         if (serviceKeyErrorContent) {
+            // Error with the service keys in the environment variables
             return serviceKeyErrorContent;
         }
-        //No error with the service keys
         else {
-            //Error with the language codes provided
+            // No error with the service keys
 
             var langCodeErrorContent = that.checkLanguageCodes(langsObj);
 
             if (langCodeErrorContent) {
+                // Error with the language codes provided
                 return langCodeErrorContent;
             }
-            //No pre request error found
             else {
+                // No pre request error found
                 return false;
             }
         }

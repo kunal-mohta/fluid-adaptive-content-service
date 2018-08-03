@@ -55,7 +55,7 @@ adaptiveContentService.test.handlers.translation.google.listLanguages.requiredDa
 
 adaptiveContentService.tests.translation.google.listLanguages = [{
     name: "GET request for the List Languages endpoint of Google Service",
-    expect: 2,
+    expect: 3,
     config: {
         configName: "translationServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/translation/config/"
@@ -72,6 +72,13 @@ adaptiveContentService.tests.translation.google.listLanguages = [{
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/translation/google/languages/" + mockListLanguagesData.langParam,
+                method: "get"
+            }
+        },
+        detectAndTranslateEndpoint: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/translation/google/langs/translate",
                 method: "get"
             }
         }
@@ -91,6 +98,14 @@ adaptiveContentService.tests.translation.google.listLanguages = [{
         event: "{extendedListLanguagesNoError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Translation Tests : Extended List languages test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{detectAndTranslateEndpoint}.send"
+    },
+    {
+        event: "{detectAndTranslateEndpoint}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Translation Tests : Extended List languages test for request with no errors for detect-and-translate endpoint", 200, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

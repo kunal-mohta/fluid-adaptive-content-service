@@ -21,7 +21,7 @@ kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.oxford.synonyms = [{
     name: "GET request for the Synonyms dictionary endpoint of Oxford Service",
-    expect: 5,
+    expect: 6,
     config: {
         configName: "dictionaryServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/dictionary/config/"
@@ -59,6 +59,13 @@ adaptiveContentService.tests.dictionary.oxford.synonyms = [{
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/dictionary/oxford/" + mockSynonymsData.lang.correct + "/synonyms/iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+                method: "get"
+            }
+        },
+        requestErrorTest: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/dictionary/oxford/" + mockSynonymsData.lang.correct + "/synonyms/" + mockSynonymsData.word.requestErrorTrigger,
                 method: "get"
             }
         }
@@ -102,6 +109,14 @@ adaptiveContentService.tests.dictionary.oxford.synonyms = [{
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Dictionary Tests : Synonyms test for correct word successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestErrorTest}.send"
+    },
+    {
+        event: "{requestErrorTest}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Dictionary Tests : Synonyms test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

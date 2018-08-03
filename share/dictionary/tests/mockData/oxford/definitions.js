@@ -60,6 +60,7 @@ module.exports = {
         },
         wrongWord: "<title>404 Not Found</title><h1>Not Found</h1><p>No entry available for '" + commonOxfordMockData.word.wrong + "' in 'en'</p>",
         wrongLang: "<title>404 Not Found</title><h1>Not Found</h1><p>source_lang is not in en, es, gu, hi, lv, sw, ta</p>",
-        authError: "Authentication failed"
+        authError: commonOxfordMockData.responses.authError,
+        requestError: commonOxfordMockData.responses.requestError
     }
 };

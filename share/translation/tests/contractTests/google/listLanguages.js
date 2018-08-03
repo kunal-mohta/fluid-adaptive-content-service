@@ -63,7 +63,7 @@ adaptiveContentService.tests.translation.google.contractTests.listLanguages.getD
     });
 };
 
-// test handler function
+// test handler function TODO: are these functions needed here?
 adaptiveContentService.tests.translation.google.contractTests.listLanguages.handler = function (data, schema, successMessage, failureMessage) {
     var Ajv = require("ajv");
     // require('ajv-merge-patch')(ajv);

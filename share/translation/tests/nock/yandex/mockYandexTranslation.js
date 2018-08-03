@@ -46,12 +46,23 @@ nock(urlBase)
 .post(
     "/translate?key=" + mockTranslationData.apiKey.correct + "&lang=" + mockTranslationData.sourceLang.correct + "-" + mockTranslationData.targetLang.correct,
     {
-        text: mockTranslationData.limitExceedTriggerText
+        text: mockTranslationData.text.limitExceed
     }
 )
 .reply(
     404,
     mockTranslationData.responses.limitExceeded
+)
+// error with making request
+.post(
+    "/translate?key=" + mockTranslationData.apiKey.correct + "&lang=" + mockTranslationData.sourceLang.correct + "-" + mockTranslationData.targetLang.correct,
+    {
+        text: mockTranslationData.text.requestErrorTrigger
+    }
+)
+.reply(
+    500,
+    mockTranslationData.responses.requestError
 )
 //translation direction not supported (wrong source lang)
 .post(

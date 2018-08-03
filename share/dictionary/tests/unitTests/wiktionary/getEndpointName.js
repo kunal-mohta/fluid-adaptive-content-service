@@ -6,12 +6,12 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.wiktionary.unitTests.getEndpointName");
 
-require("../../../../../v1/dictionary/handlers/wiktionaryHandlers");
+require("../../../../handlerUtils");
 
 var testUrl = "/version/dictionary/wiktionary/language/serviceName/word";
 
 adaptiveContentService.tests.dictionary.wiktionary.unitTests.getEndpointName = function () {
-    var returnVal = adaptiveContentService.handlers.dictionary.wiktionary.serviceNotProvided.getEndpointName(testUrl);
+    var returnVal = adaptiveContentService.handlerUtils.getEndpointName(testUrl);
 
     jqunit.assertEquals("Unit Test : For getEndpointName function : Successful", "serviceName", returnVal);
 };

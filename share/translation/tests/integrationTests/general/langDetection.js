@@ -23,7 +23,7 @@ var mockLangDetectionData = require("../../mockData/google/langDetection");
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.general.langDetection", {
     gradeNames: "adaptiveContentService.handlers.translation.google.langDetection",
-    characterLimit: 65,
+    characterLimit: 40,
     invokers: {
         requiredData: "adaptiveContentService.test.handlers.translation.general.langDetection.requiredData"
     }
@@ -50,6 +50,11 @@ adaptiveContentService.test.handlers.translation.general.langDetection.requiredD
             body: jsonMockResponse.body
         });
     }
+    // error making request
+    else if (text === mockLangDetectionData.text.requestErrorTrigger) {
+        jsonMockResponse = mockLangDetectionData.responses.requestError;
+        promise.resolve(jsonMockResponse);
+    }
     // no Error response
     else {
         jsonMockResponse = mockLangDetectionData.responses.noError;
@@ -64,7 +69,7 @@ adaptiveContentService.test.handlers.translation.general.langDetection.requiredD
 
 adaptiveContentService.tests.translation.general.langDetection = [{
     name: "POST request for the Language detection endpoint",
-    expect: 6,
+    expect: 7,
     config: {
         configName: "translationServerConfig",
         configPath: "%fluid-adaptive-content-service/v1/translation/config/"
@@ -106,6 +111,13 @@ adaptiveContentService.tests.translation.general.langDetection = [{
             }
         },
         longTextField: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/translation/detect",
+                method: "post"
+            }
+        },
+        requestError: {
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/translation/detect",
@@ -166,6 +178,15 @@ adaptiveContentService.tests.translation.general.langDetection = [{
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
         args: ["Translation Tests : language detection test for request with absent text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{requestError}.send",
+        args: { text: mockLangDetectionData.text.requestErrorTrigger }
+    },
+    {
+        event: "{requestError}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Translation Tests : language detection test for error with making request", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

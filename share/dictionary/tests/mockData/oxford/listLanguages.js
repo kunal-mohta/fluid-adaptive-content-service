@@ -36,6 +36,7 @@ module.exports = {
                 }
             ]
         },
-        authError: "Authentication failed"
+        authError: commonOxfordMockData.responses.authError,
+        requestError: commonOxfordMockData.responses.requestError
     }
 };

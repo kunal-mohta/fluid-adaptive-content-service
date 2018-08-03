@@ -20,18 +20,24 @@ fluid.defaults("adaptiveContentService.handlers.nlp.compromise.sentenceTagging",
 
 // function to catch the errors for the compromise's sentence tagging
 adaptiveContentService.handlers.nlp.compromise.sentenceTagging.checkNlpError = function (sentence, characterLimit) {
+    //TODO: middleware
     if (sentence) {
+        // sentence present
+
         if (sentence.length > characterLimit) {
+            // sentence exceeds character limit
             return {
                 statusCode: 413,
                 errorMessage: "Sentence in request body should have character count less than or equal to " + characterLimit
             };
         }
         else {
+            // no error
             return;
         }
     }
     else {
+        // sentence not present
         return {
             statusCode: 400,
             errorMessage: "Request body doesn't contain 'sentence' field"
@@ -43,9 +49,11 @@ adaptiveContentService.handlers.nlp.compromise.sentenceTagging.checkNlpError = f
 adaptiveContentService.handlers.nlp.compromise.sentenceTagging.requiredData = function (sentence) {
     var sentenceData = nlp(sentence),
         tagsData = sentenceData.out("tags");
+
     return tagsData;
 };
 
+// construct an appropriate response from the data from external service
 adaptiveContentService.handlers.nlp.compromise.sentenceTagging.constructResponse = function (sentence, serviceTags) {
     var response = {
         sentence: sentence,
@@ -63,27 +71,18 @@ adaptiveContentService.handlers.nlp.compromise.sentenceTagging.constructResponse
 
 // Compromise sentence tagging handler
 adaptiveContentService.handlers.nlp.compromise.sentenceTagging.getTags = function (request, version, that) {
-    var sentence = request.req.body.sentence,
-        message;
-    try {
-        var errorContent = that.checkNlpError(sentence, that.options.characterLimit);
+    var sentence = request.req.body.sentence;
 
-        if (errorContent) {
-            that.sendErrorResponse(request, version, "Compromise", errorContent.statusCode, errorContent.errorMessage);
-        }
-        else {
-            var tags = that.requiredData(sentence);
+    var errorContent = that.checkNlpError(sentence, that.options.characterLimit);
 
-            var response = that.constructResponse(sentence, tags);
-
-            message = "Sentence Tagged";
-            that.sendSuccessResponse(request, version, "Compromise", 200, message, response);
-        }
+    if (errorContent) {
+        that.sendErrorResponse(request, version, "Compromise", errorContent.statusCode, errorContent.errorMessage);
     }
-    //Error with the API code
-    catch (error) {
-        message = "Internal Server Error: " + error;
+    else {
+        var tags = that.requiredData(sentence),
+            response = that.constructResponse(sentence, tags),
+            message = "Sentence Tagged";
 
-        that.sendErrorResponse(request, version, "Compromise", 500, message);
+        that.sendSuccessResponse(request, version, "Compromise", 200, message, response);
     }
 };

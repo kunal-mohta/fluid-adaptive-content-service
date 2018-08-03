@@ -25,6 +25,7 @@ module.exports = {
         keyBlocked: commonMockYandexData.responses.keyBlocked,
         limitExceeded: commonMockYandexData.responses.limitExceeded,
         unsupportedTranslation: commonMockYandexData.responses.unsupportedTranslation,
-        invalidLangCode: commonMockYandexData.responses.invalidLangCode
+        invalidLangCode: commonMockYandexData.responses.invalidLangCode,
+        requestError: commonMockYandexData.responses.requestError
     }
 };

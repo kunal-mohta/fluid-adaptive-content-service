@@ -35,6 +35,10 @@ module.exports = {
         invalidLangCode: {
             "code": 502,
             "message": "Invalid 'lang' parameter"
+        },
+        requestError: {
+            "code": 500,
+            "message": "Internal Server Error - Error with making request to the external service"
         }
     }
 };

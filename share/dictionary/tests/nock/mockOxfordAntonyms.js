@@ -31,4 +31,10 @@ nock(urlBase)
     403,
     mockAntonymsData.responses.authError
 )
+// error making request
+.get("/entries/" + mockAntonymsData.lang.correct + "/" + mockAntonymsData.word.requestErrorTrigger + "/antonyms")
+.reply(
+    500,
+    mockAntonymsData.responses.requestError
+)
 .persist();

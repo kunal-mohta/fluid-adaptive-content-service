@@ -7,6 +7,9 @@ require("dotenv").config();
 require("../../../../../index.js");
 require("../../../../testUtils");
 
+require("../../nock/yandex/mockYandexTranslation"); // providing mock data as an alternative to actual Yandex response (translation)
+require("../../nock/yandex/mockYandexLangDetection"); // providing mock data as an alternative to actual Yandex response (language detection)
+
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.general.detectAndTranslate");
 
@@ -14,53 +17,19 @@ fluid.logObjectRenderChars = kettle.resolvers.env("CHAR_LIM");
 
 kettle.loadTestingSupport();
 
-// mock data
-var mockTranslationData = require("../../mockData/google/translation");
+// mock data (translation)
+var mockTranslationData = require("../../mockData/yandex/translation");
 
-/* testing grade for detect and translate text - to override 'characterLimit' configuration
- * and 'requiredData' function
- * for the purpose of testing
+// mock data (language detection)
+var mockLangDetectionData = require("../../mockData/yandex/langDetection");
+
+/* testing grade for detect-and-translate - to override 'characterLimit'
+ * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.general.detectAndTranslate", {
-    gradeNames: "adaptiveContentService.handlers.translation.google.detectAndTranslate",
-    characterLimit: 65,
-    invokers: {
-        requiredData: "adaptiveContentService.test.handlers.translation.general.detectAndTranslate.requiredData"
-    }
+    gradeNames: "adaptiveContentService.handlers.translation.yandex.detectAndTranslate",
+    characterLimit: 40
 });
-
-// function providing the required mock data (over-riding the actual function)
-adaptiveContentService.test.handlers.translation.general.detectAndTranslate.requiredData = function (targetLang, text) {
-    var promise = fluid.promise(),
-        jsonMockResponse;
-
-    // wrong target language response
-    if (targetLang === mockTranslationData.targetLang.wrong) {
-        jsonMockResponse = mockTranslationData.responses.invalidLangCode;
-        promise.resolve({
-            statusCode: jsonMockResponse.body.error.code,
-            body: jsonMockResponse.body
-        });
-    }
-    // wrong service key
-    else if (text === mockTranslationData.text.authErrorTrigger) {
-        jsonMockResponse = mockTranslationData.responses.keyInvalid;
-        promise.resolve({
-            statusCode: jsonMockResponse.body.error.code,
-            body: jsonMockResponse.body
-        });
-    }
-    // no Error response
-    else {
-        jsonMockResponse = mockTranslationData.responses.noError;
-        promise.resolve({
-            statusCode: 200,
-            body: jsonMockResponse
-        });
-    }
-
-    return promise;
-};
 
 adaptiveContentService.tests.translation.general.detectAndTranslate = [{
     name: "POST request for the translation endpoint (with only target language given)",
@@ -91,14 +60,7 @@ adaptiveContentService.tests.translation.general.detectAndTranslate = [{
                 method: "post"
             }
         },
-        authError: {
-            type: "kettle.test.request.http",
-            options: {
-                path: "/v1/translation/translate/" + mockTranslationData.targetLang.correct,
-                method: "post"
-            }
-        },
-        wrongTargetLang: {
+        unsupportedTranslationDirection: {
             type: "kettle.test.request.http",
             options: {
                 path: "/v1/translation/translate/" + mockTranslationData.targetLang.wrong,
@@ -112,6 +74,13 @@ adaptiveContentService.tests.translation.general.detectAndTranslate = [{
                 method: "post"
             }
         },
+        cannotDetectLang: {
+            type: "kettle.test.request.http",
+            options: {
+                path: "/v1/translation/translate/" + mockTranslationData.targetLang.correct,
+                method: "post"
+            }
+        },
         longTextField: {
             type: "kettle.test.request.http",
             options: {
@@ -122,66 +91,66 @@ adaptiveContentService.tests.translation.general.detectAndTranslate = [{
     },
     sequence: [{
         func: "{noError}.send",
-        args: { text: mockTranslationData.text.noError }
+        args: { text: mockLangDetectionData.text.noError }
     },
     {
         event: "{noError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : detect-and-translate test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{emptyTextField}.send",
-        args: { text: mockTranslationData.text.empty }
+        args: { text: mockLangDetectionData.text.empty }
     },
     {
         event: "{emptyTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : detect-and-translate test for request with empty text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with empty text field", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{absentTextField}.send",
-        args: { text: mockTranslationData.text.absent }
+        args: { text: mockLangDetectionData.text.absent }
     },
     {
         event: "{absentTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : detect-and-translate test for request with absent text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with absent text field", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
-        func: "{authError}.send",
-        args: { text: mockTranslationData.text.authErrorTrigger }
+        func: "{unsupportedTranslationDirection}.send",
+        args: { text: mockLangDetectionData.text.noError }
     },
     {
-        event: "{authError}.events.onComplete",
+        event: "{unsupportedTranslationDirection}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : detect-and-translate test for request with wrong service key", 403, "{arguments}.1.nativeResponse.statusCode"]
-    },
-    {
-        func: "{wrongTargetLang}.send",
-        args: { text: mockTranslationData.text.noError }
-    },
-    {
-        event: "{wrongTargetLang}.events.onComplete",
-        listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : detect-and-translate test for request with wrong target language", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with unsupported translation direction", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{invalidTargetLangCode}.send",
-        args: { text: mockTranslationData.text.noError }
+        args: { text: mockLangDetectionData.text.noError }
     },
     {
         event: "{invalidTargetLangCode}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : detect-and-translate test for request with invalid target language", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with invalid target language", 404, "{arguments}.1.nativeResponse.statusCode"]
+    },
+    {
+        func: "{cannotDetectLang}.send",
+        args: { text: mockLangDetectionData.text.numerical }
+    },
+    {
+        event: "{cannotDetectLang}.events.onComplete",
+        listener: "adaptiveContentService.tests.utils.assertStatusCode",
+        args: ["Translation Tests : language detection test for 'unable to detect lang' response", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longTextField}.send",
-        args: { text: mockTranslationData.text.tooLong }
+        args: { text: mockLangDetectionData.text.tooLong }
     },
     {
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : detect-and-translate test for request with too long text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with too long text field", 413, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

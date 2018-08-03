@@ -31,4 +31,10 @@ nock(urlBase)
     403,
     mockDefinitionsData.responses.authError
 )
+// error making request
+.get("/entries/" + mockDefinitionsData.lang.correct + "/" + mockDefinitionsData.word.requestErrorTrigger)
+.reply(
+    500,
+    mockDefinitionsData.responses.requestError
+)
 .persist();
