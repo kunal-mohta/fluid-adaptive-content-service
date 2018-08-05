@@ -4,18 +4,18 @@ var fluid = require("infusion"),
     jqunit = require("node-jqunit");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
-fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.checkLanguageCodes");
+fluid.registerNamespace("adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes");
 
-require("../../../../../v1/translation/handlers");
+require("../../handlerUtils");
 
-adaptiveContentService.tests.translation.unitTests.checkLanguageCodes = function (testMessage, expectedReturnVal, testLangObj) {
-    var returnVal = adaptiveContentService.handlers.translation.checkLanguageCodes(testLangObj);
+adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes = function (testMessage, expectedReturnVal, testLangObj) {
+    var returnVal = adaptiveContentService.handlerUtils.checkLanguageCodes(testLangObj);
 
     jqunit.assertDeepEq(testMessage, expectedReturnVal, returnVal);
 };
 
 //mock data
-var mockTranslationData = require("../../mockData/yandex/translation");
+var mockTranslationData = require("../../translation/tests/mockData/common/translation");
 
 var langObjs = {
     absent: false,
@@ -68,15 +68,15 @@ jqunit.test(
     function () {
 
         // for absent langObj
-        adaptiveContentService.tests.translation.unitTests.checkLanguageCodes(testMessage.langObjAbsent, expectedReturnVal.langObjAbsent, langObjs.absent);
+        adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes(testMessage.langObjAbsent, expectedReturnVal.langObjAbsent, langObjs.absent);
 
         // for invalid sourceLang
-        adaptiveContentService.tests.translation.unitTests.checkLanguageCodes(testMessage.sourceLangInvalid, expectedReturnVal.sourceLangInvalid, langObjs.sourceLangInvalid);
+        adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes(testMessage.sourceLangInvalid, expectedReturnVal.sourceLangInvalid, langObjs.sourceLangInvalid);
 
         // for invalid targetLang
-        adaptiveContentService.tests.translation.unitTests.checkLanguageCodes(testMessage.targetLangInvalid, expectedReturnVal.targetLangInvalid, langObjs.targetLangInvalid);
+        adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes(testMessage.targetLangInvalid, expectedReturnVal.targetLangInvalid, langObjs.targetLangInvalid);
 
         // for both sourceLang and targetLang valid
-        adaptiveContentService.tests.translation.unitTests.checkLanguageCodes(testMessage.bothValid, expectedReturnVal.bothValid, langObjs.bothValid);
+        adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes(testMessage.bothValid, expectedReturnVal.bothValid, langObjs.bothValid);
     }
 );

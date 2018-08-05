@@ -19,6 +19,7 @@ fluid.defaults("adaptiveContentService.handlers.dictionary", {
         },
         commonDictionaryDispatcher: "adaptiveContentService.handlers.dictionary.commonDictionaryDispatcher",
         checkUriError: "adaptiveContentService.handlers.dictionary.checkUriError",
+        checkLanguageCodes: "adaptiveContentService.handlerUtils.checkLanguageCodes",
         // from handlerUtils
         sendSuccessResponse: {
             funcName: "adaptiveContentService.handlerUtils.sendSuccessResponse",

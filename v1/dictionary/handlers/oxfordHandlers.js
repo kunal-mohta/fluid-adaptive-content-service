@@ -68,7 +68,7 @@ adaptiveContentService.handlers.dictionary.oxford.checkServiceKeys = function (r
 };
 
 // function to catch the errors before making the request to the oxford service TODO: middleware
-adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck = function (word, requestHeaders, that) {
+adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck = function (word, requestHeaders, langsObj, that) {
     // Error with the word in uri
     var uriErrorContent = that.checkUriError(word, that.options.wordCharacterLimit);
 
@@ -87,7 +87,17 @@ adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck = functio
         }
         else {
             // No error with the service keys
-            return false;
+
+            var langCodeErrorContent = that.checkLanguageCodes(langsObj);
+
+            if (langCodeErrorContent) {
+                // Error with the language codes provided
+                return langCodeErrorContent;
+            }
+            else {
+                // No pre request error found
+                return false;
+            }
         }
     }
 };
@@ -176,10 +186,10 @@ adaptiveContentService.handlers.dictionary.oxford.requiredData = function (url, 
 };
 
 // function to run the common tasks of the handler function
-adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks = function (request, version, word, url, that) {
+adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks = function (request, version, word, langsObj, url, that) {
     var requestHeaders = that.serviceKeysImpl(that);
 
-    var preRequestErrorContent = that.preRequestErrorCheck(word, requestHeaders, that);
+    var preRequestErrorContent = that.preRequestErrorCheck(word, requestHeaders, langsObj, that);
     // Check for long URI
     if (preRequestErrorContent) {
         that.sendErrorResponse(request, version, "Oxford", preRequestErrorContent.statusCode, preRequestErrorContent.errorMessage);
@@ -234,7 +244,14 @@ adaptiveContentService.handlers.dictionary.oxford.definition.getDefinition = fun
     var urlBase = that.options.serviceConfig.urlBase,
         url = urlBase + "entries/" + lang + "/" + word;
 
-    that.commonHandlerTasks(request, version, word, url, that);
+    var langsObj = {
+        dictionaryLang: {
+            value: lang,
+            name: "language"
+        }
+    };
+
+    that.commonHandlerTasks(request, version, word, langsObj, url, that);
 };
 
 // function to construct a useful response from the data provided by the Oxford Service
@@ -291,7 +308,14 @@ adaptiveContentService.handlers.dictionary.oxford.synonyms.getSynonyms = functio
     var urlBase = that.options.serviceConfig.urlBase,
         url = urlBase + "entries/" + lang + "/" + word + "/synonyms";
 
-    that.commonHandlerTasks(request, version, word, url, that);
+    var langsObj = {
+        dictionaryLang: {
+            value: lang,
+            name: "language"
+        }
+    };
+
+    that.commonHandlerTasks(request, version, word, langsObj, url, that);
 };
 
 // function to construct a useful response from the synonyms data provided by the Oxford Service
@@ -375,7 +399,14 @@ adaptiveContentService.handlers.dictionary.oxford.antonyms.getAntonyms = functio
     var urlBase = that.options.serviceConfig.urlBase,
         url = urlBase + "entries/" + lang + "/" + word + "/antonyms";
 
-    that.commonHandlerTasks(request, version, word, url, that);
+    var langsObj = {
+        dictionaryLang: {
+            value: lang,
+            name: "language"
+        }
+    };
+
+    that.commonHandlerTasks(request, version, word, langsObj, url, that);
 };
 
 // function to construct a useful response from the antonyms data provided by the Oxford Service
@@ -459,7 +490,14 @@ adaptiveContentService.handlers.dictionary.oxford.pronunciations.getPronunciatio
     var urlBase = that.options.serviceConfig.urlBase,
         url = urlBase + "entries/" + lang + "/" + word;
 
-    that.commonHandlerTasks(request, version, word, url, that);
+    var langsObj = {
+        dictionaryLang: {
+            value: lang,
+            name: "language"
+        }
+    };
+
+    that.commonHandlerTasks(request, version, word, langsObj, url, that);
 };
 
 // function to construct a useful response from the pronunciation data provided by the Oxford Service
@@ -551,7 +589,14 @@ adaptiveContentService.handlers.dictionary.oxford.frequency.getFrequency = funct
         url = urlBase + "stats/frequency/word/" + lang + "/?lemma=" + word;
     }
 
-    that.commonHandlerTasks(request, version, word, url, that);
+    var langsObj = {
+        dictionaryLang: {
+            value: lang,
+            name: "language"
+        }
+    };
+
+    that.commonHandlerTasks(request, version, word, langsObj, url, that);
 };
 
 // function to construct a useful response from the frequency data provided by the Oxford Service

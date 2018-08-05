@@ -6,6 +6,7 @@ var fluid = require("infusion"),
 kettle.loadTestingSupport();
 
 var testIncludes = [
+    "./handlerUtils/checkLanguageCodes.js",
     "./handlerUtils/getEndpointName.js",
     "./handlerUtils/getServiceName.js"
 ];

@@ -21,7 +21,7 @@ fluid.defaults("adaptiveContentService.handlers.translation", {
         },
         commonTranslationDispatcher: "adaptiveContentService.handlers.translation.commonTranslationDispatcher",
         checkSourceText: "adaptiveContentService.handlers.translation.checkSourceText",
-        checkLanguageCodes: "adaptiveContentService.handlers.translation.checkLanguageCodes",
+        checkLanguageCodes: "adaptiveContentService.handlerUtils.checkLanguageCodes",
         checkServiceKey: "adaptiveContentService.handlers.translation.checkServiceKey",
         preRequestErrorCheck: "adaptiveContentService.handlers.translation.preRequestErrorCheck",
         // from handlerUtils
@@ -92,30 +92,6 @@ adaptiveContentService.handlers.translation.checkServiceKey = function (serviceK
     // keys present in the environment variables
     else {
         return false;
-    }
-};
-
-// check for errors with the language codes TODO: middleware
-adaptiveContentService.handlers.translation.checkLanguageCodes = function (langsObj) {
-    if (!langsObj) {
-        // parameter absent or false
-        return false;
-    }
-    else {
-        var errorContent = false; // default return value is 'false'
-
-        // if any of the languages have length more than 3
-        for (var lang in langsObj) {
-            if (langsObj[lang].value.length > 3) {
-                errorContent = {
-                    statusCode: 404,
-                    errorMessage: "Invalid '" + langsObj[lang].name + "' parameter - Please check the language code"
-                };
-                break;
-            }
-        }
-
-        return errorContent;
     }
 };
 

@@ -68,10 +68,36 @@ fluid.defaults("adaptiveContentService.handlers.dictionary.wiktionary.definition
     gradeNames: "adaptiveContentService.handlers.dictionary.wiktionary",
     invokers: {
         dictionaryHandlerImpl: "adaptiveContentService.handlers.dictionary.wiktionary.definition.getDefinition",
+        preRequestErrorCheck: "adaptiveContentService.handlers.dictionary.wiktionary.definition.preRequestErrorCheck",
         requiredDataImpl: "adaptiveContentService.handlers.dictionary.wiktionary.definition.requiredData",
         constructResponse: "adaptiveContentService.handlers.dictionary.wiktionary.definition.constructResponse"
     }
 });
+
+// function to catch the errors before making the request to the wiktionary service
+adaptiveContentService.handlers.dictionary.wiktionary.definition.preRequestErrorCheck = function (word, langsObj, that) {
+    // Error with the word in uri
+    var uriErrorContent = that.checkUriError(word, that.options.wordCharacterLimit);
+
+    if (uriErrorContent) {
+        // uri error present
+        return uriErrorContent;
+    }
+    else {
+        // No error with the word in uri
+
+        var langCodeErrorContent = that.checkLanguageCodes(langsObj);
+
+        if (langCodeErrorContent) {
+            // Error with the language codes provided
+            return langCodeErrorContent;
+        }
+        else {
+            // No pre request error found
+            return false;
+        }
+    }
+};
 
 // function to get definition from the wiktionary service
 adaptiveContentService.handlers.dictionary.wiktionary.definition.requiredData = function (lang, word) {
@@ -102,11 +128,18 @@ adaptiveContentService.handlers.dictionary.wiktionary.definition.constructRespon
 // Wiktionary definition handler
 adaptiveContentService.handlers.dictionary.wiktionary.definition.getDefinition = function (request, version, word, lang, that) {
     try {
-        var uriErrorContent = that.checkUriError(word, that.options.wordCharacterLimit);
+        var langsObj = {
+            dictionaryLang: {
+                value: lang,
+                name: "language"
+            }
+        };
 
-        // Check for long URI
-        if (uriErrorContent) {
-            that.sendErrorResponse(request, version, "Wiktionary", uriErrorContent.statusCode, uriErrorContent.errorMessage);
+        var preRequestErrorContent = that.preRequestErrorCheck(word, langsObj, that);
+
+        // Check for errors before making the request
+        if (preRequestErrorContent) {
+            that.sendErrorResponse(request, version, "Wiktionary", preRequestErrorContent.statusCode, preRequestErrorContent.errorMessage);
         }
         else {
             var serviceResponse, errorContent;

@@ -17,7 +17,6 @@ var testIncludes = [
     "./integrationTests/yandex/langDetection.js",
     "./integrationTests/yandex/listLanguages.js",
     "./integrationTests/yandex/textTranslation.js",
-    "./unitTests/common/checkLanguageCodes.js",
     "./unitTests/common/checkServiceKey.js",
     "./unitTests/common/checkSourceText.js",
     "./unitTests/google/checkCommonGoogleErrors.js",

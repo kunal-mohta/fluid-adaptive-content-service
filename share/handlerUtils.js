@@ -70,18 +70,66 @@ adaptiveContentService.handlerUtils.checkTranslationServiceKeys = function () {
     }
 };
 
-//function to get the endpoint name from the request url
+// function to get the endpoint name from the request url
 adaptiveContentService.handlerUtils.getEndpointName = function (url) {
-    var endpointNameRegex = /\/\w+\/\w+\/\w+\/\w+\/(\w+)\.*/g, //to extract name of the endpoint from the url
+    var endpointNameRegex = /\/\w+\/\w+\/\w+\/\w+\/(\w+)\.*/, //to extract name of the endpoint from the url
         match = endpointNameRegex.exec(url);
 
     return match[1];
 };
 
-//function to get the service name from the request url
+// function to get the service name from the request url
 adaptiveContentService.handlerUtils.getServiceName = function (url) {
-    var serviceNameRegex = /\/\w+\/\w+\/(\w+)\.*/g, //to extract name of the service from the url
+    var serviceNameRegex = /\/\w+\/\w+\/(\w+)\.*/, //to extract name of the service from the url
         match = serviceNameRegex.exec(url);
 
     return match[1];
+};
+
+// function to check the language code (format/length)
+adaptiveContentService.handlerUtils.validateLangCode = function (code) {
+    var localizationRegex = /^[a-zA-Z]{2,3}-[a-zA-Z]{2,3}$/, // regex for localized language codes
+        standardRegex = /^[a-zA-Z]{2,3}$/; // regex for standard language codes
+
+    var matchLocalizedPattern = localizationRegex.exec(code);
+
+    if (matchLocalizedPattern) {
+        return true;
+    }
+    else {
+        var matchStandardPattern = standardRegex.exec(code);
+
+        if (matchStandardPattern) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+};
+
+// check for errors with the language codes TODO: test
+adaptiveContentService.handlerUtils.checkLanguageCodes = function (langsObj) {
+    if (!langsObj) {
+        // parameter absent or false
+        return false;
+    }
+    else {
+        var errorContent = false; // default return value is 'false'
+
+        // if any of the languages have length more than 3
+        for (var lang in langsObj) {
+            var isValidLangCode = adaptiveContentService.handlerUtils.validateLangCode(langsObj[lang].value);
+
+            if (!isValidLangCode) {
+                errorContent = {
+                    statusCode: 404,
+                    errorMessage: "Invalid '" + langsObj[lang].name + "' parameter - Please check the language code"
+                };
+                break;
+            }
+        }
+
+        return errorContent;
+    }
 };
