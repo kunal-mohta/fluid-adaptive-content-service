@@ -15,7 +15,8 @@
     "test-translation": "node ./share/translation/tests/translation-all-tests.js",
     "dictionary": "node ./v1/dictionary/server.js",
     "nlp": "node ./v1/nlp/server.js",
-    "translation": "node ./v1/translation/server.js"
+    "translation": "node ./v1/translation/server.js",
+    "travis": "grunt && npm test"
   },
   "repository": {
     "type": "git",

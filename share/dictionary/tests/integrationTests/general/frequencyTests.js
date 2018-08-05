@@ -19,6 +19,17 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
+/* testing grade for frequency - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.frequency", {
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.frequency"],
+    authenticationOptions: {
+        "app_id": mockFrequencyData.apiKeys.correct.app_id,
+        "app_key": mockFrequencyData.apiKeys.correct.app_key
+    }
+});
+
 adaptiveContentService.tests.dictionary.general.frequency = [{
     name: "GET request for the Frequency dictionary endpoint",
     expect: 5,

@@ -16,6 +16,19 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
+//mock data
+var mockTranslationData = require("../../mockData/yandex/translation");
+
+/* testing grade for yandex list languages - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.translation.yandex.listLanguages", {
+    gradeNames: "adaptiveContentService.handlers.translation.yandex.listLanguages",
+    authenticationOptions: {
+        "api_key": mockTranslationData.apiKey.correct
+    }
+});
+
 adaptiveContentService.tests.translation.yandex.listLanguages = [{
     name: "GET request for the List Languages endpoint of Yandex Service",
     expect: 2,

@@ -19,12 +19,15 @@ kettle.loadTestingSupport();
 //mock data
 var mockLangDetectionData = require("../../mockData/yandex/langDetection");
 
-/* testing grade for yandex text translation - to override 'characterLimit'
+/* testing grade for yandex language detection - to override 'characterLimit' and 'authenticationOptions'
  * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.yandex.langDetection", {
     gradeNames: "adaptiveContentService.handlers.translation.yandex.langDetection",
-    characterLimit: 40
+    characterLimit: 40,
+    authenticationOptions: {
+        "api_key": mockLangDetectionData.apiKey.correct
+    }
 });
 
 adaptiveContentService.tests.translation.yandex.langDetection = [{

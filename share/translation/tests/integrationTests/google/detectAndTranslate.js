@@ -24,6 +24,9 @@ var mockTranslationData = require("../../mockData/google/translation");
 fluid.defaults("adaptiveContentService.test.handlers.translation.google.detectAndTranslate", {
     gradeNames: "adaptiveContentService.handlers.translation.google.detectAndTranslate",
     characterLimit: 40,
+    authenticationOptions: {
+        "api_key": mockTranslationData.apiKey.correct
+    },
     invokers: {
         requiredData: "adaptiveContentService.test.handlers.translation.google.detectAndTranslate.requiredData"
     }

@@ -1,16 +1,12 @@
 "use strict";
 
-var fluid = require("infusion"),
-    kettle = require("kettle");
+var fluid = require("infusion");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService"),
     ACS = fluid.registerNamespace("ACS");
 
 require("dotenv").config(); // npm package to get variables from '.env' file
-
-var googleApiKey = kettle.resolvers.env("GOOGLE_API_KEY");
-
-var googleTranslate = require("google-translate")(googleApiKey); // package for convenient usage of google translation service
+require("kettle");
 
 // Specific grade for Google
 fluid.defaults("adaptiveContentService.handlers.translation.google", {
@@ -145,6 +141,9 @@ fluid.defaults("adaptiveContentService.handlers.translation.google.detectAndTran
 adaptiveContentService.handlers.translation.google.detectAndTranslate.requiredData = function (targetLang, text, that) {
     var promise = fluid.promise();
 
+    var googleApiKey = that.options.authenticationOptions.api_key,
+        googleTranslate = require("google-translate")(googleApiKey);
+
     googleTranslate.translate(text, targetLang, function (err, translation) {
         that.handleReceivedData(err, translation, "Detect-Translate", promise);
     });
@@ -165,7 +164,8 @@ adaptiveContentService.handlers.translation.google.detectAndTranslate.constructR
 // Google translate text handler
 adaptiveContentService.handlers.translation.google.detectAndTranslate.getTranslation = function (request, version, that) {
     var targetLang = request.req.params.targetLang,
-        text = request.req.body.text;
+        text = request.req.body.text,
+        googleApiKey = that.options.authenticationOptions.api_key;
 
     var characterLimit = that.options.characterLimit;
 
@@ -222,6 +222,9 @@ fluid.defaults("adaptiveContentService.handlers.translation.google.langDetection
 adaptiveContentService.handlers.translation.google.langDetection.requiredData = function (text, that) {
     var promise = fluid.promise();
 
+    var googleApiKey = that.options.authenticationOptions.api_key,
+        googleTranslate = require("google-translate")(googleApiKey);
+
     googleTranslate.detectLanguage(text, function (err, detection) {
         that.handleReceivedData(err, detection, "Language Detection", promise);
     });
@@ -270,7 +273,8 @@ adaptiveContentService.handlers.translation.google.langDetection.constructRespon
 adaptiveContentService.handlers.translation.google.langDetection.getLang = function (request, version, that) {
     var text = request.req.body.text,
         characterLimit = that.options.characterLimit,
-        langsObj = false;
+        langsObj = false,
+        googleApiKey = that.options.authenticationOptions.api_key;
 
     // check for errors before making request to the service
     var preRequestErrorContent = that.preRequestErrorCheck(characterLimit, googleApiKey, langsObj, text, that);
@@ -315,6 +319,9 @@ adaptiveContentService.handlers.translation.google.listLanguages.requiredData = 
     var promise = fluid.promise(),
         listInLang;
 
+    var googleApiKey = that.options.authenticationOptions.api_key,
+        googleTranslate = require("google-translate")(googleApiKey);
+
     // if the lang parameter is present
     if (langParam) {
         listInLang = langParam;
@@ -351,7 +358,8 @@ adaptiveContentService.handlers.translation.google.listLanguages.constructRespon
 
 // google get all supported languages handler
 adaptiveContentService.handlers.translation.google.listLanguages.getLangList = function (request, version, that) {
-    var langParam = request.req.params.lang;
+    var langParam = request.req.params.lang,
+        googleApiKey = that.options.authenticationOptions.api_key;
 
     // check for errors before making request to the service
     var serviceKeyErrorContent = that.checkServiceKey(googleApiKey);

@@ -19,6 +19,17 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
+/* testing grade for oxford antonyms - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.dictionary.oxford.antonyms", {
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.antonyms"],
+    authenticationOptions: {
+        "app_id": mockAntonymsData.apiKeys.correct.app_id,
+        "app_key": mockAntonymsData.apiKeys.correct.app_key
+    }
+});
+
 adaptiveContentService.tests.dictionary.oxford.antonyms = [{
     name: "GET request for the Antonyms dictionary endpoint of Oxford Service",
     expect: 6,

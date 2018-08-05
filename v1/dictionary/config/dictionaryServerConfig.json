@@ -24,52 +24,52 @@
                                         "method":"get"
                                     },
                                     "generalDefinitionLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.wiktionary.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.general.listLanguages",
                                         "route": "/:version/dictionary/langs/definition",
                                         "method": "get"
                                     },
                                     "generalSynonymsHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.synonyms",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.general.synonyms",
                                         "route":"/:version/dictionary/:language/synonyms/:word",
                                         "method":"get"
                                     },
                                     "generalSynonymsLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.general.listLanguages",
                                         "route":  "/:version/dictionary/langs/synonyms",
                                         "method": "get"
                                     },
                                     "generalAntonymsHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.antonyms",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.general.antonyms",
                                         "route":"/:version/dictionary/:language/antonyms/:word",
                                         "method":"get"
                                     },
                                     "generalAntonymsLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.general.listLanguages",
                                         "route":  "/:version/dictionary/langs/antonyms",
                                         "method": "get"
                                     },
                                     "generalPronunciationsHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.pronunciations",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.general.pronunciations",
                                         "route":"/:version/dictionary/:language/pronunciations/:word",
                                         "method":"get"
                                     },
                                     "generalPronunciationsLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.general.listLanguages",
                                         "route": "/:version/dictionary/langs/pronunciations",
                                         "method": "get"
                                     },
                                     "generalFrequencyHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.frequency",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.general.frequency",
                                         "route":"/:version/dictionary/:language/frequency/:word",
                                         "method":"get"
                                     },
                                     "generalFrequencyLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.general.listLanguages",
                                         "route": "/:version/dictionary/langs/frequency",
                                         "method": "get"
                                     },
                                     "generalExtendedFrequencyHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.frequency",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.general.frequency",
                                         "route":"/:version/dictionary/:language/frequency/:word/:lexicalCategory",
                                         "method":"get"
                                     },
@@ -134,62 +134,62 @@
                                         "method": "get"
                                     },
                                     "oxfordDictionaryHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.definition",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.oxford.definition",
                                         "route":"/:version/dictionary/oxford/:language/definition/:word",
                                         "method":"get"
                                     },
                                     "oxfordDefinitionLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.oxford.listLanguages",
                                         "route": "/:version/dictionary/oxford/langs/definition",
                                         "method": "get"
                                     },
                                     "oxfordSynonymsHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.synonyms",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.oxford.synonyms",
                                         "route":"/:version/dictionary/oxford/:language/synonyms/:word",
                                         "method":"get"
                                     },
                                     "oxfordSynonymsLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.oxford.listLanguages",
                                         "route":  "/:version/dictionary/oxford/langs/synonyms",
                                         "method": "get"
                                     },
                                     "oxfordAntonymsHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.antonyms",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.oxford.antonyms",
                                         "route":"/:version/dictionary/oxford/:language/antonyms/:word",
                                         "method":"get"
                                     },
                                     "oxfordAntonymsLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.oxford.listLanguages",
                                         "route":  "/:version/dictionary/oxford/langs/antonyms",
                                         "method": "get"
                                     },
                                     "oxfordPronunciationsHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.pronunciations",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.oxford.pronunciations",
                                         "route":"/:version/dictionary/oxford/:language/pronunciations/:word",
                                         "method":"get"
                                     },
                                     "oxfordPronunciationsLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.oxford.listLanguages",
                                         "route": "/:version/dictionary/oxford/langs/pronunciations",
                                         "method": "get"
                                     },
                                     "oxfordFrequencyHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.frequency",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.oxford.frequency",
                                         "route":"/:version/dictionary/oxford/:language/frequency/:word",
                                         "method":"get"
                                     },
                                     "oxfordFrequencyLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.dictionary.oxford.listLanguages",
                                         "route": "/:version/dictionary/oxford/langs/frequency",
                                         "method": "get"
                                     },
                                     "oxfordExtendedFrequencyHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.frequency",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.oxford.frequency",
                                         "route":"/:version/dictionary/oxford/:language/frequency/:word/:lexicalCategory",
                                         "method":"get"
                                     },
                                     "oxfordListLanguagesHandler":{
-                                        "type":"adaptiveContentService.handlers.dictionary.oxford.listLanguages",
+                                        "type":"adaptiveContentService.test.handlers.dictionary.oxford.listLanguages",
                                         "route":"/:version/dictionary/oxford/languages",
                                         "method":"get"
                                     }

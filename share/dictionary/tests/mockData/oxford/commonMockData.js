@@ -1,8 +1,5 @@
 "use strict";
 
-var kettle = require("kettle");
-require("dotenv").config();// npm package to get variables from '.env' file
-
 module.exports = {
     word: {
         correct: "happy",
@@ -17,8 +14,8 @@ module.exports = {
     },
     apiKeys: {
         correct: {
-            "app_id": kettle.resolvers.env("OXFORD_APP_ID"),
-            "app_key": kettle.resolvers.env("OXFORD_APP_KEY")
+            "app_id": "correctOxfordAppId",
+            "app_key": "correctOxfordAppKey"
         },
         wrong: {
             "app_id": "randomstring",
