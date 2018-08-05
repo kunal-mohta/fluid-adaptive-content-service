@@ -19,6 +19,17 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
+/* testing grade for oxford synonyms - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.dictionary.oxford.synonyms", {
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.synonyms"],
+    authenticationOptions: {
+        "app_id": mockSynonymsData.apiKeys.correct.app_id,
+        "app_key": mockSynonymsData.apiKeys.correct.app_key
+    }
+});
+
 adaptiveContentService.tests.dictionary.oxford.synonyms = [{
     name: "GET request for the Synonyms dictionary endpoint of Oxford Service",
     expect: 6,

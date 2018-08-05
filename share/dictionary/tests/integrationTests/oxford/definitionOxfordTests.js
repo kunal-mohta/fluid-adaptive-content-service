@@ -19,6 +19,17 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
+/* testing grade for oxford definition - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.dictionary.oxford.definition", {
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.definition"],
+    authenticationOptions: {
+        "app_id": mockDefinitionData.apiKeys.correct.app_id,
+        "app_key": mockDefinitionData.apiKeys.correct.app_key
+    }
+});
+
 adaptiveContentService.tests.dictionary.oxford.definition = [{
     name: "GET request for the definition dictionary endpoint",
     expect: 6,

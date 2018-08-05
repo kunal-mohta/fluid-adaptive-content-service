@@ -178,7 +178,7 @@ adaptiveContentService.handlers.translation.yandex.translateText.getTranslation 
         targetLang = request.req.params.targetLang,
         text = request.req.body.text,
         characterLimit = that.options.characterLimit,
-        serviceKey = that.serviceKey(that),
+        serviceKey = that.options.authenticationOptions.api_key,
         langsObj = {
             source: {
                 name: "sourceLang",
@@ -253,7 +253,7 @@ adaptiveContentService.handlers.translation.yandex.langDetection.constructRespon
 adaptiveContentService.handlers.translation.yandex.langDetection.getLang = function (request, version, that) {
     var text = request.req.body.text,
         characterLimit = that.options.characterLimit,
-        serviceKey = that.serviceKey(that);
+        serviceKey = that.options.authenticationOptions.api_key;
 
     // check for errors before making request to the service
     var preRequestErrorContent = that.preRequestErrorCheck(characterLimit, serviceKey, false, text, that);
@@ -417,7 +417,7 @@ adaptiveContentService.handlers.translation.yandex.detectAndTranslate.getTransla
     var targetLang = request.req.params.targetLang,
         text = request.req.body.text,
         characterLimit = that.options.characterLimit,
-        serviceKey = that.serviceKey(that),
+        serviceKey = that.options.authenticationOptions.api_key,
         langsObj = {
             target: {
                 name: "targetLang",
@@ -507,7 +507,7 @@ adaptiveContentService.handlers.translation.yandex.listLanguages.constructRespon
 
 // Yandex get all supported languages handler
 adaptiveContentService.handlers.translation.yandex.listLanguages.getLangList = function (request, version, that) {
-    var serviceKey = that.serviceKey(that);
+    var serviceKey = that.options.authenticationOptions.api_key;
 
     // check for errors before making request to the service
     var serviceKeyErrorContent = that.checkServiceKey(serviceKey);

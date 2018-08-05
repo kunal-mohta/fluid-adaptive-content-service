@@ -26,6 +26,9 @@ var mockListLanguagesData = require("../../mockData/google/listLanguages");
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.google.listLanguages", {
     gradeNames: "adaptiveContentService.handlers.translation.google.listLanguages",
+    authenticationOptions: {
+        "api_key": mockListLanguagesData.apiKey.correct
+    },
     invokers: {
         requiredData: "adaptiveContentService.test.handlers.translation.google.listLanguages.requiredData"
     }

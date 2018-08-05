@@ -24,7 +24,7 @@
                                         "method": "post"
                                     },
                                     "generalTranslateTextLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.translation.yandex.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.translation.yandex.listLanguages",
                                         "route": "/:version/translation/langs/translate",
                                         "method": "get"
                                     },
@@ -44,7 +44,7 @@
                                         "method": "post"
                                     },
                                     "yandexTranslateTextLangsHandler": {
-                                        "type": "adaptiveContentService.handlers.translation.yandex.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.translation.yandex.listLanguages",
                                         "route": "/:version/translation/yandex/langs/translate",
                                         "method": "get"
                                     },
@@ -59,7 +59,7 @@
                                         "method": "post"
                                     },
                                     "yandexListLanguagesHandler": {
-                                        "type": "adaptiveContentService.handlers.translation.yandex.listLanguages",
+                                        "type": "adaptiveContentService.test.handlers.translation.yandex.listLanguages",
                                         "route": "/:version/translation/yandex/languages",
                                         "method": "get"
                                     },

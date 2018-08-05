@@ -19,6 +19,17 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
+/* testing grade for synonyms - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.synonyms", {
+    gradeNames: ["adaptiveContentService.handlers.dictionary.general.synonyms"],
+    authenticationOptions: {
+        "app_id": mockSynonymsData.apiKeys.correct.app_id,
+        "app_key": mockSynonymsData.apiKeys.correct.app_key
+    }
+});
+
 adaptiveContentService.tests.dictionary.general.synonyms = [{
     name: "GET request for the Synonyms dictionary endpoint",
     expect: 6,

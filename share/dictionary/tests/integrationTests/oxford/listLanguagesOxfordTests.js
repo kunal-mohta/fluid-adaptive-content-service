@@ -10,12 +10,25 @@ require("../../../../testUtils");
 require("../../nock/mockOxfordListLanguages"); // providing mock data as an alternative to actual Oxford response
 
 // mock data
+var mocklistLanguages = require("../../mockData/oxford/listLanguages");
+
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.oxford.listLanguages");
 
 fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
+
+/* testing grade for oxford list languages - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.dictionary.oxford.listLanguages", {
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.listLanguages"],
+    authenticationOptions: {
+        "app_id": mocklistLanguages.apiKeys.correct.app_id,
+        "app_key": mocklistLanguages.apiKeys.correct.app_key
+    }
+});
 
 adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     name: "GET request for the list supported languages endpoint",

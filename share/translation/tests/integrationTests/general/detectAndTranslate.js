@@ -23,12 +23,15 @@ var mockTranslationData = require("../../mockData/yandex/translation");
 // mock data (language detection)
 var mockLangDetectionData = require("../../mockData/yandex/langDetection");
 
-/* testing grade for detect-and-translate - to override 'characterLimit'
+/* testing grade for detect-and-translate - to override 'characterLimit' and 'authenticationOptions'
  * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.general.detectAndTranslate", {
     gradeNames: "adaptiveContentService.handlers.translation.yandex.detectAndTranslate",
-    characterLimit: 40
+    characterLimit: 40,
+    authenticationOptions: {
+        "api_key": mockTranslationData.apiKey.correct
+    }
 });
 
 adaptiveContentService.tests.translation.general.detectAndTranslate = [{

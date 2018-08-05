@@ -19,12 +19,15 @@ kettle.loadTestingSupport();
 //mock data
 var mockTranslationData = require("../../mockData/yandex/translation");
 
-/* testing grade for text translation - to override 'characterLimit'
+/* testing grade for text translation - to override 'characterLimit' and 'authenticationOptions'
  * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.translation.general.translateText", {
     gradeNames: "adaptiveContentService.handlers.translation.yandex.translateText",
-    characterLimit: 40
+    characterLimit: 40,
+    authenticationOptions: {
+        "api_key": mockTranslationData.apiKey.correct
+    }
 });
 
 adaptiveContentService.tests.translation.general.translateText = [{

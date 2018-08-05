@@ -1,7 +1,5 @@
 "use strict";
 
-var kettle = require("kettle");
-
 var commonMockTranslationData = require("../common/translation");
 
 module.exports = {
@@ -10,7 +8,7 @@ module.exports = {
     sourceLang: commonMockTranslationData.sourceLang,
     targetLang: commonMockTranslationData.targetLang,
     apiKey: {
-        correct: kettle.resolvers.env("GOOGLE_API_KEY"),
+        correct: "correctGoogleApiKey",
         invalid: "randomstring",
         blocked: "blockedkey" // not actually blocked; used for mock response only
     },

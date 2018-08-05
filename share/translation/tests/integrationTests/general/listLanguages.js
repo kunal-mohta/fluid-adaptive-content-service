@@ -10,21 +10,26 @@ require("../../../../testUtils");
 require("../../nock/yandex/mockListLanguages"); // providing mock data as an alternative to actual Yandex response
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
-fluid.registerNamespace("adaptiveContentService.tests.translation.general.translateText");
+fluid.registerNamespace("adaptiveContentService.tests.translation.general.listLanguages");
 
 fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
-/* testing grade for text translation - to override 'characterLimit'
+//mock data
+var mockTranslationData = require("../../mockData/yandex/translation");
+
+/* testing grade for list languages - to override 'authenticationOptions'
  * configuration for the purpose of testing
  */
-fluid.defaults("adaptiveContentService.test.handlers.translation.general.translateText", {
-    gradeNames: "adaptiveContentService.handlers.translation.yandex.translateText",
-    characterLimit: 40
+fluid.defaults("adaptiveContentService.test.handlers.translation.yandex.listLanguages", {
+    gradeNames: "adaptiveContentService.handlers.translation.yandex.listLanguages",
+    authenticationOptions: {
+        "api_key": mockTranslationData.apiKey.correct
+    }
 });
 
-adaptiveContentService.tests.translation.general.translateText = [{
+adaptiveContentService.tests.translation.general.listLanguages = [{
     name: "POST request for the Text Translation endpoint",
     expect: 1,
     config: {
@@ -51,4 +56,4 @@ adaptiveContentService.tests.translation.general.translateText = [{
     ]
 }];
 
-kettle.test.bootstrapServer(adaptiveContentService.tests.translation.general.translateText);
+kettle.test.bootstrapServer(adaptiveContentService.tests.translation.general.listLanguages);

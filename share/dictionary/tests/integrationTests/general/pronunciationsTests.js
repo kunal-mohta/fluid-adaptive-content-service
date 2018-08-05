@@ -19,6 +19,17 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
+/* testing grade for pronunciations - to override 'authenticationOptions'
+ * configuration for the purpose of testing
+ */
+fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.pronunciations", {
+    gradeNames: ["adaptiveContentService.handlers.dictionary.general.pronunciations"],
+    authenticationOptions: {
+        "app_id": mockPronunciationsData.apiKeys.correct.app_id,
+        "app_key": mockPronunciationsData.apiKeys.correct.app_key
+    }
+});
+
 adaptiveContentService.tests.dictionary.general.pronunciations = [{
     name: "GET request for the Pronunciations dictionary endpoint",
     expect: 6,

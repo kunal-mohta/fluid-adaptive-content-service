@@ -1,7 +1,5 @@
 "use strict";
 
-var kettle = require("kettle");
-
 var commonMockYandexData = require("../yandex/commonMockData");
 
 module.exports = {
@@ -9,11 +7,7 @@ module.exports = {
     text: commonMockYandexData.text,
     sourceLang: commonMockYandexData.sourceLang,
     targetLang: commonMockYandexData.targetLang,
-    apiKey: {
-        correct: kettle.resolvers.env("YANDEX_API_KEY"),
-        invalid: "randomstring",
-        blocked: "blockedkey" //not actually blocked; used for mock response only
-    },
+    apiKey: commonMockYandexData.apiKey,
     // responses
     responses: {
         noError: {
