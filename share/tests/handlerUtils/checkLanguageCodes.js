@@ -14,31 +14,40 @@ adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes = functio
     jqunit.assertDeepEq(testMessage, expectedReturnVal, returnVal);
 };
 
-//mock data
-var mockTranslationData = require("../../translation/tests/mockData/common/translation");
-
 var langObjs = {
     absent: false,
     sourceLangInvalid: {
         source: {
             name: "sourceLang",
-            value: mockTranslationData.sourceLang.invalid
+            value: "english"
         }
     },
     targetLangInvalid: {
         target: {
             name: "targetLang",
-            value: mockTranslationData.targetLang.invalid
+            value: "german"
         }
     },
     bothValid: {
         source: {
             name: "sourceLang",
-            value: mockTranslationData.sourceLang.correct
+            value: "en"
         },
         target: {
             name: "targetLang",
-            value: mockTranslationData.targetLang.correct
+            value: "de"
+        }
+    },
+    localizedValid: {
+        local: {
+            name: "sourceLang",
+            value: "zh-CN"
+        }
+    },
+    localizedInvalid: {
+        local: {
+            name: "sourceLang",
+            value: "zh-ABCD"
         }
     }
 };
@@ -53,14 +62,21 @@ var expectedReturnVal = {
         statusCode: 404,
         errorMessage: "Invalid 'targetLang' parameter - Please check the language code"
     },
-    bothValid: false
+    bothValid: false,
+    localizedValid: false,
+    localizedInvalid: {
+        statusCode: 404,
+        errorMessage: "Invalid 'sourceLang' parameter - Please check the language code"
+    }
 };
 
 var testMessage = {
     langObjAbsent: "Unit Test : For checkLanguageCodes function : Successful with langObj absent",
     sourceLangInvalid: "Unit Test : For checkLanguageCodes function : Successful with invalid sourceLang",
     targetLangInvalid: "Unit Test : For checkLanguageCodes function : Successful with invalid targetLang",
-    bothValid: "Unit Test : For checkLanguageCodes function : Successful with both sourceLang and targetLang valid"
+    bothValid: "Unit Test : For checkLanguageCodes function : Successful with both sourceLang and targetLang valid",
+    localizedValid: "Unit Test : For checkLanguageCodes function : Successful with localized language code valid",
+    localizedInvalid: "Unit Test : For checkLanguageCodes function : Successful with localized language code invalid"
 };
 
 jqunit.test(
@@ -78,5 +94,11 @@ jqunit.test(
 
         // for both sourceLang and targetLang valid
         adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes(testMessage.bothValid, expectedReturnVal.bothValid, langObjs.bothValid);
+
+        // for valid localized lang code
+        adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes(testMessage.localizedValid, expectedReturnVal.localizedValid, langObjs.localizedValid);
+
+        // for invalid localized lang code
+        adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes(testMessage.localizedInvalid, expectedReturnVal.localizedInvalid, langObjs.localizedInvalid);
     }
 );
