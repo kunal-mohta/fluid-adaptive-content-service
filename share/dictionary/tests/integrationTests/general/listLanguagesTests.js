@@ -23,7 +23,7 @@ kettle.loadTestingSupport();
  * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.listLanguages", {
-    gradeNames: ["adaptiveContentService.handlers.dictionary.general.listLanguages"],
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.listLanguages"],
     authenticationOptions: {
         "app_id": mocklistLanguages.apiKeys.correct.app_id,
         "app_key": mocklistLanguages.apiKeys.correct.app_key

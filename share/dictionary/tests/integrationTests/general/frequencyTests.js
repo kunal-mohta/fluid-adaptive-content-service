@@ -23,7 +23,7 @@ kettle.loadTestingSupport();
  * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.frequency", {
-    gradeNames: ["adaptiveContentService.handlers.dictionary.general.frequency"],
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.frequency"],
     authenticationOptions: {
         "app_id": mockFrequencyData.apiKeys.correct.app_id,
         "app_key": mockFrequencyData.apiKeys.correct.app_key

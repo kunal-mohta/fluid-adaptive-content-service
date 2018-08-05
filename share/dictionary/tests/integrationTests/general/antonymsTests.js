@@ -23,7 +23,7 @@ kettle.loadTestingSupport();
  * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.antonyms", {
-    gradeNames: ["adaptiveContentService.handlers.dictionary.general.antonyms"],
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.antonyms"],
     authenticationOptions: {
         "app_id": mockAntonymsData.apiKeys.correct.app_id,
         "app_key": mockAntonymsData.apiKeys.correct.app_key

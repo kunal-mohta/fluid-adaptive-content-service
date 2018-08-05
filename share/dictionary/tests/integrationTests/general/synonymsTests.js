@@ -23,7 +23,7 @@ kettle.loadTestingSupport();
  * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.synonyms", {
-    gradeNames: ["adaptiveContentService.handlers.dictionary.general.synonyms"],
+    gradeNames: ["adaptiveContentService.handlers.dictionary.oxford.synonyms"],
     authenticationOptions: {
         "app_id": mockSynonymsData.apiKeys.correct.app_id,
         "app_key": mockSynonymsData.apiKeys.correct.app_key
