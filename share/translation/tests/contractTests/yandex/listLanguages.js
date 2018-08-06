@@ -97,7 +97,7 @@ fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.li
                     //for 'no error' response
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockListLanguages.apiKey.correct]
+                        args: [mockListLanguages.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",

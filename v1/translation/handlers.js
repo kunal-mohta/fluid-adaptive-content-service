@@ -56,7 +56,7 @@ adaptiveContentService.handlers.translation.commonTranslationDispatcher = functi
     }
 };
 
-// check for errors in the text provided in the request body TODO: middleware
+// check for errors in the text provided in the request body
 adaptiveContentService.handlers.translation.checkSourceText = function (sourceText, characterLimit) {
     // no text found in request body
     if (!sourceText) {
@@ -78,7 +78,7 @@ adaptiveContentService.handlers.translation.checkSourceText = function (sourceTe
     }
 };
 
-// check for errors with the service keys present in environment variables TODO: middleware
+// check for errors with the service keys present in environment variables
 adaptiveContentService.handlers.translation.checkServiceKey = function (serviceKey) {
     // No keys present in the environment variables
     if (!serviceKey) {

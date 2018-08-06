@@ -122,7 +122,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.pro
                     //for correct word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockPronunciationData.word.correct, mockPronunciationData.lang.correct, mockPronunciationData.apiKeys.correct]
+                        args: [mockPronunciationData.word.correct, mockPronunciationData.lang.correct, mockPronunciationData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -132,7 +132,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.pro
                     //for wrong word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockPronunciationData.word.wrong, mockPronunciationData.lang.correct, mockPronunciationData.apiKeys.correct]
+                        args: [mockPronunciationData.word.wrong, mockPronunciationData.lang.correct, mockPronunciationData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -142,7 +142,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.pro
                     //for wrong language
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockPronunciationData.word.correct, mockPronunciationData.lang.wrong, mockPronunciationData.apiKeys.correct]
+                        args: [mockPronunciationData.word.correct, mockPronunciationData.lang.wrong, mockPronunciationData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -167,4 +167,4 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.pro
 
 var testTree = adaptiveContentService.tests.dictionary.oxford.contractTests.pronunciations.testTree;
 
-adaptiveContentService.tests.utils.checkOxfordKeys(mockPronunciationData.apiKeys.correct, testTree, "Pronunciations (Oxford) Contract test");
+adaptiveContentService.tests.utils.checkOxfordKeys(mockPronunciationData.correctApiKey, testTree, "Pronunciations (Oxford) Contract test");

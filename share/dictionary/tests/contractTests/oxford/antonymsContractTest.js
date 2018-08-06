@@ -123,7 +123,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.ant
                     // for correct word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockAntonymsData.word.correct, mockAntonymsData.lang.correct, mockAntonymsData.apiKeys.correct]
+                        args: [mockAntonymsData.word.correct, mockAntonymsData.lang.correct, mockAntonymsData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -133,7 +133,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.ant
                     // for wrong word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockAntonymsData.word.wrong, mockAntonymsData.lang.correct, mockAntonymsData.apiKeys.correct]
+                        args: [mockAntonymsData.word.wrong, mockAntonymsData.lang.correct, mockAntonymsData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -143,7 +143,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.ant
                     // for wrong language
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockAntonymsData.word.correct, mockAntonymsData.lang.wrong, mockAntonymsData.apiKeys.correct]
+                        args: [mockAntonymsData.word.correct, mockAntonymsData.lang.wrong, mockAntonymsData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -168,4 +168,4 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.ant
 
 var testTree = adaptiveContentService.tests.dictionary.oxford.contractTests.antonyms.testTree;
 
-adaptiveContentService.tests.utils.checkOxfordKeys(mockAntonymsData.apiKeys.correct, testTree, "Antonyms (Oxford) Contract test");
+adaptiveContentService.tests.utils.checkOxfordKeys(mockAntonymsData.correctApiKey, testTree, "Antonyms (Oxford) Contract test");

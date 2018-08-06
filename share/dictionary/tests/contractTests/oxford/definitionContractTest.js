@@ -121,7 +121,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.def
                     //for correct word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockDefinitionData.word.correct, mockDefinitionData.lang.correct, mockDefinitionData.apiKeys.correct]
+                        args: [mockDefinitionData.word.correct, mockDefinitionData.lang.correct, mockDefinitionData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -131,7 +131,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.def
                     //for wrong word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockDefinitionData.word.wrong, mockDefinitionData.lang.correct, mockDefinitionData.apiKeys.correct]
+                        args: [mockDefinitionData.word.wrong, mockDefinitionData.lang.correct, mockDefinitionData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -141,7 +141,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.def
                     //for wrong language
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockDefinitionData.word.correct, mockDefinitionData.lang.wrong, mockDefinitionData.apiKeys.correct]
+                        args: [mockDefinitionData.word.correct, mockDefinitionData.lang.wrong, mockDefinitionData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -166,4 +166,4 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.def
 
 var testTree = adaptiveContentService.tests.dictionary.oxford.contractTests.definition.testTree;
 
-adaptiveContentService.tests.utils.checkOxfordKeys(mockDefinitionData.apiKeys.correct, testTree, "Definition (Oxford) Contract test");
+adaptiveContentService.tests.utils.checkOxfordKeys(mockDefinitionData.correctApiKey, testTree, "Definition (Oxford) Contract test");

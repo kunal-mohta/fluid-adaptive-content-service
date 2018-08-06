@@ -9,6 +9,7 @@ module.exports = {
         de: "German"
     },
     apiKey: commonMockYandexData.apiKey,
+    correctApiKey: commonMockYandexData.correctApiKey,
     // responses
     responses: {
         noError: {

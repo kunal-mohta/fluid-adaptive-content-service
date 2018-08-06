@@ -5,6 +5,7 @@ var commonOxfordMockData = require("./commonMockData");
 module.exports = {
     // general data
     apiKeys: commonOxfordMockData.apiKeys,
+    correctApiKey: commonOxfordMockData.correctApiKey,
     // responses
     responses: {
         noError: {

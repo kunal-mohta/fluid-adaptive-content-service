@@ -20,7 +20,6 @@ fluid.defaults("adaptiveContentService.handlers.nlp.compromise.sentenceTagging",
 
 // function to catch the errors for the compromise's sentence tagging
 adaptiveContentService.handlers.nlp.compromise.sentenceTagging.checkNlpError = function (sentence, characterLimit) {
-    //TODO: middleware
     if (sentence) {
         // sentence present
 

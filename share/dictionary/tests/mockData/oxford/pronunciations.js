@@ -7,6 +7,7 @@ module.exports = {
     word: commonOxfordMockData.word,
     lang: commonOxfordMockData.lang,
     apiKeys: commonOxfordMockData.apiKeys,
+    correctApiKey: commonOxfordMockData.correctApiKey,
     // responses
     responses: {
         correctWord:

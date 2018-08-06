@@ -116,7 +116,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.lis
                     //for no error
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockListLanguagesData.apiKeys.correct]
+                        args: [mockListLanguagesData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -141,4 +141,4 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.lis
 
 var testTree = adaptiveContentService.tests.dictionary.oxford.contractTests.listLanguages.testTree;
 
-adaptiveContentService.tests.utils.checkOxfordKeys(mockListLanguagesData.apiKeys.correct, testTree, "List Languages (Oxford) Contract test");
+adaptiveContentService.tests.utils.checkOxfordKeys(mockListLanguagesData.correctApiKey, testTree, "List Languages (Oxford) Contract test");

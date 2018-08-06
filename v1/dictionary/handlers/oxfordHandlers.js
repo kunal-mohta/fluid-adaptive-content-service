@@ -43,7 +43,6 @@ adaptiveContentService.handlers.dictionary.oxford.serviceKeys = function (that) 
 
 // check for errors with the service keys
 adaptiveContentService.handlers.dictionary.oxford.checkServiceKeys = function (requestHeaders) {
-    // TODO: can be middleware
     var appId = requestHeaders.app_id,
         appKey = requestHeaders.app_key;
 
@@ -67,7 +66,7 @@ adaptiveContentService.handlers.dictionary.oxford.checkServiceKeys = function (r
     }
 };
 
-// function to catch the errors before making the request to the oxford service TODO: middleware
+// function to catch the errors before making the request to the oxford service
 adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck = function (word, requestHeaders, langsObj, that) {
     // Error with the word in uri
     var uriErrorContent = that.checkUriError(word, that.options.wordCharacterLimit);

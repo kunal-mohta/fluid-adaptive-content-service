@@ -8,6 +8,7 @@ module.exports = {
     sourceLang: commonMockYandexData.sourceLang,
     targetLang: commonMockYandexData.targetLang,
     apiKey: commonMockYandexData.apiKey,
+    correctApiKey: commonMockYandexData.correctApiKey,
     // responses
     responses: {
         noError: {

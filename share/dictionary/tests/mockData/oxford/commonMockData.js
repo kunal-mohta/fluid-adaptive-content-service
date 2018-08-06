@@ -1,5 +1,7 @@
 "use strict";
 
+var kettle = require("kettle");
+
 module.exports = {
     word: {
         correct: "happy",
@@ -21,6 +23,11 @@ module.exports = {
             "app_id": "randomstring",
             "app_key": "randomstring"
         }
+    },
+    // for contract tests
+    correctApiKey: {
+        app_id: kettle.resolvers.env("OXFORD_APP_ID"),
+        app_key: kettle.resolvers.env("OXFORD_APP_KEY")
     },
     // responses
     responses: {

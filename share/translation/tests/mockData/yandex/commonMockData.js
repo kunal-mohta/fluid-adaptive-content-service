@@ -1,6 +1,7 @@
 "use strict";
 
-var commonMockTranslationData = require("../common/translation");
+var commonMockTranslationData = require("../common/translation"),
+    kettle = require("kettle");
 
 module.exports = {
     // general data
@@ -12,6 +13,8 @@ module.exports = {
         invalid: "randomstring",
         blocked: "blockedkey" //not actually blocked; used for mock response only
     },
+    // for contract tests
+    correctApiKey: kettle.resolvers.env("YANDEX_API_KEY"),
     // responses
     responses: {
         keyInvalid: {

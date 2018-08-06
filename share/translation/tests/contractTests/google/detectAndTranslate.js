@@ -102,7 +102,7 @@ fluid.defaults("adaptiveContentService.tests.translation.google.contractTests.de
                     //for 'no error' response
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockTranslationData.targetLang.correct, mockTranslationData.text.noError, mockTranslationData.apiKey.correct]
+                        args: [mockTranslationData.targetLang.correct, mockTranslationData.text.noError, mockTranslationData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -113,7 +113,7 @@ fluid.defaults("adaptiveContentService.tests.translation.google.contractTests.de
                     {
                         func: "{testComponent}.requestForData",
                         args: [mockTranslationData.
-                          targetLang.wrong, mockTranslationData.text.noError, mockTranslationData.apiKey.correct]
+                          targetLang.wrong, mockTranslationData.text.noError, mockTranslationData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",

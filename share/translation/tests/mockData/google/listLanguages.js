@@ -29,6 +29,7 @@ module.exports = {
         ]
     },
     apiKey: googleCommonMockData.apiKey,
+    correctApiKey: googleCommonMockData.correctApiKey,
     // responses
     responses: {
         noError: {

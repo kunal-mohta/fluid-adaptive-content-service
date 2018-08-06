@@ -122,7 +122,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.syn
                     //for correct word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockSynonymsData.word.correct, mockSynonymsData.lang.correct, mockSynonymsData.apiKeys.correct]
+                        args: [mockSynonymsData.word.correct, mockSynonymsData.lang.correct, mockSynonymsData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -132,7 +132,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.syn
                     //for wrong word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockSynonymsData.word.wrong, mockSynonymsData.lang.correct, mockSynonymsData.apiKeys.correct]
+                        args: [mockSynonymsData.word.wrong, mockSynonymsData.lang.correct, mockSynonymsData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -142,7 +142,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.syn
                     //for wrong language
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockSynonymsData.word.correct, mockSynonymsData.lang.wrong, mockSynonymsData.apiKeys.correct]
+                        args: [mockSynonymsData.word.correct, mockSynonymsData.lang.wrong, mockSynonymsData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -167,4 +167,4 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.syn
 
 var testTree = adaptiveContentService.tests.dictionary.oxford.contractTests.synonyms.testTree;
 
-adaptiveContentService.tests.utils.checkOxfordKeys(mockSynonymsData.apiKeys.correct, testTree, "Synonyms (Oxford) Contract test");
+adaptiveContentService.tests.utils.checkOxfordKeys(mockSynonymsData.correctApiKey, testTree, "Synonyms (Oxford) Contract test");

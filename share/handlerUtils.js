@@ -108,7 +108,7 @@ adaptiveContentService.handlerUtils.validateLangCode = function (code) {
     }
 };
 
-// check for errors with the language codes TODO: test
+// check for errors with the language codes
 adaptiveContentService.handlerUtils.checkLanguageCodes = function (langsObj) {
     if (!langsObj) {
         // parameter absent or false

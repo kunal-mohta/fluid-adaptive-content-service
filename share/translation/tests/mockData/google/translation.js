@@ -8,6 +8,7 @@ module.exports = {
     sourceLang: googleCommonMockData.sourceLang,
     targetLang: googleCommonMockData.targetLang,
     apiKey: googleCommonMockData.apiKey,
+    correctApiKey: googleCommonMockData.correctApiKey,
     // responses
     responses: {
         noError: {

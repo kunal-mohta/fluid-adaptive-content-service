@@ -12,6 +12,7 @@ module.exports = {
     frequency: frequency,
     lexicalCategory: lexicalCategory,
     apiKeys: commonOxfordMockData.apiKeys,
+    correctApiKey: commonOxfordMockData.correctApiKey,
     // responses
     responses: {
         correctWord:

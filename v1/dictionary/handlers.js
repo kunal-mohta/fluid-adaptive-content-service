@@ -59,7 +59,6 @@ adaptiveContentService.handlers.dictionary.commonDictionaryDispatcher = function
  * to check for long uri
  */
 adaptiveContentService.handlers.dictionary.checkUriError = function (word, characterLimit) {
-    // TODO: can be middleware?
     if (word.length > characterLimit) {
         // word length exceeds character limit
         return {

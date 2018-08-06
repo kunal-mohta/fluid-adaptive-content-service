@@ -121,7 +121,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.ext
                     //for correct word
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockExtendedFrequencyData.word.correct, mockExtendedFrequencyData.lang.correct, mockExtendedFrequencyData.lexicalCategory, mockExtendedFrequencyData.apiKeys.correct]
+                        args: [mockExtendedFrequencyData.word.correct, mockExtendedFrequencyData.lang.correct, mockExtendedFrequencyData.lexicalCategory, mockExtendedFrequencyData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -131,7 +131,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.ext
                     //for wrong language
                     {
                         func: "{testComponent}.requestForData",
-                        args: [mockExtendedFrequencyData.word.correct, mockExtendedFrequencyData.lang.wrong, mockExtendedFrequencyData.lexicalCategory, mockExtendedFrequencyData.apiKeys.correct]
+                        args: [mockExtendedFrequencyData.word.correct, mockExtendedFrequencyData.lang.wrong, mockExtendedFrequencyData.lexicalCategory, mockExtendedFrequencyData.correctApiKey]
                     },
                     {
                         event: "{testComponent}.events.onDataReceive",
@@ -161,4 +161,4 @@ fluid.defaults("adaptiveContentService.tests.dictionary.oxford.contractTests.ext
 
 var testTree = adaptiveContentService.tests.dictionary.oxford.contractTests.extendedFrequency.testTree;
 
-adaptiveContentService.tests.utils.checkOxfordKeys(mockExtendedFrequencyData.apiKeys.correct, testTree, "Frequency (Oxford) Contract test (Extended)");
+adaptiveContentService.tests.utils.checkOxfordKeys(mockExtendedFrequencyData.correctApiKey, testTree, "Frequency (Oxford) Contract test (Extended)");
