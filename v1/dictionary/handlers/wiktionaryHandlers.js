@@ -5,8 +5,8 @@ var fluid = require("infusion"),
     adaptiveContentService = fluid.registerNamespace("adaptiveContentService"),
     wd = require("word-definition");
 
-require("../../../share/handlerUtils");
 require("kettle");
+require("../index");
 
 // Specific grade for Wiktionary
 fluid.defaults("adaptiveContentService.handlers.dictionary.wiktionary", {

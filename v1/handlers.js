@@ -8,6 +8,8 @@ require("../share/handlerUtils");
 require("kettle");
 require("./commonMiddleware");
 
+console.log("asdf");
+
 /* Abstract grade
  * from which all the service grades will extract
  * provides all the commonly required options

@@ -4,6 +4,7 @@ var fluid = require("infusion"),
     adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 
 require("kettle");
+require("../index");
 
 fluid.defaults("adaptiveContentService.serverConfig", {
     gradeNames: "fluid.component",
