@@ -1,15 +1,12 @@
 "use strict";
 
 var fluid = require("infusion"),
-    jqunit = require("node-jqunit");
-require("dotenv").config();//npm package to get variables from '.env' file
+    makeRequest = require("request"); // npm package used to make requests to third-party services used
 
-var makeRequest = require("request");//npm package used to make requests to third-party services used
-
+require("dotenv").config(); // npm package to get variables from '.env' file
 require("../../../../testUtils");
 
-var adaptiveContentService = fluid.registerNamespace("adaptiveContentService"),
-    ACS = fluid.registerNamespace("ACS");
+var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.yandex.contractTests.translateText");
 
 //grade getting us data from the yandex service
@@ -35,25 +32,7 @@ adaptiveContentService.tests.translation.yandex.contractTests.translateText.getD
             }
         },
         function (error, response, body) {
-            //error making request to external service
-            if (error) {
-                ACS.log("Contract Test (Yandex - Translation) - Error occured while making request to the external service - " + error);
-                jqunit.fail("Contract Test : For text translation failed due to error making request to the external service (Yandex Service)");
-            }
-            else {
-                var jsonBody;
-
-                //check for the presence of response body
-                try {
-                    jsonBody = JSON.parse(body);
-                    that.events.onDataReceive.fire(jsonBody);
-                }
-                catch (err) {
-                    ACS.log("Contract Test (Yandex - Translation) - Error occured while parsing the response body; body should be JSON pareseable -  " + err);
-                    ACS.log("Contract Test (Yandex - Translation) - Response body - \n" + body);
-                    jqunit.fail("Contract Test : For text translation failed due to error parsing response body into JSON");
-                }
-            }
+            adaptiveContentService.tests.utils.yandexContractTestRequestHandler(error, body, "Yandex - Text Translation", that);
         }
     );
 };

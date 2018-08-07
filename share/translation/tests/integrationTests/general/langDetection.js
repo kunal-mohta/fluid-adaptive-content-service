@@ -120,7 +120,7 @@ adaptiveContentService.tests.translation.general.langDetection = [{
     {
         event: "{absentTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with too long text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with absent text field", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{authError}.send",
@@ -147,7 +147,7 @@ adaptiveContentService.tests.translation.general.langDetection = [{
     {
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with absent text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with too long text field", 413, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{requestError}.send",

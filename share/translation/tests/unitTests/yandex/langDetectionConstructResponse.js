@@ -26,10 +26,10 @@ var expectedReturnVal = {
     langCode: mockLangDetectionData.detectedLang
 };
 
-var testMessage = "Unit Test : For langDetectionConstructResponse function : Successful";
+var testMessage = "Unit Test : For langDetectionConstructResponse function (Yandex) : Successful";
 
 jqunit.test(
-    "Unit Test : For translation langDetectionConstructResponse function (Translation Service)",
+    "Unit Test : For translation langDetectionConstructResponse function (Yandex Service)",
     function () {
         adaptiveContentService.tests.translation.unitTests.langDetectionConstructResponse(testMessage, expectedReturnVal, testServiceResponse, mockLangDetectionData.text.noError);
     }

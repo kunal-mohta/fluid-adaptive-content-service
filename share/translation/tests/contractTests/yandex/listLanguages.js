@@ -1,15 +1,12 @@
 "use strict";
 
 var fluid = require("infusion"),
-    jqunit = require("node-jqunit");
+    makeRequest = require("request"); // npm package used to make requests to third-party services used
+
 require("dotenv").config(); // npm package to get variables from '.env' file
-
-var makeRequest = require("request");//npm package used to make requests to third-party services used
-
 require("../../../../testUtils");
 
-var adaptiveContentService = fluid.registerNamespace("adaptiveContentService"),
-    ACS = fluid.registerNamespace("ACS");
+var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.yandex.contractTests.listLanguages");
 
 // grade getting us data from the yandex service
@@ -33,24 +30,7 @@ adaptiveContentService.tests.translation.yandex.contractTests.listLanguages.getD
             url: "https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=" + serviceKey + "&ui=en"
         },
         function (error, response, body) {
-            if (error) {
-                ACS.log("Contract Test (Yandex - List Supported Languages) - Error occured while making request to the external service");
-                jqunit.fail("Contract Test : For listing supported languages failed due to error making request to the external service (Yandex Service)");
-            }
-            else {
-                var jsonBody;
-
-                // is error body json parseable
-                try {
-                    jsonBody = JSON.parse(body);
-                    that.events.onDataReceive.fire(jsonBody);
-                }
-                catch (err) {
-                    ACS.log("Contract Test (Yandex - List Supported Languages) - Error occured while parsing the response body; body should be JSON pareseable -  " + err);
-                    ACS.log("Contract Test (Yandex - List Supported Languages) - Response body - \n" + body);
-                    jqunit.fail("Contract Test : For listing supported languages failed due to error parsing response body into JSON");
-                }
-            }
+            adaptiveContentService.tests.utils.yandexContractTestRequestHandler(error, body, "Yandex - List Supported Languages", that);
         }
     );
 };
@@ -88,11 +68,11 @@ var mockListLanguages = require("../../mockData/yandex/listLanguages");
 fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.listLanguages.tester", {
     gradeNames: ["fluid.test.testCaseHolder"],
     modules: [{
-        name: "Contract Tests : For listing supported languages (Google Service)",
+        name: "Contract Tests : For listing supported languages (Yandex Service)",
         tests: [
             {
                 expect: 2,
-                name: "Contract Tests : For listing supported languages (Google Service)",
+                name: "Contract Tests : For listing supported languages (Yandex Service)",
                 sequence: [
                     //for 'no error' response
                     {

@@ -36,7 +36,7 @@ adaptiveContentService.tests.dictionary.wiktionary.synonyms = [{
     {
         event: "{serviceNotProvidedTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Synonyms test for Wiktionary Service successful", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Synonyms test (Wiktionary) successful", 400, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

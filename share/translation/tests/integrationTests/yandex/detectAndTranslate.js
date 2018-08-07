@@ -99,7 +99,7 @@ adaptiveContentService.tests.translation.yandex.detectAndTranslate = [{
     {
         event: "{noError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with no errors (Yandex Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{emptyTextField}.send",
@@ -108,7 +108,7 @@ adaptiveContentService.tests.translation.yandex.detectAndTranslate = [{
     {
         event: "{emptyTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with empty text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with empty text field (Yandex Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{absentTextField}.send",
@@ -117,7 +117,7 @@ adaptiveContentService.tests.translation.yandex.detectAndTranslate = [{
     {
         event: "{absentTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with absent text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with absent text field (Yandex Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{unsupportedTranslationDirection}.send",
@@ -126,7 +126,7 @@ adaptiveContentService.tests.translation.yandex.detectAndTranslate = [{
     {
         event: "{unsupportedTranslationDirection}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with unsupported translation direction", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with unsupported translation direction (Yandex Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{invalidTargetLangCode}.send",
@@ -135,7 +135,7 @@ adaptiveContentService.tests.translation.yandex.detectAndTranslate = [{
     {
         event: "{invalidTargetLangCode}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with invalid target language", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with invalid target language (Yandex Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{cannotDetectLang}.send",
@@ -144,7 +144,7 @@ adaptiveContentService.tests.translation.yandex.detectAndTranslate = [{
     {
         event: "{cannotDetectLang}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for 'unable to detect lang' response", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for 'unable to detect lang' response (Yandex Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longTextField}.send",
@@ -153,7 +153,7 @@ adaptiveContentService.tests.translation.yandex.detectAndTranslate = [{
     {
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with too long text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with too long text field (Yandex Service)", 413, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

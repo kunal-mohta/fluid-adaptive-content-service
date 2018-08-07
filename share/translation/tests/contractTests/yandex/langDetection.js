@@ -1,18 +1,15 @@
 "use strict";
 
 var fluid = require("infusion"),
-    jqunit = require("node-jqunit");
-require("dotenv").config();//npm package to get variables from '.env' file
+    makeRequest = require("request"); // npm package used to make requests to third-party services used
 
-var makeRequest = require("request");//npm package used to make requests to third-party services used
-
+require("dotenv").config(); // npm package to get variables from '.env' file
 require("../../../../testUtils");
 
-var adaptiveContentService = fluid.registerNamespace("adaptiveContentService"),
-    ACS = fluid.registerNamespace("ACS");
+var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.yandex.contractTests.langDetection");
 
-//grade getting us data from the yandex service
+// grade getting us data from the yandex service
 fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.langDetection", {
     gradeNames: ["fluid.component"],
     events: {
@@ -36,37 +33,19 @@ adaptiveContentService.tests.translation.yandex.contractTests.langDetection.getD
             }
         },
         function (error, response, body) {
-            //error making request to external service
-            if (error) {
-                ACS.log("Contract Test (Yandex - Language Detection) - Error occured while making request to the external service - " + error);
-                jqunit.fail("Contract Test : For language detection failed due to error making request to the external service (Yandex Service)");
-            }
-            else {
-                var jsonBody;
-
-                //check for the presence of response body
-                try {
-                    jsonBody = JSON.parse(body);
-                    that.events.onDataReceive.fire(jsonBody);
-                }
-                catch (err) {
-                    ACS.log("Contract Test (Yandex - Language Detection) - Error occured while parsing the response body; body should be JSON pareseable -  " + err);
-                    ACS.log("Contract Test (Yandex - Language Detection) - Response body - \n" + body);
-                    jqunit.fail("Contract Test : For language detection failed due to error parsing response body into JSON");
-                }
-            }
+            adaptiveContentService.tests.utils.yandexContractTestRequestHandler(error, body, "Yandex - Language Detection", that);
         }
     );
 };
 
-//Testing environment - holds test component and calls the test driver
+// Testing environment - holds test component and calls the test driver
 fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.langDetection.testTree", {
     gradeNames: ["fluid.test.testEnvironment"],
     components: {
         testComponent: {
             type: "adaptiveContentService.tests.translation.yandex.contractTests.langDetection"
         },
-        //test driver
+        // test driver
         tester: {
             type: "adaptiveContentService.tests.translation.yandex.contractTests.langDetection.tester"
         }
@@ -75,7 +54,7 @@ fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.la
 
 var langDetectionSchemas = require("./schemas/langDetectionSchemas"); //main schemas which will be compiled
 
-//mock data
+// mock data
 var mockLangDetectionData = require("../../mockData/yandex/langDetection");
 
 var successMessage = {
@@ -90,7 +69,7 @@ var failureMessage = {
     wrongKey: "Contract Test : For language detection with wrong service api key failed (Yandex Service)"
 };
 
-//Test driver
+// Test driver
 fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.langDetection.tester", {
     gradeNames: ["fluid.test.testCaseHolder"],
     modules: [{
@@ -100,7 +79,7 @@ fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.la
                 expect: 3,
                 name: "Contract Tests : For language detection (Yandex Service)",
                 sequence: [
-                    //for 'no error' response
+                    // for 'no error' response
                     {
                         func: "{testComponent}.requestForData",
                         args: [mockLangDetectionData.text.noError, mockLangDetectionData.correctApiKey]
@@ -110,7 +89,7 @@ fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.la
                         listener: "adaptiveContentService.tests.utils.contractTestHandler",
                         args: ["{arguments}.0", langDetectionSchemas.noError, null, successMessage.noError, failureMessage.noError]
                     },
-                    //for 'unable to detect lang' response
+                    // for 'unable to detect lang' response
                     {
                         func: "{testComponent}.requestForData",
                         args: [mockLangDetectionData.text.numerical, mockLangDetectionData.correctApiKey]
@@ -120,7 +99,7 @@ fluid.defaults("adaptiveContentService.tests.translation.yandex.contractTests.la
                         listener: "adaptiveContentService.tests.utils.contractTestHandler",
                         args: ["{arguments}.0", langDetectionSchemas.cannotDetect, null, successMessage.cannotDetect, failureMessage.cannotDetect]
                     },
-                    //for wrong service key
+                    // for wrong service key
                     {
                         func: "{testComponent}.requestForData",
                         args: [mockLangDetectionData.text.noError, mockLangDetectionData.apiKey.invalid]

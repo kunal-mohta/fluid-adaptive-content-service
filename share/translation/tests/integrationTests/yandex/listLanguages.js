@@ -58,7 +58,7 @@ adaptiveContentService.tests.translation.yandex.listLanguages = [{
     {
         event: "{generalEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with no errors (Yandex Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{translateTextEndpoint}.send"
@@ -66,7 +66,7 @@ adaptiveContentService.tests.translation.yandex.listLanguages = [{
     {
         event: "{translateTextEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with no errors for translate text endpoint", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with no errors for translate text endpoint (Yandex Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

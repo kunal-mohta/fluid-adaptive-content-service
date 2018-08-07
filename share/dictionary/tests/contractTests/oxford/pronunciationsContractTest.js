@@ -1,15 +1,12 @@
 "use strict";
 
 var fluid = require("infusion"),
-    jqunit = require("node-jqunit");
-require("dotenv").config();//npm package to get variables from '.env' file
+    makeRequest = require("request"); // npm package used to make requests to third-party services used
 
-var makeRequest = require("request");//npm package used to make requests to third-party services used
-
+require("dotenv").config(); // npm package to get variables from '.env' file
 require("../../../../testUtils");
 
-var adaptiveContentService = fluid.registerNamespace("adaptiveContentService"),
-    ACS = fluid.registerNamespace("ACS");
+var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.oxford.contractTests.pronunciations");
 
 //grade getting us data from the oxford service
@@ -33,36 +30,7 @@ adaptiveContentService.tests.dictionary.oxford.contractTests.pronunciations.getD
             headers: apiKeys
         },
         function (error, response, body) {
-            //error making request to external service
-            if (error) {
-                ACS.log("Contract Test (Oxford - Pronunciations) : Error occured while making request to the external service - " + error);
-                jqunit.fail("Contract Test : For pronunciations failed due to error making request to the external service (Oxford Service)");
-            }
-            else {
-                var jsonBody;
-
-                //check for the presence of response body
-                if (body) {
-                    try {
-                        jsonBody = JSON.parse(body);
-                    }
-                    catch (err) {
-                        jsonBody = body;
-                    }
-
-                    var data = {
-                        response: response,
-                        body: body,
-                        jsonBody: jsonBody
-                    };
-
-                    that.events.onDataReceive.fire(data);
-                }
-                else {
-                    ACS.log("Contract Test (Oxford - Pronunciations) : Response from the external service SHOULD have 'body' property");
-                    jqunit.fail("Contract Test : For pronunciations failed (Oxford Service)");
-                }
-            }
+            adaptiveContentService.tests.utils.oxfordContractTestsRequestHandler(error, response, body, "Oxford - Pronunciations", that);
         }
     );
 };

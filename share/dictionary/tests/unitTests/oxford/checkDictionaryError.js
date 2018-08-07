@@ -34,11 +34,11 @@ var serviceResponse = {
 };
 
 var testMessage = {
-    noError: "Unit Test : For checkDictionary function : Successful with 'no error' response",
-    authFail: "Unit Test : For checkDictionary function : Successful with 'failed authentication' response",
-    wrongWord: "Unit Test : For checkDictionary function : Successful with 'wrong word' response",
-    wrongLang: "Unit Test : For checkDictionary function : Successful with 'wrong language' response",
-    unhandledError: "Unit Test : For checkDictionary function : Successful with 'unhandled error' response"
+    noError: "Unit Test : For checkDictionary function (Oxford) : Successful with 'no error' response",
+    authFail: "Unit Test : For checkDictionary function (Oxford) : Successful with 'failed authentication' response",
+    wrongWord: "Unit Test : For checkDictionary function (Oxford) : Successful with 'wrong word' response",
+    wrongLang: "Unit Test : For checkDictionary function (Oxford) : Successful with 'wrong language' response",
+    unhandledError: "Unit Test : For checkDictionary function (Oxford) : Successful with 'unhandled error' response"
 };
 
 var expectedReturnVal = {
@@ -61,7 +61,7 @@ adaptiveContentService.tests.dictionary.oxford.unitTests.checkDictionaryError = 
 };
 
 jqunit.test(
-    "Unit Test : For checkDictionaryError function (oxford Service)",
+    "Unit Test : For checkDictionaryError function (Oxford Service)",
     function () {
 
         // for 'no error' response

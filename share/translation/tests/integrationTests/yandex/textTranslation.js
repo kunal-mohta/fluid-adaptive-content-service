@@ -116,7 +116,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{noError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with no errors (Yandex Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{emptyTextField}.send",
@@ -125,7 +125,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{emptyTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with empty text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with empty text field (Yandex Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{absentTextField}.send",
@@ -134,7 +134,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{absentTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with absent text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with absent text field (Yandex Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{blockedApiKey}.send",
@@ -143,7 +143,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{blockedApiKey}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with blocked api key", 402, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with blocked api key (Yandex Service)", 402, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{wrongApiKey}.send",
@@ -152,7 +152,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{wrongApiKey}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with wrong api key", 403, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with wrong api key (Yandex Service)", 403, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{unsupportedTranslationDirection}.send",
@@ -161,7 +161,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{unsupportedTranslationDirection}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with unsupported translation direction", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with unsupported translation direction (Yandex Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{invalidSourceLangCode}.send",
@@ -170,7 +170,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{invalidSourceLangCode}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with invalid source language", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with invalid source language (Yandex Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{invalidTargetLangCode}.send",
@@ -179,7 +179,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{invalidTargetLangCode}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with invalid target language", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with invalid target language (Yandex Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longTextField}.send",
@@ -188,7 +188,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for request with too long text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for request with too long text field (Yandex Service)", 413, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{requestError}.send",
@@ -197,7 +197,7 @@ adaptiveContentService.tests.translation.yandex.translateText = [{
     {
         event: "{requestError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Text Translation test for error with making request", 500, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Text Translation test for error with making request (Yandex Service)", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

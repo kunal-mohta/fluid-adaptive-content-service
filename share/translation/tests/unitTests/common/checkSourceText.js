@@ -41,9 +41,9 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    noTextField: "Unit Test : For checkSourceText function : Successful with no text field",
-    emptyTextField: "Unit Test : For checkSourceText function : Successful with empty text field",
-    tooLongText: "Unit Test : For checkSourceText function : Successful with too long text"
+    noTextField: "Unit Test : For checkSourceText function (Translation Service) : Successful with no text field",
+    emptyTextField: "Unit Test : For checkSourceText function (Translation Service) : Successful with empty text field",
+    tooLongText: "Unit Test : For checkSourceText function (Translation Service) : Successful with too long text"
 };
 
 jqunit.test(

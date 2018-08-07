@@ -102,7 +102,7 @@ adaptiveContentService.tests.translation.google.langDetection = [{
     {
         event: "{noError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with no errors (Google Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{emptyTextField}.send",
@@ -111,7 +111,7 @@ adaptiveContentService.tests.translation.google.langDetection = [{
     {
         event: "{emptyTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with empty text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with empty text field (Google Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{absentTextField}.send",
@@ -120,7 +120,7 @@ adaptiveContentService.tests.translation.google.langDetection = [{
     {
         event: "{absentTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with too long text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with absent text field (Google Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{authError}.send",
@@ -129,7 +129,7 @@ adaptiveContentService.tests.translation.google.langDetection = [{
     {
         event: "{authError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with wrong service key", 403, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with wrong service key (Google Service)", 403, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{cannotDetectLang}.send",
@@ -138,7 +138,7 @@ adaptiveContentService.tests.translation.google.langDetection = [{
     {
         event: "{cannotDetectLang}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for 'unable to detect lang' response", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for 'unable to detect lang' response (Google Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longTextField}.send",
@@ -147,7 +147,7 @@ adaptiveContentService.tests.translation.google.langDetection = [{
     {
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with absent text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with too long text field (Google Service)", 413, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{requestError}.send",
@@ -156,7 +156,7 @@ adaptiveContentService.tests.translation.google.langDetection = [{
     {
         event: "{requestError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for error with making request", 500, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for error with making request (Google Service)", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

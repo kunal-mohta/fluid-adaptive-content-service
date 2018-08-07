@@ -211,3 +211,96 @@ adaptiveContentService.tests.utils.googleLangDetectionRequiredData = function (t
 
     return promise;
 };
+
+// handle response from the oxford service for contract tests
+adaptiveContentService.tests.utils.oxfordContractTestsRequestHandler = function (error, response, body, serviceName, that) {
+    if (error) {
+        // error making request to external service
+
+        ACS.log("Contract Test (" + serviceName + ") : Error occured while making request to the external service - " + error);
+        jqunit.fail("Contract Test : Failed due to error making request to the external service (" + serviceName + ")");
+    }
+    else {
+        var jsonBody;
+
+        // check for the presence of response body
+        if (body) {
+            try {
+                // if body is json-parseable
+                jsonBody = JSON.parse(body);
+            }
+            catch (err) {
+                // if body is not json-parseable
+                jsonBody = body;
+            }
+
+            var data = {
+                response: response,
+                body: body,
+                jsonBody: jsonBody
+            };
+
+            that.events.onDataReceive.fire(data);
+        }
+        else {
+            ACS.log("Contract Test (" + serviceName + ") : Response from the external service SHOULD have 'body' property");
+            jqunit.fail("Contract Test : Failed (" + serviceName + ")");
+        }
+    }
+};
+
+// handle response from the google service for contract tests
+adaptiveContentService.tests.utils.googleContractTestRequestHandler = function (err, responseBody, serviceName, that) {
+    if (err) {
+        // error with request
+
+        if (err.body === undefined) {
+            // error making request
+
+            ACS.log("Contract Test (" + serviceName + ") - Error occured while making request to the external service");
+            jqunit.fail("Contract Test : Failed due to error making request to the external service (" + serviceName + ")");
+        }
+        else {
+            // request successful, but other errors catched
+            var jsonBody;
+
+            try {
+                // is error body json parseable
+                jsonBody = JSON.parse(err.body);
+                that.events.onDataReceive.fire(jsonBody);
+            }
+            catch (e) {
+                ACS.log("Contract Test (" + serviceName + ") - Error occured while parsing the error response body; body should be JSON pareseable -  " + e);
+                ACS.log("Contract Test (" + serviceName + ") - Error Response body - \n" + err.body);
+                jqunit.fail("Contract Test : For language detection failed due to error parsing response body into JSON");
+            }
+        }
+    }
+    // No errors
+    else {
+        that.events.onDataReceive.fire(responseBody);
+    }
+};
+
+// handle response from the yandex service for contract tests
+adaptiveContentService.tests.utils.yandexContractTestRequestHandler = function (error, body, serviceName, that) {
+    if (error) {
+        // error with making request to the service
+        ACS.log("Contract Test (" + serviceName + ") - Error occured while making request to the external service");
+        jqunit.fail("Contract Test : Failed due to error making request to the external service (" + serviceName + ")");
+    }
+    else {
+        var jsonBody;
+
+        try {
+            // is error body json parseable
+            jsonBody = JSON.parse(body);
+            that.events.onDataReceive.fire(jsonBody);
+        }
+        catch (err) {
+            ACS.log("Contract Test (" + serviceName + ") - Error occured while parsing the response body; body should be JSON pareseable -  " + err);
+            ACS.log("Contract Test (" + serviceName + ") - Response body - \n" + body);
+            jqunit.fail("Contract Test : Failed due to error parsing response body into JSON (" + serviceName + ")");
+        }
+    }
+};

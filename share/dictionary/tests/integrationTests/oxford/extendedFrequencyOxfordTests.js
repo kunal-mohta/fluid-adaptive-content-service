@@ -80,7 +80,7 @@ adaptiveContentService.tests.dictionary.oxford.extendedFrequency = [{
     {
         event: "{correctWordTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Frequency (extended) test for correct word successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Frequency (extended) test (Oxford) for correct word successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{authErrorTest}.send"
@@ -88,7 +88,7 @@ adaptiveContentService.tests.dictionary.oxford.extendedFrequency = [{
     {
         event: "{authErrorTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Frequency (extended) test for authentication fail successful", 403, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Frequency (extended) test (Oxford) for authentication fail successful", 403, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{wrongLangTest}.send"
@@ -96,7 +96,7 @@ adaptiveContentService.tests.dictionary.oxford.extendedFrequency = [{
     {
         event: "{wrongLangTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Frequency (extended) test for unsupported language successful", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Frequency (extended) test (Oxford) for unsupported language successful", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longUriTest}.send"
@@ -104,7 +104,7 @@ adaptiveContentService.tests.dictionary.oxford.extendedFrequency = [{
     {
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Frequency (extended) test for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Frequency (extended) test (Oxford) for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{requestErrorTest}.send"
@@ -112,7 +112,7 @@ adaptiveContentService.tests.dictionary.oxford.extendedFrequency = [{
     {
         event: "{requestErrorTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Frequency (extended) test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Frequency (extended) test (Oxford) for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

@@ -13,7 +13,7 @@ var testUrl = "/version/dictionary/wiktionary/language/endpointName/word";
 adaptiveContentService.tests.handlerUtils.unitTests.getEndpointName = function () {
     var returnVal = adaptiveContentService.handlerUtils.getEndpointName(testUrl);
 
-    jqunit.assertEquals("Unit Test : For getEndpointName function : Successful", "endpointName", returnVal);
+    jqunit.assertEquals("Unit Test : For getEndpointName function (Handler Utilities function) : Successful", "endpointName", returnVal);
 };
 
 jqunit.test(

@@ -92,7 +92,7 @@ adaptiveContentService.tests.translation.google.listLanguages = [{
     {
         event: "{listLanguagesNoError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : List languages test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : List languages test for request with no errors (Google Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{extendedListLanguagesNoError}.send"
@@ -100,7 +100,7 @@ adaptiveContentService.tests.translation.google.listLanguages = [{
     {
         event: "{extendedListLanguagesNoError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Extended List languages test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Extended List languages test for request with no errors (Google Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{detectAndTranslateEndpoint}.send"
@@ -108,7 +108,7 @@ adaptiveContentService.tests.translation.google.listLanguages = [{
     {
         event: "{detectAndTranslateEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : Extended List languages test for request with no errors for detect-and-translate endpoint", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : Extended List languages test for request with no errors for detect-and-translate endpoint (Google Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

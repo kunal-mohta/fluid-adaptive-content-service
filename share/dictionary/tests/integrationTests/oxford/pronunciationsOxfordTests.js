@@ -87,7 +87,7 @@ adaptiveContentService.tests.dictionary.oxford.pronunciations = [{
     {
         event: "{correctWordTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Pronunciations test for correct word successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Pronunciations test (Oxford) for correct word successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{authErrorTest}.send"
@@ -95,7 +95,7 @@ adaptiveContentService.tests.dictionary.oxford.pronunciations = [{
     {
         event: "{authErrorTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Pronunciations test for authentication failed successful", 403, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Pronunciations test (Oxford) for authentication failed successful", 403, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{wrongWordTest}.send"
@@ -103,7 +103,7 @@ adaptiveContentService.tests.dictionary.oxford.pronunciations = [{
     {
         event: "{wrongWordTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Pronunciations test for correct word successful", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Pronunciations test (Oxford) for wrong word successful", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{wrongLangTest}.send"
@@ -111,7 +111,7 @@ adaptiveContentService.tests.dictionary.oxford.pronunciations = [{
     {
         event: "{wrongLangTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Pronunciations test for correct word successful", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Pronunciations test (Oxford) for wrong language successful", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longUriTest}.send"
@@ -119,7 +119,7 @@ adaptiveContentService.tests.dictionary.oxford.pronunciations = [{
     {
         event: "{longUriTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Pronunciations test for correct word successful", 414, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Pronunciations test (Oxford) for long uri successful", 414, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{requestErrorTest}.send"
@@ -127,7 +127,7 @@ adaptiveContentService.tests.dictionary.oxford.pronunciations = [{
     {
         event: "{requestErrorTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Pronunciations test for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Pronunciations test (Oxford) for error making request successful", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

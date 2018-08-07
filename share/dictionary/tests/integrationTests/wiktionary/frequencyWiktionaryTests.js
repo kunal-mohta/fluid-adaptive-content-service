@@ -36,7 +36,7 @@ adaptiveContentService.tests.dictionary.wiktionary.frequency = [{
     {
         event: "{serviceNotProvidedTest}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : Frequency test for Wiktionary Service successful", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : Frequency test (Wiktionary) successful", 400, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

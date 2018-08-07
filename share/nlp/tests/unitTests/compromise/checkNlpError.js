@@ -28,9 +28,9 @@ var requestSentence = {
 };
 
 var testMessage = {
-    correctSentence: "Unit Test : For checkNlpError function : Successful with correct sentence",
-    longSentence: "Unit Test : For checkNlpError function : Successful with long sentence",
-    emptySentence: "Unit Test : For checkNlpError function : Successful with empty sentence"
+    correctSentence: "Unit Test : For checkNlpError function (Compromise) : Successful with correct sentence",
+    longSentence: "Unit Test : For checkNlpError function (Compromise) : Successful with long sentence",
+    emptySentence: "Unit Test : For checkNlpError function (Compromise) : Successful with empty sentence"
 };
 
 var expectedReturnVal = {

@@ -87,7 +87,7 @@ adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     {
         event: "{generalEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Oxford) for no error response successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{definitionEndpoint}.send"
@@ -95,7 +95,7 @@ adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     {
         event: "{definitionEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for definition endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Oxford) for no error response for definition endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{synonymsEndpoint}.send"
@@ -103,7 +103,7 @@ adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     {
         event: "{synonymsEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for synonyms endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Oxford) for no error response for synonyms endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{antonymsEndpoint}.send"
@@ -111,7 +111,7 @@ adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     {
         event: "{antonymsEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for antonyms endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Oxford) for no error response for antonyms endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{pronunciationsEndpoint}.send"
@@ -119,7 +119,7 @@ adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     {
         event: "{pronunciationsEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for pronunciations endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Oxford) for no error response for pronunciations endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{frequencyEndpoint}.send"
@@ -127,7 +127,7 @@ adaptiveContentService.tests.dictionary.oxford.listLanguages = [{
     {
         event: "{frequencyEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for frequency endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Oxford) for no error response for frequency endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

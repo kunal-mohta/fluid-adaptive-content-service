@@ -55,14 +55,14 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    noError: "Unit Test : For checkCommonGoogleErrors function : Successful with 'no error' response",
-    keyInvalid: "Unit Test : For checkCommonGoogleErrors function : Successful with 'invalid key' response",
-    invalidLangCode: "Unit Test : For checkCommonGoogleErrors function : Successful with 'invalid lang code' response",
-    requestError: "Unit Test : For checkCommonGoogleErrors function : Successful with 'error making request' response"
+    noError: "Unit Test : For checkCommonGoogleErrors function (Google) : Successful with 'no error' response",
+    keyInvalid: "Unit Test : For checkCommonGoogleErrors function (Google) : Successful with 'invalid key' response",
+    invalidLangCode: "Unit Test : For checkCommonGoogleErrors function (Google) : Successful with 'invalid lang code' response",
+    requestError: "Unit Test : For checkCommonGoogleErrors function (Google) : Successful with 'error making request' response"
 };
 
 jqunit.test(
-    "Unit Test : For checkCommonGoogleErrors function (Translation Service)",
+    "Unit Test : For checkCommonGoogleErrors function (Google Service)",
     function () {
 
         // for 'no error' response

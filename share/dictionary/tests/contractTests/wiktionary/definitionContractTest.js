@@ -8,7 +8,7 @@ require("../../../../testUtils");
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition");
 
-//grade getting us data from the wiktionary service
+// grade getting us data from the wiktionary service
 fluid.defaults("adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition", {
     gradeNames: ["fluid.component"],
     events: {
@@ -28,14 +28,14 @@ adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition.getD
     });
 };
 
-//Testing environment - holds test component and calls the test driver
+// Testing environment - holds test component and calls the test driver
 fluid.defaults("adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition.testTree", {
     gradeNames: ["fluid.test.testEnvironment"],
     components: {
         testComponent: {
             type: "adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition"
         },
-        //test driver
+        // test driver
         tester: {
             type: "adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition.tester"
         }
@@ -48,7 +48,7 @@ var correctWord = "word",
     wrongLang = "wrongLang";
 
 var definitionSchemas = require("./schemas/definitionSchemas"), //main schema to be compiled
-    allSchemas = []; //array of all schemas required (other than main schema)
+    allSchemas = []; // array of all schemas required (other than main schema)
 
 var successMessage = {
     correctWord: "Contract Test : For definitions with correct word and language successful (Wiktionary Service)",
@@ -62,7 +62,7 @@ var failureMessage = {
     wrongLang: "Contract Test : For definitions with wrong language failed (Wiktionary Service)"
 };
 
-//Test driver
+// Test driver
 fluid.defaults("adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition.tester", {
     gradeNames: ["fluid.test.testCaseHolder"],
     modules: [{
@@ -72,7 +72,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.wiktionary.contractTests
                 expect: 3,
                 name: "Contract Tests : For definitions (Wiktionary Service)",
                 sequence: [
-                    //for correct word
+                    // for correct word
                     {
                         func: "{testComponent}.requestForData",
                         args: [correctWord, correctLang]
@@ -82,7 +82,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.wiktionary.contractTests
                         listener: "adaptiveContentService.tests.utils.contractTestHandler",
                         args: ["{arguments}.0", definitionSchemas.correctWord, allSchemas, successMessage.correctWord, failureMessage.correctWord]
                     },
-                    //for wrong word
+                    // for wrong word
                     {
                         func: "{testComponent}.requestForData",
                         args: [wrongWord, correctLang]
@@ -92,7 +92,7 @@ fluid.defaults("adaptiveContentService.tests.dictionary.wiktionary.contractTests
                         listener: "adaptiveContentService.tests.utils.contractTestHandler",
                         args: ["{arguments}.0", definitionSchemas.wrongWord, allSchemas, successMessage.wrongWord, failureMessage.wrongWord]
                     },
-                    //for wrong language
+                    // for wrong language
                     {
                         func: "{testComponent}.requestForData",
                         args: [correctWord, wrongLang]

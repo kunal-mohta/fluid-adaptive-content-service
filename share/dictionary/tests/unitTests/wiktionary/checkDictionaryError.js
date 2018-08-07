@@ -22,10 +22,10 @@ var serviceResponse = {
 };
 
 var testMessage = {
-    noError: "Unit Test : For checkDictionary function : Successful with 'no error' response",
-    wrongWord: "Unit Test : For checkDictionary function : Successful with 'wrong word' response",
-    wrongLang: "Unit Test : For checkDictionary function : Successful with 'wrong language' response",
-    otherErrors: "Unit Test : For checkDictionary function : Successful with any other response"
+    noError: "Unit Test : For checkDictionary function (Wiktionary) : Successful with 'no error' response",
+    wrongWord: "Unit Test : For checkDictionary function (Wiktionary) : Successful with 'wrong word' response",
+    wrongLang: "Unit Test : For checkDictionary function (Wiktionary) : Successful with 'wrong language' response",
+    otherErrors: "Unit Test : For checkDictionary function (Wiktionary) : Successful with any other response"
 };
 
 var expectedReturnVal = {

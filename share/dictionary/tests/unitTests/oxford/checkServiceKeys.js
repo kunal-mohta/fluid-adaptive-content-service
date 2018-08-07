@@ -42,13 +42,13 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    appIdAbsent: "Unit Test : For checkServiceKeys function : Successful with app id absent",
-    appKeyAbsent: "Unit Test : For checkServiceKeys function : Successful with app key absent",
-    bothPresent: "Unit Test : For checkServiceKeys function : Successful with both app id and key present"
+    appIdAbsent: "Unit Test : For checkServiceKeys function (Oxford) : Successful with app id absent",
+    appKeyAbsent: "Unit Test : For checkServiceKeys function (Oxford) : Successful with app key absent",
+    bothPresent: "Unit Test : For checkServiceKeys function (Oxford) : Successful with both app id and key present"
 };
 
 jqunit.test(
-    "Unit Test : For checkServiceKeys function (Dictionary Service)",
+    "Unit Test : For checkServiceKeys function (Oxford Service)",
     function () {
 
         // for app id absent

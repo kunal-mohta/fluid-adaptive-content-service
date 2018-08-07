@@ -9,7 +9,7 @@ fluid.registerNamespace("adaptiveContentService.tests.dictionary.wiktionary.unit
 require("../../../../../v1/dictionary/handlers/wiktionaryHandlers");
 
 // mock service data
-var mockDefinitionsData = require("../../mockData/wiktionary/definitions"),// file holding object with mock data
+var mockDefinitionsData = require("../../mockData/wiktionary/definitions"), // file holding object with mock data
     jsonServiceData = mockDefinitionsData.responses.correctWord;
 
 adaptiveContentService.tests.dictionary.wiktionary.unitTests.constructResponse = function () {
@@ -31,7 +31,7 @@ adaptiveContentService.tests.dictionary.wiktionary.unitTests.constructResponse =
 };
 
 jqunit.test(
-    "Unit Test : For constructResponse function (Dictionary Service)",
+    "Unit Test : For constructResponse function (Wiktionary Service)",
     function () {
         adaptiveContentService.tests.dictionary.wiktionary.unitTests.constructResponse();
     }

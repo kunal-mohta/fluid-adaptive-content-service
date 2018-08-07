@@ -33,9 +33,9 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    noKey: "Unit Test : For checkServiceKey function : Successful with key absent",
-    emptyKey: "Unit Test : For checkServiceKey function : Successful with key empty",
-    presentKey: "Unit Test : For checkServiceKey function : Successful with key present"
+    noKey: "Unit Test : For checkServiceKey function (Translation Service) : Successful with key absent",
+    emptyKey: "Unit Test : For checkServiceKey function (Translation Service) : Successful with key empty",
+    presentKey: "Unit Test : For checkServiceKey function (Translation Service) : Successful with key present"
 };
 
 jqunit.test(

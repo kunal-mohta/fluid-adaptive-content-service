@@ -71,7 +71,7 @@ adaptiveContentService.tests.dictionary.wiktionary.listLanguages = [{
     {
         event: "{generalEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Wiktionary) for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{definitionEndpoint}.send"
@@ -79,7 +79,7 @@ adaptiveContentService.tests.dictionary.wiktionary.listLanguages = [{
     {
         event: "{definitionEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for definition endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Wiktionary) for no error response for definition endpoint successful", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{synonymsEndpoint}.send"
@@ -87,7 +87,7 @@ adaptiveContentService.tests.dictionary.wiktionary.listLanguages = [{
     {
         event: "{synonymsEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for synonyms endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Wiktionary) for no error response for synonyms endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{antonymsEndpoint}.send"
@@ -95,7 +95,7 @@ adaptiveContentService.tests.dictionary.wiktionary.listLanguages = [{
     {
         event: "{antonymsEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for antonyms endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Wiktionary) for no error response for antonyms endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{pronunciationsEndpoint}.send"
@@ -103,7 +103,7 @@ adaptiveContentService.tests.dictionary.wiktionary.listLanguages = [{
     {
         event: "{pronunciationsEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for pronunciations endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Wiktionary) for no error response for pronunciations endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{frequencyEndpoint}.send"
@@ -111,7 +111,7 @@ adaptiveContentService.tests.dictionary.wiktionary.listLanguages = [{
     {
         event: "{frequencyEndpoint}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Dictionary Tests : List languages test for no error response for frequency endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Dictionary Tests : List languages test (Wiktionary) for no error response for frequency endpoint successful", 400, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];

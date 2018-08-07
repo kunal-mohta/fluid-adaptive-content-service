@@ -142,7 +142,7 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
     {
         event: "{noError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with no errors (Google Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{emptyTextField}.send",
@@ -151,7 +151,7 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
     {
         event: "{emptyTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with empty text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with empty text field (Google Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{absentTextField}.send",
@@ -160,7 +160,7 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
     {
         event: "{absentTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with absent text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with absent text field (Google Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{authError}.send",
@@ -169,7 +169,7 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
     {
         event: "{authError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with wrong service key", 403, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with wrong service key (Google Service)", 403, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{wrongTargetLang}.send",
@@ -178,7 +178,7 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
     {
         event: "{wrongTargetLang}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with wrong target language", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with wrong target language (Google Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{invalidTargetLangCode}.send",
@@ -187,7 +187,7 @@ adaptiveContentService.tests.translation.google.detectAndTranslate = [{
     {
         event: "{invalidTargetLangCode}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with invalid target language", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with invalid target language (Google Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longTextField}.send",

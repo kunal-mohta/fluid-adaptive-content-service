@@ -61,15 +61,15 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    noError: "Unit Test : For checkCommonYandexErrors function : Successful with 'no error' response",
-    keyInvalid: "Unit Test : For checkCommonYandexErrors function : Successful with 'invalid key' response",
-    limitExceeded: "Unit Test : For checkCommonYandexErrors function : Successful with 'limit exceeded' response",
-    unsupportedTranslation: "Unit Test : For checkCommonYandexErrors function : Successful with 'unsupported translation' response",
-    keyBlocked: "Unit Test : For checkCommonYandexErrors function : Successful with 'blocked key' response"
+    noError: "Unit Test : For checkCommonYandexErrors function (Yandex) : Successful with 'no error' response",
+    keyInvalid: "Unit Test : For checkCommonYandexErrors function (Yandex) : Successful with 'invalid key' response",
+    limitExceeded: "Unit Test : For checkCommonYandexErrors function (Yandex) : Successful with 'limit exceeded' response",
+    unsupportedTranslation: "Unit Test : For checkCommonYandexErrors function (Yandex) : Successful with 'unsupported translation' response",
+    keyBlocked: "Unit Test : For checkCommonYandexErrors function (Yandex) : Successful with 'blocked key' response"
 };
 
 jqunit.test(
-    "Unit Test : For checkCommonYandexErrors function (Translation Service)",
+    "Unit Test : For checkCommonYandexErrors function (Yandex Service)",
     function () {
 
         // for 'no error' response

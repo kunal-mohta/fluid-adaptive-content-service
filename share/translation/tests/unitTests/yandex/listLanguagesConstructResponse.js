@@ -34,10 +34,10 @@ var expectedReturnVal = [
     }
 ];
 
-var testMessage = "Unit Test : For list supported languages constructResponse function : Successful";
+var testMessage = "Unit Test : For list supported languages constructResponse function (Yandex) : Successful";
 
 jqunit.test(
-    "Unit Test : For list supported languages constructResponse function (Translation Service)",
+    "Unit Test : For list supported languages constructResponse function (Yandex Service)",
     function () {
         adaptiveContentService.tests.translation.unitTests.yandex.listLanguagesConstructResponse(testMessage, expectedReturnVal, testServiceResponse);
     }

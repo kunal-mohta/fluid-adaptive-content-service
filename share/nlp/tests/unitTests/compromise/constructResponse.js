@@ -63,7 +63,7 @@ adaptiveContentService.tests.nlp.compromise.unitTests.constructResponse = functi
         ]
     };
 
-    jqunit.assertDeepEq("Unit Test : For constructResponse function : Successful", expectedReturnVal, returnVal);
+    jqunit.assertDeepEq("Unit Test : For constructResponse function (Compromise) : Successful", expectedReturnVal, returnVal);
 };
 
 jqunit.test(

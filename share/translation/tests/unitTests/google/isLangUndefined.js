@@ -37,12 +37,12 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    noError: "Unit Test : For isLangUndefined function : Successful with 'no error' response",
-    cannotDetect: "Unit Test : For isLangUndefined function : Successful with 'unable to detect lang' response"
+    noError: "Unit Test : For isLangUndefined function (Google) : Successful with 'no error' response",
+    cannotDetect: "Unit Test : For isLangUndefined function (Google) : Successful with 'unable to detect lang' response"
 };
 
 jqunit.test(
-    "Unit Test : For isLangUndefined function (Translation Service)",
+    "Unit Test : For isLangUndefined function (Google Service)",
     function () {
 
         // for 'no error' response

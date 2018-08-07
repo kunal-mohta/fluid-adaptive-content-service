@@ -33,7 +33,8 @@ require("../../../../../v1/nlp/handlers");
 
 fluid.registerNamespace("adaptiveContentService.test.handlers.nlp.compromise.sentenceTagging");
 
-/* testing grade for compromise sentence tagging - to override 'characterLimit'   * configuration for the purpose of testing
+/* testing grade for compromise sentence tagging - to override 'characterLimit'
+ * configuration for the purpose of testing
  */
 fluid.defaults("adaptiveContentService.test.handlers.nlp.compromise.sentenceTagging", {
     gradeNames: "adaptiveContentService.handlers.nlp.compromise.sentenceTagging",
@@ -78,7 +79,7 @@ adaptiveContentService.tests.nlp.compromise.sentenceTagging = [{
         {
             event: "{correctSentence}.events.onComplete",
             listener: "adaptiveContentService.tests.utils.assertStatusCode",
-            args: ["NLP Tests : Sentence Tagging test for correct sentence successful", 200, "{arguments}.1.nativeResponse.statusCode"]
+            args: ["NLP Tests : Sentence Tagging test (Compromise) for correct sentence successful", 200, "{arguments}.1.nativeResponse.statusCode"]
         },
         {
             func: "{emptySentence}.send",
@@ -87,7 +88,7 @@ adaptiveContentService.tests.nlp.compromise.sentenceTagging = [{
         {
             event: "{emptySentence}.events.onComplete",
             listener: "adaptiveContentService.tests.utils.assertStatusCode",
-            args: ["NLP Tests : Sentence Tagging test for empty sentence successful", 400, "{arguments}.1.nativeResponse.statusCode"]
+            args: ["NLP Tests : Sentence Tagging test (Compromise) for empty sentence successful", 400, "{arguments}.1.nativeResponse.statusCode"]
         },
         {
             func: "{longSentence}.send",
@@ -96,7 +97,7 @@ adaptiveContentService.tests.nlp.compromise.sentenceTagging = [{
         {
             event: "{longSentence}.events.onComplete",
             listener: "adaptiveContentService.tests.utils.assertStatusCode",
-            args: ["NLP Tests : Sentence Tagging test for long sentence successful", 413, "{arguments}.1.nativeResponse.statusCode"]
+            args: ["NLP Tests : Sentence Tagging test (Compromise) for long sentence successful", 413, "{arguments}.1.nativeResponse.statusCode"]
         }
     ]
 }];

@@ -20,8 +20,8 @@ var errResponse = {
 };
 
 var testMessage = {
-    html: "Unit Test : For checkDictionary function : Successful with html error response",
-    nonHtml: "Unit Test : For checkDictionary function : Successful with nonHtml error response"
+    html: "Unit Test : For checkDictionary function (Oxford) : Successful with html error response",
+    nonHtml: "Unit Test : For checkDictionary function (Oxford) : Successful with nonHtml error response"
 };
 
 var expectedReturnVal = {

@@ -71,16 +71,16 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    langObjAbsent: "Unit Test : For checkLanguageCodes function : Successful with langObj absent",
-    sourceLangInvalid: "Unit Test : For checkLanguageCodes function : Successful with invalid sourceLang",
-    targetLangInvalid: "Unit Test : For checkLanguageCodes function : Successful with invalid targetLang",
-    bothValid: "Unit Test : For checkLanguageCodes function : Successful with both sourceLang and targetLang valid",
-    localizedValid: "Unit Test : For checkLanguageCodes function : Successful with localized language code valid",
-    localizedInvalid: "Unit Test : For checkLanguageCodes function : Successful with localized language code invalid"
+    langObjAbsent: "Unit Test : For checkLanguageCodes function (Handler Utilities function) : Successful with langObj absent",
+    sourceLangInvalid: "Unit Test : For checkLanguageCodes function (Handler Utilities function) : Successful with invalid sourceLang",
+    targetLangInvalid: "Unit Test : For checkLanguageCodes function (Handler Utilities function) : Successful with invalid targetLang",
+    bothValid: "Unit Test : For checkLanguageCodes function (Handler Utilities function) : Successful with both sourceLang and targetLang valid",
+    localizedValid: "Unit Test : For checkLanguageCodes function (Handler Utilities function) : Successful with localized language code valid",
+    localizedInvalid: "Unit Test : For checkLanguageCodes function (Handler Utilities function) : Successful with localized language code invalid"
 };
 
 jqunit.test(
-    "Unit Test : For checkLanguageCodes function (Translation Service)",
+    "Unit Test : For checkLanguageCodes function (Handler Utilities function)",
     function () {
 
         // for absent langObj

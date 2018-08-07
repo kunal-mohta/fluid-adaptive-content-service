@@ -37,12 +37,12 @@ var expectedReturnVal = {
 };
 
 var testMessage = {
-    noError: "Unit Test : For isLangResponseEmpty function : Successful with 'no error' response",
-    cannotDetect: "Unit Test : For isLangResponseEmpty function : Successful with 'unable to detect lang' response"
+    noError: "Unit Test : For isLangResponseEmpty function (Yandex) : Successful with 'no error' response",
+    cannotDetect: "Unit Test : For isLangResponseEmpty function (Yandex) : Successful with 'unable to detect lang' response"
 };
 
 jqunit.test(
-    "Unit Test : For isLangResponseEmpty function (Translation Service)",
+    "Unit Test : For isLangResponseEmpty function (Yandex Service)",
     function () {
 
         // for 'no error' response

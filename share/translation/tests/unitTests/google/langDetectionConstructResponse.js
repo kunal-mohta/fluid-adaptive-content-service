@@ -26,10 +26,10 @@ var expectedReturnVal = {
     langCode: testServiceResponse.body.language
 };
 
-var testMessage = "Unit Test : For language detection constructResponse function : Successful";
+var testMessage = "Unit Test : For language detection constructResponse function (Google) : Successful";
 
 jqunit.test(
-    "Unit Test : For language detection constructResponse function (Translation Service)",
+    "Unit Test : For language detection constructResponse function (Google Service)",
     function () {
         adaptiveContentService.tests.translation.unitTests.google.langDetectionConstructResponse(testMessage, expectedReturnVal, testServiceResponse);
     }

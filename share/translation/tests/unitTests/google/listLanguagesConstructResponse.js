@@ -34,10 +34,10 @@ var expectedReturnVal = {
     ]
 };
 
-var testMessage = "Unit Test : For list supported languages constructResponse function : Successful";
+var testMessage = "Unit Test : For list supported languages constructResponse function (Google) : Successful";
 
 jqunit.test(
-    "Unit Test : For list supported languages constructResponse function (Translation Service)",
+    "Unit Test : For list supported languages constructResponse function (Google Service)",
     function () {
         adaptiveContentService.tests.translation.unitTests.google.listLanguagesConstructResponse(testMessage, expectedReturnVal, testServiceResponse);
     }

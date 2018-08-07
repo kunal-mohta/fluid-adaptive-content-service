@@ -5,14 +5,12 @@
 
 "use strict";
 
-var fluid = require("infusion"),
-    jqunit = require("node-jqunit");
-require("dotenv").config(); // npm package to get variables from '.env' file
+var fluid = require("infusion");
 
+require("dotenv").config(); // npm package to get variables from '.env' file
 require("../../../../testUtils");
 
-var adaptiveContentService = fluid.registerNamespace("adaptiveContentService"),
-    ACS = fluid.registerNamespace("ACS");
+var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.google.contractTests.listLanguages");
 
 // grade getting us data from the google service
@@ -33,33 +31,7 @@ adaptiveContentService.tests.translation.google.contractTests.listLanguages.getD
     var googleTranslate = require("google-translate")(serviceKey); // package for convenient usage of google translation service
 
     googleTranslate.getSupportedLanguages(lang, function (err, languageCodes) {
-        if (err) {
-
-            // error making request
-            if (err.body === undefined) {
-                ACS.log("Contract Test (Google - List Supported Languages) - Error occured while making request to the external service");
-                jqunit.fail("Contract Test : For listing supported languages failed due to error making request to the external service (Google Service)");
-            }
-            // request successful, but other errors catched
-            else {
-                var jsonBody;
-
-                // is error body json parseable
-                try {
-                    jsonBody = JSON.parse(err.body);
-                    that.events.onDataReceive.fire(jsonBody);
-                }
-                catch (e) {
-                    ACS.log("Contract Test (Google - List Supported Languages) - Error occured while parsing the error response body; body should be JSON pareseable -  " + e);
-                    ACS.log("Contract Test (Google - List Supported Languages) - Error Response body - \n" + err.body);
-                    jqunit.fail("Contract Test : For listing supported languages failed due to error parsing error response body into JSON");
-                }
-            }
-        }
-        // No errors
-        else {
-            that.events.onDataReceive.fire(languageCodes);
-        }
+        adaptiveContentService.tests.utils.googleContractTestRequestHandler(err, languageCodes, "Google - List languages", that);
     });
 };
 

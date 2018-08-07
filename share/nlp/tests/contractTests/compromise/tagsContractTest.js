@@ -2,15 +2,15 @@
 
 var fluid = require("infusion"),
     jqunit = require("node-jqunit"),
-    nlp = require("compromise");//npm package that provides NLP services
+    nlp = require("compromise"); // npm package that provides NLP services
 
 require("../../../../testUtils");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.nlp.compromise.contractTests.tags");
 
-var tagsSchemas = require("./schemas/tagsSchemas"), //main schema that is compiled
-    allSchemas = []; //array of all schemas required (other than main schema)
+var tagsSchemas = require("./schemas/tagsSchemas"), // main schema that is compiled
+    allSchemas = []; // array of all schemas required (other than main schema)
 
 var successMessage = "Contract Test : For sentence tagging successful (Compromise Service)",
     failureMessage = "Contract Test : For sentence tagging failed (Compromise Service)";

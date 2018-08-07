@@ -28,10 +28,10 @@ var expectedReturnVal = {
     translatedText: testServiceResponse.body.translatedText
 };
 
-var testMessage = "Unit Test : For 'detect and translate' constructResponse function : Successful";
+var testMessage = "Unit Test : For 'detect and translate' constructResponse function (Google) : Successful";
 
 jqunit.test(
-    "Unit Test : For 'detect and translate' constructResponse function (Translation Service)",
+    "Unit Test : For 'detect and translate' constructResponse function (Google Service)",
     function () {
         adaptiveContentService.tests.translation.unitTests.google.translationConstructResponse(testMessage, expectedReturnVal, testServiceResponse, mockTranslationData.targetLang.correct);
     }

@@ -102,7 +102,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{noError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with no errors", 200, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with no errors (Yandex Service)", 200, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{emptyTextField}.send",
@@ -111,7 +111,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{emptyTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with empty text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with empty text field (Yandex Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{absentTextField}.send",
@@ -120,7 +120,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{absentTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with too long text field", 400, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with absent text field (Yandex Service)", 400, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{blockedApiKey}.send",
@@ -129,7 +129,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{blockedApiKey}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with blocked api key", 402, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with blocked api key (Yandex Service)", 402, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{wrongApiKey}.send",
@@ -138,7 +138,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{wrongApiKey}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with wrong api key", 403, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with wrong api key (Yandex Service)", 403, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{cannotDetectLang}.send",
@@ -147,7 +147,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{cannotDetectLang}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for 'unable to detect lang' response", 404, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for 'unable to detect lang' response (Yandex Service)", 404, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{longTextField}.send",
@@ -156,7 +156,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{longTextField}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for request with absent text field", 413, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for request with too long text field (Yandex Service)", 413, "{arguments}.1.nativeResponse.statusCode"]
     },
     {
         func: "{requestError}.send",
@@ -165,7 +165,7 @@ adaptiveContentService.tests.translation.yandex.langDetection = [{
     {
         event: "{requestError}.events.onComplete",
         listener: "adaptiveContentService.tests.utils.assertStatusCode",
-        args: ["Translation Tests : language detection test for error with making request", 500, "{arguments}.1.nativeResponse.statusCode"]
+        args: ["Translation Tests : language detection test for error with making request (Yandex Service)", 500, "{arguments}.1.nativeResponse.statusCode"]
     }
     ]
 }];
