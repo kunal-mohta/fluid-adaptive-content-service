@@ -5,7 +5,7 @@ var commonSchemas = require("./commonSchemas");
 module.exports = {
     noError: {
         "type": "object",
-        "required": ["code", "text"],
+        "required": ["code", "lang", "text"],
         "properties": {
             "code": { "type": "number" },
             "text": {
@@ -13,6 +13,10 @@ module.exports = {
                 "items": {
                     "type": "string"
                 }
+            },
+            "lang": {
+                "type": "string",
+                "pattern": "^(\\w+)-(\\w+)$"
             }
         }
     },

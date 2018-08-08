@@ -31,8 +31,7 @@ fluid.defaults("adaptiveContentService.handlers.nlp.sentenceTagging", {
         // not implemented - should be implemented in child grades
         nlpHandlerImpl: "fluid.notImplemented",
         checkNlpError: "fluid.notImplemented",
-        requiredData: "fluid.notImplemented",
-        constructResponse: "fluid.notImplemented"
+        requiredData: "fluid.notImplemented"
     }
 });
 

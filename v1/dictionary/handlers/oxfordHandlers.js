@@ -20,14 +20,13 @@ fluid.defaults("adaptiveContentService.handlers.dictionary.oxford", {
         urlBase: "https://od-api.oxforddictionaries.com/api/v1/"
     },
     invokers: {
-        dictionaryHandlerImpl: "fluid.notImplemented",
-        commonHandlerTasks: "adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks",
         requiredDataImpl: "adaptiveContentService.handlers.dictionary.oxford.requiredData",
         serviceKeysImpl: "adaptiveContentService.handlers.dictionary.oxford.serviceKeys",
         checkServiceKeys: "adaptiveContentService.handlers.dictionary.oxford.checkServiceKeys",
-        preRequestErrorCheck: "adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck",
         checkDictionaryErrorImpl: "adaptiveContentService.handlers.dictionary.oxford.checkDictionaryError",
-        errorMsgScrape: "adaptiveContentService.handlers.dictionary.oxford.errorMsgScrape"
+        errorMsgScrape: "adaptiveContentService.handlers.dictionary.oxford.errorMsgScrape",
+        dictionaryHandlerImpl: "fluid.notImplemented",
+        constructResponse: "fluid.notImplemented"
     }
 });
 
@@ -234,7 +233,9 @@ fluid.defaults("adaptiveContentService.handlers.dictionary.oxford.definition", {
     gradeNames: "adaptiveContentService.handlers.dictionary.oxford",
     invokers: {
         dictionaryHandlerImpl: "adaptiveContentService.handlers.dictionary.oxford.definition.getDefinition",
-        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.definition.constructResponse"
+        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.definition.constructResponse",
+        commonHandlerTasks: "adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks",
+        preRequestErrorCheck: "adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck"
     }
 });
 
@@ -298,7 +299,9 @@ fluid.defaults("adaptiveContentService.handlers.dictionary.oxford.synonyms", {
     gradeNames: "adaptiveContentService.handlers.dictionary.oxford",
     invokers: {
         dictionaryHandlerImpl: "adaptiveContentService.handlers.dictionary.oxford.synonyms.getSynonyms",
-        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.synonyms.constructResponse"
+        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.synonyms.constructResponse",
+        commonHandlerTasks: "adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks",
+        preRequestErrorCheck: "adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck"
     }
 });
 
@@ -389,7 +392,9 @@ fluid.defaults("adaptiveContentService.handlers.dictionary.oxford.antonyms", {
     gradeNames: "adaptiveContentService.handlers.dictionary.oxford",
     invokers: {
         dictionaryHandlerImpl: "adaptiveContentService.handlers.dictionary.oxford.antonyms.getAntonyms",
-        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.antonyms.constructResponse"
+        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.antonyms.constructResponse",
+        commonHandlerTasks: "adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks",
+        preRequestErrorCheck: "adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck"
     }
 });
 
@@ -480,7 +485,9 @@ fluid.defaults("adaptiveContentService.handlers.dictionary.oxford.pronunciations
     gradeNames: "adaptiveContentService.handlers.dictionary.oxford",
     invokers: {
         dictionaryHandlerImpl: "adaptiveContentService.handlers.dictionary.oxford.pronunciations.getPronunciations",
-        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.pronunciations.constructResponse"
+        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.pronunciations.constructResponse",
+        commonHandlerTasks: "adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks",
+        preRequestErrorCheck: "adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck"
     }
 });
 
@@ -571,7 +578,9 @@ fluid.defaults("adaptiveContentService.handlers.dictionary.oxford.frequency", {
     gradeNames: "adaptiveContentService.handlers.dictionary.oxford",
     invokers: {
         dictionaryHandlerImpl: "adaptiveContentService.handlers.dictionary.oxford.frequency.getFrequency",
-        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.frequency.constructResponse"
+        constructResponse: "adaptiveContentService.handlers.dictionary.oxford.frequency.constructResponse",
+        commonHandlerTasks: "adaptiveContentService.handlers.dictionary.oxford.commonHandlerTasks",
+        preRequestErrorCheck: "adaptiveContentService.handlers.dictionary.oxford.preRequestErrorCheck"
     }
 });
 
