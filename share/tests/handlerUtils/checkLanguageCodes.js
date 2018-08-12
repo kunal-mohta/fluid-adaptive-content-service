@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes");
 
-require("../../handlerUtils");
+require("../index");
 
 adaptiveContentService.tests.handlerUtils.unitTests.checkLanguageCodes = function (testMessage, expectedReturnVal, testLangObj) {
     var returnVal = adaptiveContentService.handlerUtils.checkLanguageCodes(testLangObj);

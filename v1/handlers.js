@@ -2,11 +2,8 @@
 
 var fluid = require("infusion");
 
-require("../share/utils");
-require("../share/handlerUtils");
-
+require("./index");
 require("kettle");
-require("./commonMiddleware");
 
 /* Abstract grade
  * from which all the service grades will extract

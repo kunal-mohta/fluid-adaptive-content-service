@@ -6,10 +6,10 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.oxford.unitTests.checkDictionaryError");
 
-require("../../../../../v1/dictionary/handlers/oxfordHandlers");
+require("../index");
 
-//mock data
-var mockData = require("../../mockData/oxford/definitions");
+// mock data
+var mockData = require("../../index").mockData.oxford.definition;
 
 var serviceResponse = {
     noError: {

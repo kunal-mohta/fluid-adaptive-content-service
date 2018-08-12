@@ -4,8 +4,7 @@ var fluid = require("infusion"),
     kettle = require("kettle");
 require("dotenv").config();
 
-require("../../../../../index.js");
-require("../../../../testUtils");
+require("../index");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.wiktionary.definition");
@@ -15,7 +14,7 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 kettle.loadTestingSupport();
 
 // mock data
-var mockDefinitionData = require("../../mockData/wiktionary/definitions");
+var mockDefinitionData = require("../../index").mockData.wiktionary.definition;
 
 /* testing grade for wiktionary definition - to override 'requiredData' function
  * for the purpose of testing

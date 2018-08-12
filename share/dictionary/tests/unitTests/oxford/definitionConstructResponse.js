@@ -5,14 +5,13 @@ var fluid = require("infusion"),
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 
-require("../../../../../v1/dictionary/handlers/oxfordHandlers");
-require("../../../../testUtils");
+require("../index");
 
 var testMessage = "Unit Test : For constructResponse function of definitions endpoint : Successful (Oxford Service)",
     constructResponseFunction = adaptiveContentService.handlers.dictionary.oxford.definition.constructResponse; //from oxfordHandlers.js
 
 // mock service data
-var mockDefinitionsData = require("../../mockData/oxford/definitions"), // file holding object with mock data
+var mockDefinitionsData = require("../../index").mockData.oxford.definition, // file holding object with mock data
     jsonServiceData = mockDefinitionsData.responses.correctWord;
 
 // expected return value from the function being tested

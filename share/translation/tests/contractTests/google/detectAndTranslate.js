@@ -3,7 +3,7 @@
 var fluid = require("infusion");
 
 require("dotenv").config(); // npm package to get variables from '.env' file
-require("../../../../testUtils");
+require("../index");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.google.contractTests.detectAndTranslate");

@@ -6,10 +6,10 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.wiktionary.unitTests.checkDictionaryError");
 
-require("../../../../../v1/dictionary/handlers/wiktionaryHandlers");
+require("../index");
 
 // mock data
-var mockDefinitionsData = require("../../mockData/wiktionary/definitions");
+var mockDefinitionsData = require("../../index").mockData.wiktionary.definition;
 
 var serviceResponse = {
     noError: mockDefinitionsData.responses.correctWord,

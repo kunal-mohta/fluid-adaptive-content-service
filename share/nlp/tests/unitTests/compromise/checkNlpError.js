@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.nlp.compromise.unitTests.checkNlpError");
 
-require("../../../../../v1/nlp/handlers");
+require("../index");
 
 adaptiveContentService.tests.nlp.compromise.unitTests.checkNlpError = function (requestSentence, characterLimit, testMessage, expectedReturnVal) {
     var returnVal = adaptiveContentService.handlers.nlp.compromise.sentenceTagging.checkNlpError(requestSentence, characterLimit);

@@ -8,8 +8,7 @@ var fluid = require("infusion"),
     kettle = require("kettle");
 require("dotenv").config();
 
-require("../../../../../index.js");
-require("../../../../testUtils");
+require("../index");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.google.listLanguages");
@@ -18,8 +17,8 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
 
-//mock data
-var mockListLanguagesData = require("../../mockData/google/listLanguages");
+// mock data
+var mockListLanguagesData = require("../../index").mockData.google.listLanguages;
 
 /* testing grade for google listing supported languages - to override 'requiredData' function
  * for the purpose of testing

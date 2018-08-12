@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.checkCommonGoogleErrors");
 
-require("../../../../../v1/translation/handlers");
+require("../index");
 
 adaptiveContentService.tests.translation.unitTests.checkCommonGoogleErrors = function (testMessage, expectedReturnVal, serviceResponse) {
     var returnVal = adaptiveContentService.handlers.translation.google.checkCommonGoogleErrors(serviceResponse);
@@ -15,7 +15,7 @@ adaptiveContentService.tests.translation.unitTests.checkCommonGoogleErrors = fun
 };
 
 // mock data
-var mockTranslationData = require("../../mockData/google/translation");
+var mockTranslationData = require("../../index").mockData.google.translation;
 
 var testSeviceResponse = {
     noError: {

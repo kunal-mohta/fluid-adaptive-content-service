@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.checkSourceText");
 
-require("../../../../../v1/translation/handlers");
+require("../index");
 
 adaptiveContentService.tests.translation.unitTests.checkSourceText = function (testMessage, expectedReturnVal, testText, wordCharacterLimit) {
     var returnVal = adaptiveContentService.handlers.translation.checkSourceText(testText, wordCharacterLimit);
@@ -17,7 +17,7 @@ adaptiveContentService.tests.translation.unitTests.checkSourceText = function (t
 var wordCharacterLimit = 10; // set character limit for testing purpose
 
 // mock data
-var mockData = require("../../mockData/common/translation");
+var mockData = require("../../index").mockData.common.translation;
 
 var testText = {
     noTextField: mockData.text.absent,

@@ -4,13 +4,12 @@ var fluid = require("infusion"),
     kettle = require("kettle");
 require("dotenv").config();
 
-require("../../../../../index.js");
-require("../../../../testUtils");
+require("../index");
 
-require("../../nock/mockOxfordExtendedFrequency"); // providing mock data as an alternative to actual Oxford response
+require("../index").nock.oxford.extendedFrequency; // providing mock data as an alternative to actual Oxford response
 
 // mock data
-var mockExtendedFrequencyData = require("../../mockData/oxford/extendedFrequency");
+var mockExtendedFrequencyData = require("../../index").mockData.oxford.extendedFrequency;
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.oxford.extendedFrequency");

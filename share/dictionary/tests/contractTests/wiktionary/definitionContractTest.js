@@ -3,7 +3,7 @@
 var fluid = require("infusion"),
     wd = require("word-definition");
 
-require("../../../../testUtils");
+require("../index");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.wiktionary.contractTests.definition");

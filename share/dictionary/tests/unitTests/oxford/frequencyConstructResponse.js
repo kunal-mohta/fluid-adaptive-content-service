@@ -5,8 +5,7 @@ var fluid = require("infusion"),
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 
-require("../../../../../v1/dictionary/handlers/oxfordHandlers");
-require("../../../../testUtils");
+require("../index");
 
 var testMessage = {
         frequency: "Unit Test : For constructResponse function of frequency endpoint : Successful (Oxford Service)",
@@ -15,8 +14,8 @@ var testMessage = {
     constructResponseFunction = adaptiveContentService.handlers.dictionary.oxford.frequency.constructResponse; //from oxfordHandlers.js
 
 // mock service data
-var mockFrequencyData = require("../../mockData/oxford/frequency"), //file holding object with mock data (frequency)
-    mockExtendedFrequencyData = require("../../mockData/oxford/extendedFrequency"),// file holding object with mock data
+var mockFrequencyData = require("../../index").mockData.oxford.frequency, //file holding object with mock data (frequency)
+    mockExtendedFrequencyData = require("../../index").mockData.oxford.extendedFrequency, // file holding object with mock data
     jsonServiceData = {
         frequency: mockFrequencyData.responses.correctWord,
         extendedFrequency: mockExtendedFrequencyData.responses.correctWord

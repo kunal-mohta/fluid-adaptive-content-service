@@ -5,14 +5,13 @@ var fluid = require("infusion"),
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 
-require("../../../../../v1/dictionary/handlers/oxfordHandlers");
-require("../../../../testUtils");
+require("../index");
 
 var testMessage = "Unit Test : For constructResponse function of list supported languages endpoint : Successful (Oxford Service)",
     constructResponseFunction = adaptiveContentService.handlers.dictionary.oxford.listLanguages.constructResponse; //from oxfordHandlers.js
 
 // mock service data
-var mockListLanguagesData = require("../../mockData/oxford/listLanguages"),// file holding object with mock data
+var mockListLanguagesData = require("../../index").mockData.oxford.listLanguages, // file holding object with mock data
     jsonServiceData = mockListLanguagesData.responses.noError;
 
 // expected return value from the function being tested

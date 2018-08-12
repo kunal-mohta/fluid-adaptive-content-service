@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.yandex.listLanguagesConstructResponse");
 
-require("../../../../../v1/translation/handlers");
+require("../index");
 
 adaptiveContentService.tests.translation.unitTests.yandex.listLanguagesConstructResponse = function (testMessage, expectedReturnVal, serviceResponse) {
     var returnVal = adaptiveContentService.handlers.translation.yandex.listLanguages.constructResponse(serviceResponse);
@@ -15,7 +15,7 @@ adaptiveContentService.tests.translation.unitTests.yandex.listLanguagesConstruct
 };
 
 // mock data
-var mockListLangData = require("../../mockData/yandex/listLanguages");
+var mockListLangData = require("../../index").mockData.yandex.listLanguages;
 
 var testServiceResponse = {
     body: {

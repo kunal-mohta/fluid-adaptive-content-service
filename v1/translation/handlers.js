@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 
 require("dotenv").config(); // npm package to get variables from '.env' file
 
-require("../handlers");
+require("./index");
 
 /* Abstract grade for translation service endpoints
  * from which other service grades will inherit

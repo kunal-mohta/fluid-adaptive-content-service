@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.unitTests.checkUriError");
 
-require("../../../../../v1/dictionary/handlers");
+require("../index");
 
 adaptiveContentService.tests.dictionary.unitTests.checkUriError = function (testMessage, expectedReturnVal, testWord, wordCharacterLimit) {
     var returnVal = adaptiveContentService.handlers.dictionary.checkUriError(testWord, wordCharacterLimit);

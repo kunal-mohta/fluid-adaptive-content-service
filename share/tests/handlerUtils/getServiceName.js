@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.handlerUtils.unitTests.getServiceName");
 
-require("../../handlerUtils");
+require("../index");
 
 var testUrl = "/version/dictionary/serviceName/language/endpointName/word";
 

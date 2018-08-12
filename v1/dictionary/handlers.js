@@ -4,7 +4,7 @@ var fluid = require("infusion"),
     ACS = fluid.registerNamespace("ACS"),
     adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 
-require("../handlers");
+require("./index");
 
 /* Abstract grade for dictionary service endpoints
  * from which other service grades will inherit

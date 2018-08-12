@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.nlp.compromise.unitTests.constructResponse");
 
-require("../../../../../v1/nlp/handlers");
+require("../index");
 
 var sentence = "This is correct sentence",
     serviceTags = [

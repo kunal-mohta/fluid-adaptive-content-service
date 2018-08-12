@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.checkCommonYandexErrors");
 
-require("../../../../../v1/translation/handlers");
+require("../index");
 
 adaptiveContentService.tests.translation.unitTests.checkCommonYandexErrors = function (testMessage, expectedReturnVal, serviceResponse) {
     var returnVal = adaptiveContentService.handlers.translation.yandex.checkCommonYandexErrors(serviceResponse);
@@ -15,7 +15,7 @@ adaptiveContentService.tests.translation.unitTests.checkCommonYandexErrors = fun
 };
 
 // mock data
-var mockTranslationData = require("../../mockData/yandex/translation");
+var mockTranslationData = require("../../index").mockData.yandex.translation;
 
 var testSeviceResponse = {
     noError: {

@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.yandex.translationConstructResponse");
 
-require("../../../../../v1/translation/handlers");
+require("../index");
 
 adaptiveContentService.tests.translation.unitTests.yandex.translationConstructResponse = function (testMessage, expectedReturnVal, serviceResponse, sourceText) {
     var returnVal = adaptiveContentService.handlers.translation.yandex.translationConstructResponse(serviceResponse, sourceText);
@@ -14,8 +14,8 @@ adaptiveContentService.tests.translation.unitTests.yandex.translationConstructRe
     jqunit.assertDeepEq(testMessage, expectedReturnVal, returnVal);
 };
 
-//mock data
-var mockTranslationData = require("../../mockData/yandex/translation");
+// mock data
+var mockTranslationData = require("../../index").mockData.yandex.translation;
 
 var testServiceResponse = {
     body: mockTranslationData.responses.noError

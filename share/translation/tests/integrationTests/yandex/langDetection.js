@@ -4,10 +4,9 @@ var fluid = require("infusion"),
     kettle = require("kettle");
 require("dotenv").config();
 
-require("../../../../../index.js");
-require("../../../../testUtils");
+require("../index");
 
-require("../../nock/yandex/mockYandexLangDetection"); // providing mock data as an alternative to actual Yandex response
+require("../index").nock.yandex.langDetection; // providing mock data as an alternative to actual Yandex response
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.yandex.langDetection");
@@ -16,8 +15,8 @@ fluid.logObjectRenderChars = kettle.resolvers.env("CHAR_LIM");
 
 kettle.loadTestingSupport();
 
-//mock data
-var mockLangDetectionData = require("../../mockData/yandex/langDetection");
+// mock data
+var mockLangDetectionData = require("../../index").mockData.yandex.langDetection;
 
 /* testing grade for yandex language detection - to override 'characterLimit' and 'authenticationOptions'
  * configuration for the purpose of testing

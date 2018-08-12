@@ -4,7 +4,7 @@ var fluid = require("infusion"),
     makeRequest = require("request"); // npm package used to make requests to third-party services used
 
 require("dotenv").config(); // npm package to get variables from '.env' file
-require("../../../../testUtils");
+require("../index");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.oxford.contractTests.synonyms");

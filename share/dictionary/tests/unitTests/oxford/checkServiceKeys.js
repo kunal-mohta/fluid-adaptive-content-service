@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.oxford.unitTests.checkServiceKeys");
 
-require("../../../../../v1/dictionary/handlers");
+require("../index");
 
 adaptiveContentService.tests.dictionary.oxford.unitTests.checkServiceKeys = function (testMessage, expectedReturnVal, keyHeaders) {
     var returnVal = adaptiveContentService.handlers.dictionary.oxford.checkServiceKeys(keyHeaders);

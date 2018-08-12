@@ -4,8 +4,10 @@ var fluid = require("infusion"),
     kettle = require("kettle");
 require("dotenv").config();
 
-require("../../../../../index.js");
-require("../../../../testUtils");
+require("../index");
+
+// mock data
+var mockDefinitionData = require("../../index").mockData.wiktionary.definition;
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.dictionary.general.definition");
@@ -13,9 +15,6 @@ fluid.registerNamespace("adaptiveContentService.tests.dictionary.general.definit
 fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 
 kettle.loadTestingSupport();
-
-// mock data
-var mockDefinitionData = require("../../mockData/wiktionary/definitions");
 
 /* testing grade for general definition - to override 'requiredData' function
  * for the purpose of testing

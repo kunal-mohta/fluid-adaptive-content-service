@@ -4,7 +4,7 @@ var fluid = require("infusion"),
     jqunit = require("node-jqunit"),
     nlp = require("compromise"); // npm package that provides NLP services
 
-require("../../../../testUtils");
+require("../index");
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.nlp.compromise.contractTests.tags");

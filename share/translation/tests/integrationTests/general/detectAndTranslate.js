@@ -4,11 +4,10 @@ var fluid = require("infusion"),
     kettle = require("kettle");
 require("dotenv").config();
 
-require("../../../../../index.js");
-require("../../../../testUtils");
+require("../index");
 
-require("../../nock/yandex/mockYandexTranslation"); // providing mock data as an alternative to actual Yandex response (translation)
-require("../../nock/yandex/mockYandexLangDetection"); // providing mock data as an alternative to actual Yandex response (language detection)
+require("../index").nock.yandex.translation; // providing mock data as an alternative to actual Yandex response (translation)
+require("../index").nock.yandex.langDetection; // providing mock data as an alternative to actual Yandex response (language detection)
 
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.general.detectAndTranslate");
@@ -18,10 +17,10 @@ fluid.logObjectRenderChars = kettle.resolvers.env("CHAR_LIM");
 kettle.loadTestingSupport();
 
 // mock data (translation)
-var mockTranslationData = require("../../mockData/yandex/translation");
+var mockTranslationData = require("../../index").mockData.yandex.translation;
 
 // mock data (language detection)
-var mockLangDetectionData = require("../../mockData/yandex/langDetection");
+var mockLangDetectionData = require("../../index").mockData.yandex.langDetection;
 
 /* testing grade for detect-and-translate - to override 'characterLimit' and 'authenticationOptions'
  * configuration for the purpose of testing

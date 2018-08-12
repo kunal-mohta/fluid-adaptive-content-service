@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.checkServiceKey");
 
-require("../../../../../v1/translation/handlers");
+require("../index");
 
 adaptiveContentService.tests.translation.unitTests.checkServiceKey = function (testMessage, expectedReturnVal, testServiceKey) {
     var returnVal = adaptiveContentService.handlers.translation.checkServiceKey(testServiceKey);

@@ -6,7 +6,7 @@ var fluid = require("infusion"),
 var adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 fluid.registerNamespace("adaptiveContentService.tests.translation.unitTests.google.langDetectionConstructResponse");
 
-require("../../../../../v1/translation/handlers");
+require("../index");
 
 adaptiveContentService.tests.translation.unitTests.google.langDetectionConstructResponse = function (testMessage, expectedReturnVal, serviceResponse) {
     var returnVal = adaptiveContentService.handlers.translation.google.langDetection.constructResponse(serviceResponse);
@@ -15,7 +15,7 @@ adaptiveContentService.tests.translation.unitTests.google.langDetectionConstruct
 };
 
 // mock data
-var mockLangDetectionData = require("../../mockData/google/langDetection");
+var mockLangDetectionData = require("../../index").mockData.google.langDetection;
 
 var testServiceResponse = {
     body: mockLangDetectionData.responses.noError

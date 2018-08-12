@@ -4,8 +4,7 @@ var fluid = require("infusion"),
     ACS = fluid.registerNamespace("ACS"),
     adaptiveContentService = fluid.registerNamespace("adaptiveContentService");
 
-// include common handler(s)
-require("../handlers");
+require("./index");
 
 /* Abstract grade for nlp service endpoints
  * from which other service grades will inherit
