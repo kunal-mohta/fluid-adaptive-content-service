@@ -14,7 +14,7 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.wiktionary.extendedFrequency = [{
-    name: "GET request for the Frequency (extended) dictionary endpoint of the Wiktionary Service",
+    name: "Integration Test : GET request for the Frequency (extended) dictionary endpoint of the Wiktionary Service",
     expect: 1,
     config: {
         configName: "dictionaryServerConfig",

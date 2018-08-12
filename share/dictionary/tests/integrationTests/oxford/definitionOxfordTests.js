@@ -30,7 +30,7 @@ fluid.defaults("adaptiveContentService.test.handlers.dictionary.oxford.definitio
 });
 
 adaptiveContentService.tests.dictionary.oxford.definition = [{
-    name: "GET request for the definition dictionary endpoint",
+    name: "Integration Test : GET request for the definition dictionary endpoint",
     expect: 6,
     config: {
         configName: "dictionaryServerConfig",

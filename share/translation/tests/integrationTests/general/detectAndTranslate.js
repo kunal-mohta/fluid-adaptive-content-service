@@ -34,7 +34,7 @@ fluid.defaults("adaptiveContentService.test.handlers.translation.general.detectA
 });
 
 adaptiveContentService.tests.translation.general.detectAndTranslate = [{
-    name: "POST request for the translation endpoint (with only target language given)",
+    name: "Integration Test : POST request for the translation endpoint (with only target language given)",
     expect: 7,
     config: {
         configName: "translationServerConfig",

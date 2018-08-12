@@ -30,7 +30,7 @@ fluid.defaults("adaptiveContentService.test.handlers.dictionary.oxford.extendedF
 });
 
 adaptiveContentService.tests.dictionary.oxford.extendedFrequency = [{
-    name: "GET request for the Frequency (extended) dictionary endpoint of Oxford Service",
+    name: "Integration Test : GET request for the Frequency (extended) dictionary endpoint of Oxford Service",
     expect: 5,
     config: {
         configName: "dictionaryServerConfig",

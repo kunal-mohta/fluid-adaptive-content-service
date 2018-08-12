@@ -41,7 +41,7 @@ fluid.defaults("adaptiveContentService.test.handlers.nlp.compromise.sentenceTagg
 });
 
 adaptiveContentService.tests.nlp.compromise.sentenceTagging = [{
-    name: "GET request for the Sentence Tagging NLP endpoint",
+    name: "Integration Test : GET request for the Sentence Tagging NLP endpoint",
     expect: 3,
     config: {
         configName: "nlpServerConfig",

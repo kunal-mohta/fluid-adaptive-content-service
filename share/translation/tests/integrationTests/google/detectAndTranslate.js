@@ -70,7 +70,7 @@ adaptiveContentService.test.handlers.translation.google.detectAndTranslate.requi
 };
 
 adaptiveContentService.tests.translation.google.detectAndTranslate = [{
-    name: "POST request for the translation endpoint (with only target language given) of Google Service",
+    name: "Integration Test : POST request for the translation endpoint (with only target language given) of Google Service",
     expect: 8,
     config: {
         configName: "translationServerConfig",

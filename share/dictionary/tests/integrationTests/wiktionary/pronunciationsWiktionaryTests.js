@@ -14,7 +14,7 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.wiktionary.pronunciation = [{
-    name: "GET request for the Pronunciations dictionary endpoint of the Wiktionary Service",
+    name: "Integration Test : GET request for the Pronunciations dictionary endpoint of the Wiktionary Service",
     expect: 1,
     config: {
         configName: "dictionaryServerConfig",

@@ -14,7 +14,7 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.wiktionary.antonyms = [{
-    name: "GET request for the Antonyms dictionary endpoint of the Wiktionary Service",
+    name: "Integration Test : GET request for the Antonyms dictionary endpoint of the Wiktionary Service",
     expect: 1,
     config: {
         configName: "dictionaryServerConfig",

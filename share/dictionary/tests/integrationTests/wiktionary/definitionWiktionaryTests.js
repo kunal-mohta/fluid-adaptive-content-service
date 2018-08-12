@@ -32,7 +32,7 @@ adaptiveContentService.test.handlers.dictionary.wiktionary.definition.requiredDa
 };
 
 adaptiveContentService.tests.dictionary.wiktionary.definition = [{
-    name: "GET request for the definition dictionary endpoint",
+    name: "Integration Test : GET request for the definition dictionary endpoint",
     expect: 5,
     config: {
         configName: "dictionaryServerConfig",

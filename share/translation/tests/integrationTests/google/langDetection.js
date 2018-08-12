@@ -37,7 +37,7 @@ adaptiveContentService.test.handlers.translation.google.langDetection.requiredDa
 };
 
 adaptiveContentService.tests.translation.google.langDetection = [{
-    name: "POST request for the Language detection endpoint of Google Service",
+    name: "Integration Test : POST request for the Language detection endpoint of Google Service",
     expect: 7,
     config: {
         configName: "translationServerConfig",

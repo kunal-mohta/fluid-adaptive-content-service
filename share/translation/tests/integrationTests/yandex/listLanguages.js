@@ -29,7 +29,7 @@ fluid.defaults("adaptiveContentService.test.handlers.translation.yandex.listLang
 });
 
 adaptiveContentService.tests.translation.yandex.listLanguages = [{
-    name: "GET request for the List Languages endpoint of Yandex Service",
+    name: "Integration Test : GET request for the List Languages endpoint of Yandex Service",
     expect: 2,
     config: {
         configName: "translationServerConfig",

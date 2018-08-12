@@ -56,7 +56,7 @@ adaptiveContentService.test.handlers.translation.google.listLanguages.requiredDa
 };
 
 adaptiveContentService.tests.translation.google.listLanguages = [{
-    name: "GET request for the List Languages endpoint of Google Service",
+    name: "Integration Test : GET request for the List Languages endpoint of Google Service",
     expect: 3,
     config: {
         configName: "translationServerConfig",

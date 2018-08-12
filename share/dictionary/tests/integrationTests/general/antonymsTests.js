@@ -30,7 +30,7 @@ fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.antonyms
 });
 
 adaptiveContentService.tests.dictionary.general.antonyms = [{
-    name: "GET request for the Antonyms dictionary endpoint",
+    name: "Integration Test : GET request for the Antonyms dictionary endpoint",
     expect: 6,
     config: {
         configName: "dictionaryServerConfig",

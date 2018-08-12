@@ -30,7 +30,7 @@ fluid.defaults("adaptiveContentService.test.handlers.translation.general.transla
 });
 
 adaptiveContentService.tests.translation.general.translateText = [{
-    name: "POST request for the Text Translation endpoint",
+    name: "Integration Test : POST request for the Text Translation endpoint",
     expect: 9,
     config: {
         configName: "translationServerConfig",

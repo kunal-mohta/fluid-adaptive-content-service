@@ -37,7 +37,7 @@ adaptiveContentService.test.handlers.translation.general.langDetection.requiredD
 };
 
 adaptiveContentService.tests.translation.general.langDetection = [{
-    name: "POST request for the Language detection endpoint",
+    name: "Integration Test : POST request for the Language detection endpoint",
     expect: 7,
     config: {
         configName: "translationServerConfig",

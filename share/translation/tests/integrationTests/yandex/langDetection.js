@@ -30,7 +30,7 @@ fluid.defaults("adaptiveContentService.test.handlers.translation.yandex.langDete
 });
 
 adaptiveContentService.tests.translation.yandex.langDetection = [{
-    name: "POST request for the Language detection endpoint of Yandex Service",
+    name: "Integration Test : POST request for the Language detection endpoint of Yandex Service",
     expect: 8,
     config: {
         configName: "translationServerConfig",

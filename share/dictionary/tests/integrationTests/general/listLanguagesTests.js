@@ -30,7 +30,7 @@ fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.listLang
 });
 
 adaptiveContentService.tests.dictionary.general.listLanguages = [{
-    name: "GET request for the List supported languages dictionary endpoint",
+    name: "Integration Test : GET request for the List supported languages dictionary endpoint",
     expect: 5,
     config: {
         configName: "dictionaryServerConfig",

@@ -14,7 +14,7 @@ fluid.logObjectRenderChars = "@expand:kettle.resolvers.env(CHAR_LIM)";
 kettle.loadTestingSupport();
 
 adaptiveContentService.tests.dictionary.wiktionary.listLanguages = [{
-    name: "GET request for the List Languages endpoint of Wiktionary Service",
+    name: "Integration Test : GET request for the List Languages endpoint of Wiktionary Service",
     expect: 6,
     config: {
         configName: "dictionaryServerConfig",

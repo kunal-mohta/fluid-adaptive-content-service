@@ -30,7 +30,7 @@ fluid.defaults("adaptiveContentService.test.handlers.dictionary.general.pronunci
 });
 
 adaptiveContentService.tests.dictionary.general.pronunciations = [{
-    name: "GET request for the Pronunciations dictionary endpoint",
+    name: "Integration Test : GET request for the Pronunciations dictionary endpoint",
     expect: 6,
     config: {
         configName: "dictionaryServerConfig",
