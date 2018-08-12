@@ -43,6 +43,7 @@ fluid.defaults("adaptiveContentService.handlers.translation", {
 adaptiveContentService.handlers.translation.commonTranslationDispatcher = function (request, handlerFunc, that) {
     var version = request.req.params.version;
 
+
     try {
         handlerFunc(request, version, that);
     }

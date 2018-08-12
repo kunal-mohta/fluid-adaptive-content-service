@@ -109,5 +109,6 @@ fluid.defaults("adaptiveContentService.translation.serverConfig", {
 });
 
 require("./handlers.js");
+require("./middlewares");
 
 adaptiveContentService.translation.serverConfig();
